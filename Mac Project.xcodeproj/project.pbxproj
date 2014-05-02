@@ -89,8 +89,17 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Developers' Guild";
+				TargetAttributes = {
+					D275946F19105B1A003FF1E9 = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
-			buildConfigurationList = D275946A19105B1A003FF1E9 /* Build configuration list for PBXProject "Flappy Bird" */;
+			buildConfigurationList = D275946A19105B1A003FF1E9 /* Build configuration list for PBXProject "Mac Project" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -252,7 +261,7 @@
 		D275948619105B1A003FF1E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "Flappy Bird/Flappy Bird-Info.plist";
+				INFOPLIST_FILE = "Mac Project.xcodeproj/Flappy Bird-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
 				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
@@ -264,7 +273,7 @@
 		D275948719105B1A003FF1E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "Flappy Bird/Flappy Bird-Info.plist";
+				INFOPLIST_FILE = "Mac Project.xcodeproj/Flappy Bird-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
 				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
@@ -276,7 +285,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D275946A19105B1A003FF1E9 /* Build configuration list for PBXProject "Flappy Bird" */ = {
+		D275946A19105B1A003FF1E9 /* Build configuration list for PBXProject "Mac Project" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D275948319105B1A003FF1E9 /* Debug */,
