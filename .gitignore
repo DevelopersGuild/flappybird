@@ -7,7 +7,6 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Compiled Static libraries
 *.lai
@@ -19,3 +18,12 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio intermediates
+*.ilk
+*.pdb
+*.tlog
+*.idb
+*.log
+*.manifest
+*.lastbuildstate
