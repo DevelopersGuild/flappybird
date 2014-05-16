@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "Assets.h"
 
 const float BIRD_FRAME_DURATION = 0.05;
 
@@ -10,7 +11,7 @@ int main()
 	window.setVerticalSyncEnabled(true);
 
     sf::Texture birdTexture;
-	birdTexture.loadFromFile("NewBird.png");
+	birdTexture.loadFromFile(GetAssetPath("Assets", "NewBird.png"));
 
 	sf::Sprite birdSprite;
 	birdSprite.setTexture(birdTexture);

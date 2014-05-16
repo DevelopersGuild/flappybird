@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D275947919105B1A003FF1E9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D275947819105B1A003FF1E9 /* main.cpp */; };
+		8EE36D9A1925B9AB00E033F5 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36D991925B9AB00E033F5 /* Assets */; };
+		8EE36DA11925C17200E033F5 /* Mac-Assets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DA01925C17200E033F5 /* Mac-Assets.cpp */; };
+		8EE36DA41925C17D00E033F5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DA31925C17D00E033F5 /* main.cpp */; };
+		8EE36DA61925C57500E033F5 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE36DA51925C57500E033F5 /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8EE36D991925B9AB00E033F5 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		8EE36DA01925C17200E033F5 /* Mac-Assets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "Mac-Assets.cpp"; path = "Source/Mac-Assets.cpp"; sourceTree = "<group>"; };
+		8EE36DA21925C17D00E033F5 /* Assets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Assets.h; path = Source/Assets.h; sourceTree = "<group>"; };
+		8EE36DA31925C17D00E033F5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Source/main.cpp; sourceTree = "<group>"; };
+		8EE36DA51925C57500E033F5 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		D275947019105B1A003FF1E9 /* Flappy Bird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flappy Bird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D275947419105B1A003FF1E9 /* Flappy Bird-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Flappy Bird-Info.plist"; sourceTree = "<group>"; };
-		D275947819105B1A003FF1E9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE36DA61925C57500E033F5 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -30,7 +37,11 @@
 		D275946619105B1A003FF1E9 = {
 			isa = PBXGroup;
 			children = (
-				D275947219105B1A003FF1E9 /* Flappy Bird */,
+				8EE36DA51925C57500E033F5 /* CoreFoundation.framework */,
+				8EE36DA01925C17200E033F5 /* Mac-Assets.cpp */,
+				8EE36DA21925C17D00E033F5 /* Assets.h */,
+				8EE36DA31925C17D00E033F5 /* main.cpp */,
+				8EE36D991925B9AB00E033F5 /* Assets */,
 				D275947119105B1A003FF1E9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,23 +52,6 @@
 				D275947019105B1A003FF1E9 /* Flappy Bird.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D275947219105B1A003FF1E9 /* Flappy Bird */ = {
-			isa = PBXGroup;
-			children = (
-				D275947819105B1A003FF1E9 /* main.cpp */,
-				D275947319105B1A003FF1E9 /* Supporting Files */,
-			);
-			path = "Flappy Bird";
-			sourceTree = "<group>";
-		};
-		D275947319105B1A003FF1E9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D275947419105B1A003FF1E9 /* Flappy Bird-Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE36D9A1925B9AB00E033F5 /* Assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +142,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D275947919105B1A003FF1E9 /* main.cpp in Sources */,
+				8EE36DA41925C17D00E033F5 /* main.cpp in Sources */,
+				8EE36DA11925C17200E033F5 /* Mac-Assets.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
