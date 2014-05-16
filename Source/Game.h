@@ -2,7 +2,7 @@
 #define FLAPPYBIRD_GAME
 
 #include <SFML/Graphics.hpp>
-
+#include "Bird.h"
 /**
  * Game class responsibilities:
  *
@@ -41,6 +41,8 @@ public:
     bool isBirdAlive();
 
 private:
+	sf::RenderWindow window;
+	Bird bird;
     /**
      * Add additional things.
      */

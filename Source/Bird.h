@@ -27,7 +27,7 @@ public:
     // Move the bird.
     void update(float seconds);
     // Draw the bird.  Do not move the bird.
-    void render(sf::RenderWindow window);
+    void render(sf::RenderWindow &window);
     // Reset the bird to its starting position.
     void reset();
     // The player has the bird jump.
@@ -36,6 +36,14 @@ public:
     sf::Vector2f getPosition();
 
 private:
+	float bird_frame_timer;
+	sf::Texture birdTexture;
+	sf::Sprite birdSprite;
+	
+	int bird_y_pos;
+	int bird_x_pos;
+    
+    sf::Clock clock; // starts the clock
     /**
      * Add additional things.
      */
