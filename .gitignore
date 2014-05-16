@@ -12,10 +12,8 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
-*.exe
 *.out
 *.app
 
@@ -30,3 +28,7 @@
 
 # Mac OSX
 .DS_Store
+
+# Windows
+Temp/
+*.ipch
