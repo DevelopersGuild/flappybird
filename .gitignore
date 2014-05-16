@@ -27,3 +27,6 @@
 *.log
 *.manifest
 *.lastbuildstate
+
+# Mac OSX
+.DS_Store

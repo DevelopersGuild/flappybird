@@ -1,29 +1,38 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include "Assets.h"
+#include "Bird.h"
+#include "Constants.h"
+#include "Game.h"
+#include "Pipes.h"
 
-using namespace std;
-
-const float BIRD_FRAME_DURATION = 0.045;
-
-int main()
+Game::Game()
 {
+    //
+    // This function is responsible for too much!  Help clean it up by putting
+    // things in their approrpriate places around town.  (Delete this comment
+    // when it is no longer necessary.)
+    //
+    
 	float bird_frame_timer = BIRD_FRAME_DURATION;
 	
     sf::RenderWindow window(sf::VideoMode(800, 600), "Flappy Bird");
+    
+    // Turning vertical-sync on causes window.display() to pause the app until
+    // 1/60th of a second has passed.
 	window.setVerticalSyncEnabled(true);
-
+    
     sf::Texture birdTexture;
-	birdTexture.loadFromFile("NewBird.png"); //Loads sprite sheet as texture
+
+	birdTexture.loadFromFile(GetAssetPath("Assets", "NewBird.png")); //Loads sprite sheet as texture
 
 	sf::Sprite birdSprite;
-	birdSprite.setTexture(birdTexture); // sets texture of sprite to the sprite sheet
-
+	birdSprite.setTexture(birdTexture);  // sets texture of sprite to the sprite sheet
+    
 	birdSprite.setTextureRect(sf::IntRect(0, 0, 110.2, 101.333));
 	int y_pos = 0;
 	int x_pos = 0;
-
+    
     sf::Clock clock; // starts the clock
-
+    
     while (window.isOpen())
     {
 		sf::Time elapsed = clock.getElapsedTime();
@@ -60,12 +69,37 @@ int main()
 			bird_frame_timer =BIRD_FRAME_DURATION;
 		}
 		
-		
-
-		
         window.clear();
         window.draw(birdSprite);
         window.display();
     }
-    return 0;
 }
+
+void Game::mainLoop()
+{
+}
+
+void Game::update(float seconds)
+{
+}
+
+void Game::render()
+{
+}
+
+void Game::handleEvent(sf::Event event)
+{
+}
+
+void Game::reset()
+{
+}
+
+bool Game::isBirdAlive()
+{
+    return true;
+}
+
+/**
+ * Add additional things.
+ */

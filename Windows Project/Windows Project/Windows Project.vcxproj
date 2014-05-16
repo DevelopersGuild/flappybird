@@ -10,6 +10,20 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Assets.h" />
+    <ClInclude Include="..\..\Source\Bird.h" />
+    <ClInclude Include="..\..\Source\Constants.h" />
+    <ClInclude Include="..\..\Source\Game.h" />
+    <ClInclude Include="..\..\Source\Pipes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Bird.cpp" />
+    <ClCompile Include="..\..\Source\Game.cpp" />
+    <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\Pipes.cpp" />
+    <ClCompile Include="..\..\Source\Windows-Assets.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8B5A69AF-8087-449D-B95A-7530FFBFB3CA}</ProjectGuid>
     <RootNamespace>WindowsProject</RootNamespace>
@@ -63,9 +77,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Flappy Bird\main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
