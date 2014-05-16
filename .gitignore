@@ -33,3 +33,5 @@
 # Windows
 Temp/
 *.ipch
+*.sdf
+*.suo
