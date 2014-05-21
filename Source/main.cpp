@@ -3,6 +3,8 @@
 int main()
 {
     // Construct a new game and run its main loop.
-    Game().mainLoop();
+	Game game;
+    game.mainLoop();
+
     return 0;
 }

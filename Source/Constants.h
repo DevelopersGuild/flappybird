@@ -7,7 +7,7 @@
  */
 
 // Bird constants.
-const float BIRD_FRAME_DURATION = 0.05;
+const float BIRD_FRAME_DURATION = 0.05f;
 
 // Game constants.
 

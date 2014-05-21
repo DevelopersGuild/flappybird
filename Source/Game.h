@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "Bird.h"
+#include "Pipes.h"
+
 /**
  * Game class responsibilities:
  *
@@ -42,7 +44,12 @@ public:
 
 private:
 	sf::RenderWindow window;
+
+	sf::Clock clock;	// Starts the clock
+	sf::Time deltaTime;	// Stores the time difference between the current and previous frames
+
 	Bird bird;
+	Pipes pipes;
     /**
      * Add additional things.
      */

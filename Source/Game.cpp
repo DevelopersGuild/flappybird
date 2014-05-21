@@ -14,30 +14,43 @@ Game::Game()
 
 void Game::mainLoop()
 {
-	 while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-		bird.render(window);
-        window.clear();
-        window.display();
-    }
+	while (window.isOpen())
+	{
+		deltaTime = clock.restart();
+		
+		sf::Event event;
+		while( window.pollEvent(event) )
+		{
+			handleEvent( event );
+		}
+
+		update( deltaTime.asSeconds() );
+		render();
+	}
 }
 
 void Game::update(float seconds)
 {
+	bird.update( seconds );
+	pipes.update( seconds );
 }
 
 void Game::render()
 {
+	window.clear();
+
+	bird.render( window );
+	pipes.render( window );
+
+	window.display();
 }
 
 void Game::handleEvent(sf::Event event)
 {
+	if( event.type == sf::Event::Closed )
+	{
+		window.close();
+	}
 }
 
 void Game::reset()

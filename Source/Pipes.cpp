@@ -10,7 +10,7 @@ void Pipes::update(float seconds)
 {
 }
 
-void Pipes::render(sf::RenderWindow window)
+void Pipes::render(sf::RenderWindow &window)
 {
 }
 
@@ -20,6 +20,7 @@ void Pipes::reset()
 
 bool Pipes::isCollision(sf::Vector2f point)
 {
+	// Change this later to actually check for collisions
     return false;
 }
 

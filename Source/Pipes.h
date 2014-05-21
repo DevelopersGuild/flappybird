@@ -15,6 +15,7 @@
 
 class Pipes
 {
+public:
     /**
      * Add parameters to Pipes's constructor.
      */
@@ -26,7 +27,7 @@ class Pipes
     // Spawn new pipes if necessary.  Move pipes.
     void update(float seconds);
     // Draw pipes on screen.  Do not move them.
-    void render(sf::RenderWindow window);
+    void render(sf::RenderWindow &window);
     // Delete all pipes as the game is beginning anew.
     void reset();
     // Is the following point within one of the pipes?

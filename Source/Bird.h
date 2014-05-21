@@ -37,13 +37,13 @@ public:
 
 private:
 	float bird_frame_timer;
+
 	sf::Texture birdTexture;
 	sf::Sprite birdSprite;
 	
 	int bird_y_pos;
 	int bird_x_pos;
     
-    sf::Clock clock; // starts the clock
     /**
      * Add additional things.
      */
