@@ -47,6 +47,10 @@ void Game::render()
 
 void Game::handleEvent(sf::Event event)
 {
+    if( event.type == sf::Event::KeyPressed )
+    { if( sf::Keyboard::isKeyPressed(sf::Keyboard::Space ) )
+        bird.jump();
+    }
 	if( event.type == sf::Event::Closed )
 	{
 		window.close();
