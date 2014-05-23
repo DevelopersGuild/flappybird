@@ -8,6 +8,8 @@
 
 // Bird constants.
 const float BIRD_FRAME_DURATION = 0.05f;
+const float GRAVITY = 800.f;
+const float BIRD_JUMP_VELOCITY = -300.f;
 
 // Game constants.
 
