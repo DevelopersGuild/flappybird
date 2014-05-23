@@ -47,10 +47,17 @@ void Game::render()
 
 void Game::handleEvent(sf::Event event)
 {
-	if( event.type == sf::Event::Closed )
-	{
-		window.close();
-	}
+	switch (event.type)
+    {
+    case sf::Event::Closed:
+        window.close();
+        break;
+	case sf::Event::KeyPressed:
+		if(event.key.code == sf::Keyboard::Space)
+			bird.jump();
+    default:
+        break;
+    }
 }
 
 void Game::reset()
