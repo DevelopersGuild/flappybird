@@ -36,9 +36,17 @@ public:
     int getScore();
     
 private:
+
+	sf::Texture pipeTexture;
+	sf::Sprite pipeSprite;
+
+	int pipe_y_pos;
+	int pipe_x_pos;
+
     /**
      * Add additional things.
      */
+	
 };
 
 #endif
