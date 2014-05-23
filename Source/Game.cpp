@@ -6,7 +6,10 @@
 
 Game::Game()
 	: window(sf::VideoMode(800, 600), "Flappy Bird")
-{    
+{
+    bgTexture.loadFromFile(GetAssetPath("Assets", "bg.png"));
+    bgSprite.setTexture(bgTexture);
+    
     // Turning vertical-sync on causes window.display() to pause the app until
     // 1/60th of a second has passed.
 	window.setVerticalSyncEnabled(true);
@@ -41,6 +44,8 @@ void Game::render()
 
 	bird.render( window );
 	pipes.render( window );
+    
+    window.draw(bgSprite);
 
 	window.display();
 }
