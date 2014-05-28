@@ -32,18 +32,26 @@ public:
     void reset();
     // The player has the bird jump.
     void jump();
+	
+	void setRotationIncrement(int number);
+
+	int getRotation();
     // The center of the bird.  To be used by Game.
     sf::Vector2f getPosition();
 
+	bool jumped;
 private:
 	float bird_frame_timer;
 
 	sf::Texture birdTexture;
 	sf::Sprite birdSprite;
 	
-	int bird_y_pos;
-	int bird_x_pos;
-    
+	int bird_y_pos; // Controls sprite sheet animation.
+	int bird_x_pos; // Controls sprite sheet animation.
+	int velocity; // The birds velocity.
+	int rotation; // To make bird rotate downwards when it's falling.
+	int jumpAnimation; //To make the bird flap its wings when it jumps.
+    int rotationIncrement;
     /**
      * Add additional things.
      */

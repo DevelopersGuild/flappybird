@@ -26,6 +26,8 @@ public:
      */
     // Spawn new pipes if necessary.  Move pipes.
     void update(float seconds);
+	//Speeds up the pipes animation to give the illusion that the bird moved forwards
+	void Pipes::moveForwards();
     // Draw pipes on screen.  Do not move them.
     void render(sf::RenderWindow &window);
     // Delete all pipes as the game is beginning anew.
@@ -42,7 +44,8 @@ private:
 
 	int pipe_y_pos;
 	int pipe_x_pos;
-
+	int pipe_x_pos_increment; //The 
+	int forwardsCounter;
     /**
      * Add additional things.
      */

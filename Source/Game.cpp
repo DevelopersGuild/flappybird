@@ -53,8 +53,17 @@ void Game::handleEvent(sf::Event event)
         window.close();
         break;
 	case sf::Event::KeyPressed:
-		if(event.key.code == sf::Keyboard::Space)
+		if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up)
 			bird.jump();
+		else if(event.key.code == sf::Keyboard::Right)
+		{
+			if(bird.jumped)
+			{
+				pipes.moveForwards();
+				bird.setRotationIncrement(-5);
+				bird.jumped = false;
+			}
+		}
     default:
         break;
     }

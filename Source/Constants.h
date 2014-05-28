@@ -7,10 +7,12 @@
  */
 
 // Bird constants.
-const float BIRD_FRAME_DURATION = 0.05f;
-const float GRAVITY = 800.f;
-const float BIRD_JUMP_VELOCITY = -300.f;
-
+const float BIRD_FRAME_DURATION = 0.017f;
+const float GRAVITY = 850.f;
+const float BIRD_JUMP_VELOCITY = -420.f;
+const float BIRD_MAX_Y = 0;
+const float BIRD_FRAME_SIZE_X = 110.2f;
+const float BIRD_FRAME_SIZE_Y = 101.3f;
 // Game constants.
 
 // Pipes constants.
