@@ -36,6 +36,8 @@ public:
     bool isCollision(sf::Vector2f point);
     // How many pipes have passed by on-screen?
     int getScore();
+	// Add 1 to the score.
+	void incrementScore();
     
 private:
 
@@ -46,6 +48,7 @@ private:
 	int pipe_x_pos;
 	int pipe_x_pos_increment; //The 
 	int forwardsCounter;
+	int score;
     /**
      * Add additional things.
      */

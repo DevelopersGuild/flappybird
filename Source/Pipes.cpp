@@ -11,6 +11,7 @@ Pipes::Pipes()
 	pipe_y_pos = -500;
 	pipe_x_pos_increment = 10;
 	forwardsCounter = 0;
+	score = 0;
 }
 
 void Pipes::update(float seconds)
@@ -47,6 +48,7 @@ void Pipes::reset()
 {
 	pipe_x_pos = 900;
 	pipe_y_pos = rand()%(-250) - 700;
+	incrementScore();
 }
 
 bool Pipes::isCollision(sf::Vector2f point)
@@ -55,9 +57,14 @@ bool Pipes::isCollision(sf::Vector2f point)
     return false;
 }
 
+void Pipes::incrementScore()
+{
+	score++;
+}
+
 int Pipes::getScore()
 {
-    return 0;
+    return score;
 }
 
 /**
