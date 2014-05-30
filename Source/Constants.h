@@ -16,5 +16,6 @@ const float BIRD_FRAME_SIZE_Y = 101.3f;
 // Game constants.
 
 // Pipes constants.
+const int NUMBER_OF_PIPES = 2;
 
 #endif

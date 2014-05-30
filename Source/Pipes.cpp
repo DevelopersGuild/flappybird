@@ -5,10 +5,13 @@
 Pipes::Pipes()
 {
 	pipeTexture.loadFromFile(GetAssetPath("Assets", "Pipe.png"));
-	pipeSprite.setTexture(pipeTexture);
-	pipeSprite.setTextureRect(sf::IntRect(140, 0, 116, 1725));
-	pipe_x_pos = 480;
-	pipe_y_pos = -500;
+	for(int i = 0; i < NUMBER_OF_PIPES; i++)
+	{
+		pipeSprite[i].setTexture(pipeTexture);
+		pipeSprite[i].setTextureRect(sf::IntRect(140, 0, 116, 1725));
+		pipe_x_pos[i] = 900 + 500*i;
+		pipe_y_pos[i] = randomInt();
+	}
 	pipe_x_pos_increment = 10;
 	forwardsCounter = 0;
 	score = 0;
@@ -24,12 +27,14 @@ void Pipes::update(float seconds)
 		pipe_x_pos_increment = 10;
 		forwardsCounter = 0;
 	}
-	pipe_x_pos -= pipe_x_pos_increment;
-	pipeSprite.setPosition(pipe_x_pos, pipe_y_pos);
-	
-	if(pipe_x_pos <= -200)
+	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
-		reset();
+		pipe_x_pos[i] -= pipe_x_pos_increment;
+		pipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
+		if(pipe_x_pos[i] <= -200)
+		{
+			reset(i);
+		}
 	}
 	
 }
@@ -41,15 +46,24 @@ void Pipes::moveForwards()
 
 void Pipes::render(sf::RenderWindow &window)
 {
-	window.draw(pipeSprite);
+	for(int i = 0; i < NUMBER_OF_PIPES; i++)
+	{
+		window.draw(pipeSprite[i]);
+	}
 }
 
-void Pipes::reset()
+void Pipes::reset(int pipeNumber)
 {
-	pipe_x_pos = 900;
-	pipe_y_pos = rand()%(-250) - 700;
+	pipe_x_pos[pipeNumber] = 900;
+	pipe_y_pos[pipeNumber] = randomInt();
 	incrementScore();
 }
+
+int Pipes::randomInt()
+{
+	return rand()%(-250) - 700;
+}
+
 
 bool Pipes::isCollision(sf::Vector2f point)
 {
