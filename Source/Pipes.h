@@ -27,13 +27,15 @@ public:
     // Spawn new pipes if necessary.  Move pipes.
     void update(float seconds);
 	//Speeds up the pipes animation to give the illusion that the bird moved forwards
-	void Pipes::moveForwards();
+	void moveForwards();
     // Draw pipes on screen.  Do not move them.
     void render(sf::RenderWindow &window);
     // Delete all pipes as the game is beginning anew.
     void reset();
     // Is the following point within one of the pipes?
     bool isCollision(sf::Vector2f point);
+
+	float getVelocity();
     // How many pipes have passed by on-screen?
     int getScore();
     
@@ -41,11 +43,13 @@ private:
 
 	sf::Texture pipeTexture;
 	sf::Sprite pipeSprite;
-
+	float velocity;
+	float pipes_frame_timer;
 	int pipe_y_pos;
 	int pipe_x_pos;
 	int pipe_x_pos_increment; //The 
 	int forwardsCounter;
+	int tempScore;
     /**
      * Add additional things.
      */

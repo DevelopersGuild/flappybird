@@ -26,9 +26,9 @@ public:
     // Initialize the game.
     Game();
     
-    /**
-     * Try not to change the public methods' names and parameters, if possible.
-     */
+    sf::Texture bgTexture;
+	sf::Sprite bgSprite;
+
     // Run the main loop of the program.
     void mainLoop();
     // Update Bird and Pipes and anything else that needs to be updated.
@@ -41,7 +41,6 @@ public:
     void reset();
     // All the checks to see if the bird is alive or dead at this point in time.
     bool isBirdAlive();
-
 private:
 	sf::RenderWindow window;
 

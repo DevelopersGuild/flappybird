@@ -9,11 +9,15 @@ Game::Game()
 {    
     // Turning vertical-sync on causes window.display() to pause the app until
     // 1/60th of a second has passed.
+	bgTexture.loadFromFile(GetAssetPath("Assets", "bg.png")); //Loads sprite sheet as texture
+	bgSprite.setTexture(bgTexture);  // sets texture of sprite to the sprite sheet
+	bgSprite.setTextureRect(sf::IntRect(0, 0, 800, 600));
 	window.setVerticalSyncEnabled(true);
 }
 
 void Game::mainLoop()
 {
+
 	while (window.isOpen())
 	{
 		deltaTime = clock.restart();
@@ -31,14 +35,14 @@ void Game::mainLoop()
 
 void Game::update(float seconds)
 {
-	bird.update( seconds );
+	bird.update( seconds , pipes.getVelocity());
 	pipes.update( seconds );
 }
 
 void Game::render()
 {
 	window.clear();
-
+	window.draw(bgSprite);
 	bird.render( window );
 	pipes.render( window );
 

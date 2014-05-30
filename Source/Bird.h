@@ -25,7 +25,7 @@ public:
      * Try not to change the public methods' names and parameters, if possible.
      */
     // Move the bird.
-    void update(float seconds);
+    void update(float seconds, float pipes_velocity);
     // Draw the bird.  Do not move the bird.
     void render(sf::RenderWindow &window);
     // Reset the bird to its starting position.
@@ -48,10 +48,11 @@ private:
 	
 	int bird_y_pos; // Controls sprite sheet animation.
 	int bird_x_pos; // Controls sprite sheet animation.
-	int velocity; // The birds velocity.
-	int rotation; // To make bird rotate downwards when it's falling.
+	float velocity; // The birds velocity.
+	float rotation; // To make bird rotate downwards when it's falling.
 	int jumpAnimation; //To make the bird flap its wings when it jumps.
     int rotationIncrement;
+
     /**
      * Add additional things.
      */

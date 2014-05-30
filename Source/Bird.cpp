@@ -2,6 +2,7 @@
 #include "Constants.h"
 #include "Bird.h"
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 Bird::Bird()
@@ -16,15 +17,12 @@ Bird::Bird()
 	rotationIncrement = 2;
 }
 
-void Bird::update(float seconds)
+void Bird::update(float seconds, float pipes_veloctity)
 {
 	bird_frame_timer -= seconds;
 	velocity += GRAVITY * seconds;
-
-	if(rotation <= 60)
-		rotation += rotationIncrement;
-	if(rotation <= 0)
-		rotationIncrement = 2;
+	rotation = atan2f(velocity, pipes_veloctity) * 180 / 3.14;
+	cout << rotation << endl;
 	birdSprite.setPosition(400, birdSprite.getPosition().y + velocity * seconds);
 	birdSprite.setRotation(rotation);
 }
@@ -76,8 +74,6 @@ void Bird::jump()
 	if(birdSprite.getPosition().y >= BIRD_MAX_Y) //To make sure the bird doesn't go above the border of the window
 	{
 		velocity = BIRD_JUMP_VELOCITY;
-		//this simply sets the rotation angle to zero degree, which doesn't look smooth. We'll change this later on.
-		rotation = -10;
 		jumpAnimation = 0;
 		jumped = true;
 	}
@@ -95,10 +91,5 @@ int Bird::getRotation()
 
 sf::Vector2f Bird::getPosition()
 {
-	// This should be changed to return the bird's actual position
-    return sf::Vector2f();
+    return sf::Vector2f( birdSprite.getPosition().x, birdSprite.getPosition().y );
 }
-
-/**
- * Add additional things.
- */
