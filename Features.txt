@@ -1,0 +1,35 @@
+
+BIRD SHOULD ROTATES AROUND ITS CENTER INSTEAD OF ITS TOP LEFT CORNER
+Set Bird's SFML origin (Bird class)
+
+SCORE
+Draw score on screen each frame (Game class)
+
+GAME OVER
+Detect a collision between a point and any pipe (Pipes class)
+Add resetToBeginningOfGame functions (Bird and Pipes classes)
+Determine if bird dies each frame (Game class)
+Call Bird and Pipes reset functions on bird death (Game class)
+
+BIRD ROTATION BASED ON GEOMETRY
+Pipes movement should be the same regardless of frames drawn per second (Pipes class)
+Bird rotation set to arctangent of Y-velocity divided by X-velocity (Bird class)
+
+UPGRADE GRAPHICS
+New graphics for bird and background
+
+SOUND
+Sound effects (Game class)
+Music (Game class)
+
+GAME OVER SCREEN
+When bird is dead, keep rendering but stop updating the game, draw a 50% opaque black rectangle over screen, and draw "Game over" text on screen (Game class)
+When bird is dead, have a keypress from keyboard reset the game to beginning (Game class)
+There is state changing code in render() that should be in update() (Bird class)
+
+HIGH SCORE
+Save/load high score to file (Game class)
+When bird is dead, if it's a new high score, say so (Game class)
+
+GROUND
+Ground image that moves across screen at the same speed as the pipes (Pipes class)
