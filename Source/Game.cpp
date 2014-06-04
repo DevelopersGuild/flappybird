@@ -42,11 +42,11 @@ void Game::render()
 {
 	window.clear();
 
+    window.draw(bgSprite);
+
 	bird.render( window );
 	pipes.render( window );
     
-    window.draw(bgSprite);
-
 	window.display();
 }
 
