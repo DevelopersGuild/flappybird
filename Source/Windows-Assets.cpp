@@ -7,7 +7,7 @@
  * Flappy Bird from within the Visual Studio 2010 project included in the Git
  * repository.
  */
-string GetAssetPath(string directory, string asset)
+string GetAssetPath(string asset)
 {
-	return "..\\..\\" + directory + "\\" + asset;
+	return "..\\..\\" + asset;
 }
