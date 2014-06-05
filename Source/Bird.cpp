@@ -9,7 +9,7 @@ using namespace std;
 Bird::Bird()
 	: bird_frame_timer( BIRD_FRAME_DURATION ), bird_y_pos( 0 ), bird_x_pos( 0 )
 {
-	birdTexture.loadFromFile(GetAssetPath("Assets", "NewBird.png")); //Loads sprite sheet as texture
+	birdTexture.loadFromFile(GetAssetPath("Assets/NewBird.png")); //Loads sprite sheet as texture
 	birdSprite.setTexture(birdTexture);  // sets texture of sprite to the sprite sheet
 	birdSprite.setTextureRect(sf::IntRect(0, 0, BIRD_FRAME_SIZE_X, BIRD_FRAME_SIZE_Y));
 	birdSprite.setOrigin(BIRD_FRAME_SIZE_X/2, BIRD_FRAME_SIZE_Y/2);

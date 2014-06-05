@@ -17,12 +17,9 @@ using std::string;
  * Example usage:
  *      ... a file exists at Flappy Bird/Assets/NewBird.png ...
  *
- *   	string birdPath = GetAssetPath("Assets", "NewBird.png");
+ *   	string birdPath = GetAssetPath("Assets/NewBird.png");
  *      texture.loadFromFile(birdPath);
- * 
- * (It's kind of weird that there are two parameters: directory and filename.
- * We could probably do with only one.  Oh well.)
  */
-string GetAssetPath(string directory, string filename);
+string GetAssetPath(string asset);
 
 #endif

@@ -12,7 +12,7 @@ Game::Game()
 	bg_X_pos = 0;
 	bg_x_pos_increment = 0.8;
 	 //Loads sprite sheet as texture
-	bgTexture.loadFromFile(GetAssetPath("Assets", "bg.png"));
+	bgTexture.loadFromFile(GetAssetPath("Assets/bg.png"));
 	bgSprite[0].setTexture(bgTexture);  // sets texture of sprite to the sprite sheet
 	bgSprite[1].setTexture(bgTexture);  // sets texture of sprite to the sprite sheet
 	bgSprite[0].setTextureRect(sf::IntRect(0, 0, 1024, 256));
@@ -20,11 +20,11 @@ Game::Game()
 	bgSprite[0].setScale(1, 2.343); //To fill entire screen with sprite
 	bgSprite[1].setScale(1, 2.343); //To fill entire screen with sprite
 
-	arrowOffTexture.loadFromFile(GetAssetPath("Assets", "ArrowOff.png"));
+	arrowOffTexture.loadFromFile(GetAssetPath("Assets/ArrowOff.png"));
 	arrowOffSprite.setTexture(arrowOffTexture);
 	arrowOffSprite.setScale(1.5, 1.5);
 	arrowOffSprite.setPosition(730, 530);
-	arrowOnTexture.loadFromFile(GetAssetPath("Assets", "ArrowOn.png"));
+	arrowOnTexture.loadFromFile(GetAssetPath("Assets/ArrowOn.png"));
 	arrowOnSprite.setTexture(arrowOnTexture);
 	arrowOnSprite.setScale(1.5, 1.5);
 	arrowOnSprite.setPosition(730, 530);

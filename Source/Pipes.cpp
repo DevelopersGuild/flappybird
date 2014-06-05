@@ -5,7 +5,7 @@
 Pipes::Pipes()
 	: pipes_frame_timer(PIPES_FRAME_DURATION)
 {
-	pipeTexture.loadFromFile(GetAssetPath("Assets", "Pipe.png"));
+	pipeTexture.loadFromFile(GetAssetPath("Assets/Pipe.png"));
 	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
 		pipeSprite[i].setTexture(pipeTexture);
