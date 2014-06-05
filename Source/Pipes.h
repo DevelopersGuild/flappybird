@@ -2,6 +2,7 @@
 #define FLAPPYBIRD_PIPES
 
 #include <SFML/Graphics.hpp>
+#include "Constants.h"
 
 /**
  * Pipes class responsibilities:
@@ -31,25 +32,29 @@ public:
     // Draw pipes on screen.  Do not move them.
     void render(sf::RenderWindow &window);
     // Delete all pipes as the game is beginning anew.
-    void reset();
+    void reset(int pipeNumber);
     // Is the following point within one of the pipes?
     bool isCollision(sf::Vector2f point);
 
 	float getVelocity();
     // How many pipes have passed by on-screen?
     int getScore();
+	// Add 1 to the score.
+	void incrementScore();
+	// Returns a random integer, used for random y position of pipe.
+	int randomInt();
     
 private:
 
 	sf::Texture pipeTexture;
-	sf::Sprite pipeSprite;
+	sf::Sprite pipeSprite[NUMBER_OF_PIPES];
+
 	float velocity;
 	float pipes_frame_timer;
-	int pipe_y_pos;
-	int pipe_x_pos;
+	int pipe_y_pos[NUMBER_OF_PIPES];
+	int pipe_x_pos[NUMBER_OF_PIPES];
 	int pipe_x_pos_increment; //The 
-	int forwardsCounter;
-	int tempScore;
+	int score;
     /**
      * Add additional things.
      */

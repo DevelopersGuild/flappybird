@@ -28,6 +28,10 @@ public:
     void update(float seconds, float pipes_velocity);
     // Draw the bird.  Do not move the bird.
     void render(sf::RenderWindow &window);
+	// Advance animation by one frame.
+	void advanceAnimation();
+	// Set which frame we are at in the animation from the sprite sheet.
+	void setAnimationFrame(int x, int y);
     // Reset the bird to its starting position.
     void reset();
     // The player has the bird jump.
@@ -39,7 +43,7 @@ public:
     // The center of the bird.  To be used by Game.
     sf::Vector2f getPosition();
 
-	bool jumped;
+	int jumped;
 private:
 	float bird_frame_timer;
 
@@ -50,7 +54,7 @@ private:
 	int bird_x_pos; // Controls sprite sheet animation.
 	float velocity; // The birds velocity.
 	float rotation; // To make bird rotate downwards when it's falling.
-	int jumpAnimation; //To make the bird flap its wings when it jumps.
+	float animationRemaining; //To make the bird flap its wings when it jumps.
     int rotationIncrement;
 
     /**

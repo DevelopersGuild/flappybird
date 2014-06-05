@@ -6,56 +6,62 @@ Pipes::Pipes()
 	: pipes_frame_timer(PIPES_FRAME_DURATION)
 {
 	pipeTexture.loadFromFile(GetAssetPath("Assets", "Pipe.png"));
-	pipeSprite.setTexture(pipeTexture);
-	pipeSprite.setTextureRect(sf::IntRect(140, 0, 116, 1725));
-	pipe_x_pos = 480;
-	pipe_y_pos = -500;
-	pipe_x_pos_increment = 10;
-	forwardsCounter = 0;
-	velocity = 0;
+	for(int i = 0; i < NUMBER_OF_PIPES; i++)
+	{
+		pipeSprite[i].setTexture(pipeTexture);
+		pipeSprite[i].setTextureRect(sf::IntRect(140, 0, 116, 1725));
+		pipe_x_pos[i] = 900 + 500*i;
+		pipe_y_pos[i] = randomInt();
+	}
+	velocity = PIPES_VELOCITY;
+	score = 0;
 }
 
 void Pipes::update(float seconds)
 {
-	velocity += PIPES_ACCELERATION * seconds; 
-	pipes_frame_timer -=seconds;
-	//to control the ammount of time the pipe animation is sped up
-	if(pipes_frame_timer <= 0)
+	if(velocity > PIPES_VELOCITY)
+		velocity -= PIPES_DECELERATION * seconds;
+	if (velocity < PIPES_VELOCITY)
+		velocity = PIPES_VELOCITY;
+	
+	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
-		if(pipe_x_pos_increment == 16)
-			forwardsCounter++;
-		if(forwardsCounter >= 16)
+		pipe_x_pos[i] -= velocity * seconds;
+		pipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
+		if(pipe_x_pos[i] <= -200)
 		{
-			pipe_x_pos_increment = 10;
-			forwardsCounter = 0;
+			reset(i);
 		}
-		pipe_x_pos -= pipe_x_pos_increment;
-		pipeSprite.setPosition(pipe_x_pos, pipe_y_pos);
-	
-		if(pipe_x_pos <= -200)
-		{
-			reset();
-		}
-		pipes_frame_timer = PIPES_FRAME_DURATION; 
 	}
-	
+		
 }
 
 void Pipes::moveForwards()
 {
-	pipe_x_pos_increment = 16;
+	velocity = PIPES_VELOCITY;
+	velocity *= 1.0 + PIPES_SPEED_BONUS;
 }
 
 void Pipes::render(sf::RenderWindow &window)
 {
-	window.draw(pipeSprite);
+	for(int i = 0; i < NUMBER_OF_PIPES; i++)
+	{
+		window.draw(pipeSprite[i]);
+	}
 }
 
-void Pipes::reset()
+void Pipes::reset(int pipeNumber)
 {
-	pipe_x_pos = 900;
-	pipe_y_pos = rand()%(-250) - 700;
+	pipe_x_pos[pipeNumber] = 900;
+	pipe_y_pos[pipeNumber] = randomInt();
+	incrementScore();
 }
+
+int Pipes::randomInt()
+{
+	return rand()%(-250) - 700;
+}
+
 
 bool Pipes::isCollision(sf::Vector2f point)
 {
@@ -63,11 +69,20 @@ bool Pipes::isCollision(sf::Vector2f point)
     return false;
 }
 
-float Pipes::getVelocity(){return velocity;}
+
+float Pipes::getVelocity()
+{
+	return velocity;
+}
+
+void Pipes::incrementScore()
+{
+	score++;
+}
 
 int Pipes::getScore()
 {
-    return 0;
+    return score;
 }
 
 /**

@@ -27,8 +27,12 @@ public:
     Game();
     
     sf::Texture bgTexture;
-	sf::Sprite bgSprite;
+	sf::Sprite bgSprite[2];
 
+	sf::Texture arrowOffTexture;
+	sf::Sprite arrowOffSprite;
+	sf::Texture arrowOnTexture;
+	sf::Sprite arrowOnSprite;
     // Run the main loop of the program.
     void mainLoop();
     // Update Bird and Pipes and anything else that needs to be updated.
@@ -41,12 +45,17 @@ public:
     void reset();
     // All the checks to see if the bird is alive or dead at this point in time.
     bool isBirdAlive();
+
+	//Initializes background sprite
+	void init_Background(sf::Sprite* bgSprite, sf::Texture bgTexture);
 private:
 	sf::RenderWindow window;
 
 	sf::Clock clock;	// Starts the clock
 	sf::Time deltaTime;	// Stores the time difference between the current and previous frames
 
+	float bg_X_pos;
+	float bg_x_pos_increment;
 	Bird bird;
 	Pipes pipes;
     /**

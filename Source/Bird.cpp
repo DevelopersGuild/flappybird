@@ -1,8 +1,9 @@
 #include "Assets.h"
 #include "Constants.h"
 #include "Bird.h"
-#include <iostream>
 #include <math.h>
+#include <iostream>
+
 using namespace std;
 
 Bird::Bird()
@@ -11,32 +12,49 @@ Bird::Bird()
 	birdTexture.loadFromFile(GetAssetPath("Assets", "NewBird.png")); //Loads sprite sheet as texture
 	birdSprite.setTexture(birdTexture);  // sets texture of sprite to the sprite sheet
 	birdSprite.setTextureRect(sf::IntRect(0, 0, BIRD_FRAME_SIZE_X, BIRD_FRAME_SIZE_Y));
+	birdSprite.setOrigin(BIRD_FRAME_SIZE_X/2, BIRD_FRAME_SIZE_Y/2);
 	velocity = 0;
 	rotation = 0;
-	jumpAnimation = 29;
+	birdSprite.setPosition(BIRD_X_POS, 0.0);
 	rotationIncrement = 2;
+	jumped = 0;
+	animationRemaining = BIRD_JUMP_ANIMATION_TIMER;
 }
 
 void Bird::update(float seconds, float pipes_veloctity)
 {
 	bird_frame_timer -= seconds;
+	animationRemaining -= seconds;
+	if (animationRemaining < 0.0)
+		animationRemaining = 0.0;
 	velocity += GRAVITY * seconds;
 	rotation = atan2f(velocity, pipes_veloctity) * 180 / 3.14;
-	cout << rotation << endl;
-	birdSprite.setPosition(400, birdSprite.getPosition().y + velocity * seconds);
+	birdSprite.move(0.0, velocity * seconds);
 	birdSprite.setRotation(rotation);
-}
 
-void Bird::render(sf::RenderWindow &window)
-{
 	//if the jump function has been called, reset the bird animation to the first frame
-	if(jumpAnimation == 0)
+	if(animationRemaining == 0.0)
 	{
 		bird_x_pos = 0;
 		bird_y_pos = 0;
 	}
-	if(jumpAnimation <= 32)
+	else
 	{
+		advanceAnimation();
+	}
+	setAnimationFrame(bird_x_pos, bird_y_pos);
+}
+
+void Bird::render(sf::RenderWindow &window)
+{
+	window.draw(birdSprite);
+}
+
+void Bird::advanceAnimation()
+{
+	while (bird_frame_timer <= 0)
+	{
+		bird_x_pos++;
 		if( bird_y_pos*101 >= birdTexture.getSize().y )
 		{
 				bird_y_pos = 0;
@@ -53,16 +71,13 @@ void Bird::render(sf::RenderWindow &window)
 			bird_x_pos = 0;
 			bird_y_pos = 0;
 		}
-
-		if(bird_frame_timer <= 0)
-		{
-			birdSprite.setTextureRect(sf::IntRect(bird_x_pos*110, bird_y_pos*102, 111, 101));
-			bird_x_pos++;
-			bird_frame_timer = BIRD_FRAME_DURATION;
-		}
-		jumpAnimation++;
+		bird_frame_timer += BIRD_FRAME_DURATION;
 	}
-	window.draw(birdSprite);
+}
+
+void Bird::setAnimationFrame(int x, int y)
+{
+	birdSprite.setTextureRect(sf::IntRect(x*110, y*102, 111, 101));
 }
 
 void Bird::reset()
@@ -74,8 +89,11 @@ void Bird::jump()
 	if(birdSprite.getPosition().y >= BIRD_MAX_Y) //To make sure the bird doesn't go above the border of the window
 	{
 		velocity = BIRD_JUMP_VELOCITY;
-		jumpAnimation = 0;
-		jumped = true;
+		animationRemaining = BIRD_JUMP_ANIMATION_TIMER;
+		bird_x_pos = 0;
+		bird_y_pos = 0;
+		bird_frame_timer = BIRD_FRAME_DURATION;
+		jumped++;
 	}
 }
 
@@ -91,5 +109,5 @@ int Bird::getRotation()
 
 sf::Vector2f Bird::getPosition()
 {
-    return sf::Vector2f( birdSprite.getPosition().x, birdSprite.getPosition().y );
+    return birdSprite.getPosition();
 }

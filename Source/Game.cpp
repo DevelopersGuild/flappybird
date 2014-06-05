@@ -6,12 +6,28 @@
 
 Game::Game()
 	: window(sf::VideoMode(800, 600), "Flappy Bird")
-{    
+{
     // Turning vertical-sync on causes window.display() to pause the app until
     // 1/60th of a second has passed.
-	bgTexture.loadFromFile(GetAssetPath("Assets", "bg.png")); //Loads sprite sheet as texture
-	bgSprite.setTexture(bgTexture);  // sets texture of sprite to the sprite sheet
-	bgSprite.setTextureRect(sf::IntRect(0, 0, 800, 600));
+	bg_X_pos = 0;
+	bg_x_pos_increment = 0.8;
+	 //Loads sprite sheet as texture
+	bgTexture.loadFromFile(GetAssetPath("Assets", "bg.png"));
+	bgSprite[0].setTexture(bgTexture);  // sets texture of sprite to the sprite sheet
+	bgSprite[1].setTexture(bgTexture);  // sets texture of sprite to the sprite sheet
+	bgSprite[0].setTextureRect(sf::IntRect(0, 0, 1024, 256));
+	bgSprite[1].setTextureRect(sf::IntRect(0, 0, 1024, 256));
+	bgSprite[0].setScale(1, 2.343); //To fill entire screen with sprite
+	bgSprite[1].setScale(1, 2.343); //To fill entire screen with sprite
+
+	arrowOffTexture.loadFromFile(GetAssetPath("Assets", "ArrowOff.png"));
+	arrowOffSprite.setTexture(arrowOffTexture);
+	arrowOffSprite.setScale(1.5, 1.5);
+	arrowOffSprite.setPosition(730, 530);
+	arrowOnTexture.loadFromFile(GetAssetPath("Assets", "ArrowOn.png"));
+	arrowOnSprite.setTexture(arrowOnTexture);
+	arrowOnSprite.setScale(1.5, 1.5);
+	arrowOnSprite.setPosition(730, 530);
 	window.setVerticalSyncEnabled(true);
 }
 
@@ -35,14 +51,30 @@ void Game::mainLoop()
 
 void Game::update(float seconds)
 {
+	if(bg_X_pos <= -1024)
+		bg_X_pos = 0;
+	if(bg_x_pos_increment > 0.8)
+		bg_x_pos_increment -= 0.0625;
+
+	bgSprite[0].setPosition(bg_X_pos, 0);
+	bgSprite[1].setPosition(bg_X_pos + 1024, 0);
+	bg_X_pos -= bg_x_pos_increment;
+
 	bird.update( seconds , pipes.getVelocity());
 	pipes.update( seconds );
 }
 
 void Game::render()
 {
+	
 	window.clear();
-	window.draw(bgSprite);
+
+	window.draw(bgSprite[0]);
+	window.draw(bgSprite[1]);
+	if(bird.jumped >= 10)
+		window.draw(arrowOnSprite);
+	else
+		window.draw(arrowOffSprite);
 	bird.render( window );
 	pipes.render( window );
 
@@ -61,11 +93,12 @@ void Game::handleEvent(sf::Event event)
 			bird.jump();
 		else if(event.key.code == sf::Keyboard::Right)
 		{
-			if(bird.jumped)
+			if(bird.jumped >= 10)
 			{
+				bg_x_pos_increment = 2;
 				pipes.moveForwards();
 				bird.setRotationIncrement(-5);
-				bird.jumped = false;
+				bird.jumped = 0;
 			}
 		}
     default:
@@ -81,7 +114,3 @@ bool Game::isBirdAlive()
 {
     return true;
 }
-
-/**
- * Add additional things.
- */
