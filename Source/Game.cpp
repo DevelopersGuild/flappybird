@@ -3,6 +3,7 @@
 #include "Constants.h"
 #include "Game.h"
 #include "Pipes.h"
+#include "Score.h"
 
 Game::Game()
 	: window(sf::VideoMode(800, 600), "Flappy Bird")
@@ -44,7 +45,8 @@ void Game::mainLoop()
 			handleEvent( event );
 		}
 
-		update( deltaTime.asSeconds() );
+		if(isBirdAlive())
+			update( deltaTime.asSeconds() );
 		render();
 	}
 }
@@ -62,6 +64,7 @@ void Game::update(float seconds)
 
 	bird.update( seconds , pipes.getVelocity());
 	pipes.update( seconds );
+	score.update( pipes.getScore() );
 }
 
 void Game::render()
@@ -77,7 +80,7 @@ void Game::render()
 		window.draw(arrowOffSprite);
 	bird.render( window );
 	pipes.render( window );
-
+	score.render( window );
 	window.display();
 }
 

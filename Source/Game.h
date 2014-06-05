@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "Bird.h"
 #include "Pipes.h"
+#include "Score.h"
 
 /**
  * Game class responsibilities:
@@ -58,6 +59,7 @@ private:
 	float bg_x_pos_increment;
 	Bird bird;
 	Pipes pipes;
+	Score score; 
     /**
      * Add additional things.
      */

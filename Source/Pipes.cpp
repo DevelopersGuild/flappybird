@@ -62,13 +62,11 @@ int Pipes::randomInt()
 	return rand()%(-250) - 700;
 }
 
-
 bool Pipes::isCollision(sf::Vector2f point)
 {
 	// Change this later to actually check for collisions
     return false;
 }
-
 
 float Pipes::getVelocity()
 {
@@ -82,9 +80,5 @@ void Pipes::incrementScore()
 
 int Pipes::getScore()
 {
-    return score;
+	return score + pipeSprite[0].getPosition().x < 400 +  pipeSprite[1].getPosition().x < 400;
 }
-
-/**
- * Add additional things.
- */
