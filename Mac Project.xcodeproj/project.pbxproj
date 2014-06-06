@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1088951C19425F0E002DF360 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1088951B19425F0E002DF360 /* Score.cpp */; };
 		8E010AF81940BBA20038B015 /* Mac-Assets.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E010AF71940BBA20038B015 /* Mac-Assets.mm */; };
 		8EE36D9A1925B9AB00E033F5 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36D991925B9AB00E033F5 /* Assets */; };
 		8EE36DA41925C17D00E033F5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DA31925C17D00E033F5 /* main.cpp */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1088951B19425F0E002DF360 /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Score.cpp; path = Source/Score.cpp; sourceTree = "<group>"; };
+		1088951D19425F1D002DF360 /* Score.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Score.h; path = Source/Score.h; sourceTree = "<group>"; };
 		8E010AF71940BBA20038B015 /* Mac-Assets.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "Mac-Assets.mm"; path = "Source/Mac-Assets.mm"; sourceTree = "<group>"; };
 		8EE36D991925B9AB00E033F5 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		8EE36DA21925C17D00E033F5 /* Assets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Assets.h; path = Source/Assets.h; sourceTree = "<group>"; };
@@ -58,6 +61,8 @@
 				8EE36DA31925C17D00E033F5 /* main.cpp */,
 				8EFFFA7F1925ECA10088D87F /* Pipes.cpp */,
 				8EFFFA801925ECA10088D87F /* Pipes.h */,
+				1088951B19425F0E002DF360 /* Score.cpp */,
+				1088951D19425F1D002DF360 /* Score.h */,
 				8EE36D991925B9AB00E033F5 /* Assets */,
 				D275947119105B1A003FF1E9 /* Products */,
 			);
@@ -159,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1088951C19425F0E002DF360 /* Score.cpp in Sources */,
 				8E010AF81940BBA20038B015 /* Mac-Assets.mm in Sources */,
 				8EFFFA7E1925EC990088D87F /* Game.cpp in Sources */,
 				8EE36DA41925C17D00E033F5 /* main.cpp in Sources */,
