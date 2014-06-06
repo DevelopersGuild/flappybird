@@ -28,7 +28,14 @@ void Pipes::update(float seconds)
 	{
 		pipe_x_pos[i] -= velocity * seconds;
 		pipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
-		if(pipe_x_pos[i] <= -200)
+		//Bases the score on the position of each pipe since flappy 
+		//is in the middle, score increments when the pipe passes him
+		if(pipe_x_pos[i] <= 350)
+		{	
+			if(pipe_x_pos[i] > 340)
+				incrementScore();
+		}
+		if(pipe_x_pos[i] <= -90) //Was -200. Changed it to make spacing between pipes more even
 		{
 			reset(i);
 		}
@@ -54,7 +61,8 @@ void Pipes::reset(int pipeNumber)
 {
 	pipe_x_pos[pipeNumber] = 900;
 	pipe_y_pos[pipeNumber] = randomInt();
-	incrementScore();
+	//Moved the below statement to update function
+	//incrementScore();
 }
 
 int Pipes::randomInt()
@@ -80,5 +88,6 @@ void Pipes::incrementScore()
 
 int Pipes::getScore()
 {
-	return score + pipeSprite[0].getPosition().x < 400 +  pipeSprite[1].getPosition().x < 400;
+	return score; // + pipeSprite[0].getPosition().x < 400 +  pipeSprite[1].getPosition().x < 400;
+	//The above part in the comment was taken out to just return the score
 }

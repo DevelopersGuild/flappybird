@@ -22,7 +22,7 @@ const float BIRD_JUMP_ANIMATION_TIMER = BIRD_FRAME_DURATION * BIRD_FRAMES_IN_COM
 // Pipes constants.
 const int NUMBER_OF_PIPES = 2;
 const float PIPES_FRAME_DURATION = 0.01f;
-const float PIPES_VELOCITY = 600.f;
+const float PIPES_VELOCITY = 590.f; //Was 600.f
 const float PIPES_SPEED_BONUS = 0.85;
 const float PIPES_DECELERATION = PIPES_VELOCITY * PIPES_SPEED_BONUS * 2.0;
 
