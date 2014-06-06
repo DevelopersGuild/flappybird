@@ -26,7 +26,7 @@ public:
 		bool isHighScore(int score);
 		// Rests the score to 0.
 		void reset(int pipeNumber);
-		void Score::deleteHighScore();
+        void deleteHighScore();
 	private:
 		sf::Font font;
 		sf::Text scoreText;

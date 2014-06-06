@@ -36,9 +36,9 @@ void Pipes::update(float seconds)
 		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
 		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPE);
 		
-		if(pipe_x_pos[i] <= -200)
+		if(pipe_x_pos[i] <= -100)
 		{
-			reset(i);
+			spawnPipe(i);
 		}
 	}
 		
@@ -59,7 +59,14 @@ void Pipes::render(sf::RenderWindow &window)
 	}
 }
 
-void Pipes::reset(int pipeNumber)
+void Pipes::reset()
+{
+	pipe_x_pos[0] = 900;
+	pipe_x_pos[1] = 1400;
+	score = 0;
+}
+
+void Pipes::spawnPipe(int pipeNumber)
 {
 	pipe_x_pos[pipeNumber] = 900;
 	pipe_y_pos[pipeNumber] = 100 + randomInt();

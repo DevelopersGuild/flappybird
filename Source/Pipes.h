@@ -32,7 +32,9 @@ public:
     // Draw pipes on screen.  Do not move them.
     void render(sf::RenderWindow &window);
     // Delete all pipes as the game is beginning anew.
-    void reset(int pipeNumber);
+	void reset();
+
+    void spawnPipe(int pipeNumber);
     // Is the following point within one of the pipes?
     bool isCollision(sf::Vector2f point);
 

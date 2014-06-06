@@ -40,8 +40,6 @@ void Game::mainLoop()
 
 	while (window.isOpen())
 	{
-		static int i = 0;
-		i++;
 		deltaTime = clock.restart();
 		
 		sf::Event event;
@@ -50,9 +48,13 @@ void Game::mainLoop()
 			handleEvent( event );
 		}
 
+
 		if(!isBirdAlive())
-			cout << i << ": Bird is dead.\n";
-		update( deltaTime.asSeconds() );
+        {
+            birdDies();
+            cout << "Bird is dead\n";
+        }
+        update( deltaTime.asSeconds() );
 		render();
 	}
 }
@@ -117,6 +119,13 @@ void Game::handleEvent(sf::Event event)
 
 void Game::reset()
 {
+	bird.reset();
+	pipes.reset();
+}
+
+void Game::birdDies()
+{
+    reset();
 }
 
 void Game::GameOver()
@@ -126,8 +135,12 @@ void Game::GameOver()
 
 bool Game::isBirdAlive()
 {
+    if(bird.getPosition().y > 563)
+        return false;
+    if(bird.getPosition().y < 0)
+        return false;
 	if(pipes.isCollision(bird.getPosition()))
 		return false;
-	else 
-		return true;
+    else
+        return true;
 }

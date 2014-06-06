@@ -44,6 +44,8 @@ public:
     void handleEvent(sf::Event event);
     // Reset Bird and Pipes and anything else that needs to be reset.
     void reset();
+    // Calls reset() and anything else that happens when the bird dies.
+    void birdDies();
     // All the checks to see if the bird is alive or dead at this point in time.
     bool isBirdAlive();
 	void GameOver();

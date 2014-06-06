@@ -85,19 +85,20 @@ void Bird::setAnimationFrame(int x, int y)
 
 void Bird::reset()
 {
+	birdSprite.setPosition(sf::Vector2f(BIRD_X_POS, 0.0f));
+	birdSprite.setRotation(0.0f);
+	velocity = 0.0f;
+	jumped = 0;
 }
 
 void Bird::jump()
 {
-	if(birdSprite.getPosition().y >= BIRD_MAX_Y) //To make sure the bird doesn't go above the border of the window
-	{
-		velocity = BIRD_JUMP_VELOCITY;
-		animationRemaining = BIRD_JUMP_ANIMATION_TIMER;
-		bird_x_pos = 0;
-		bird_y_pos = 0;
-		bird_frame_timer = BIRD_FRAME_DURATION;
-		jumped++;
-	}
+    velocity = BIRD_JUMP_VELOCITY;
+    animationRemaining = BIRD_JUMP_ANIMATION_TIMER;
+    bird_x_pos = 0;
+    bird_y_pos = 0;
+    bird_frame_timer = BIRD_FRAME_DURATION;
+    jumped++;
 }
 
 void Bird::setRotationIncrement(int number) 
