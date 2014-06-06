@@ -30,7 +30,7 @@ void Pipes::update(float seconds)
 		pipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
 		if(pipe_x_pos[i] <= -200)
 		{
-			reset(i);
+			spawnPipe(i);
 		}
 	}
 		
@@ -50,7 +50,14 @@ void Pipes::render(sf::RenderWindow &window)
 	}
 }
 
-void Pipes::reset(int pipeNumber)
+void Pipes::reset()
+{
+	pipe_x_pos[0] = 900;
+	pipe_x_pos[1] = 1300;
+	score = 0;
+}
+
+void Pipes::spawnPipe(int pipeNumber)
 {
 	pipe_x_pos[pipeNumber] = 900;
 	pipe_y_pos[pipeNumber] = randomInt();

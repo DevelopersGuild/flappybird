@@ -85,6 +85,9 @@ void Bird::setAnimationFrame(int x, int y)
 
 void Bird::reset()
 {
+	birdSprite.setPosition(sf::Vector2f(400,0));
+	birdSprite.setRotation(0);
+	jumped = 0;
 }
 
 void Bird::jump()

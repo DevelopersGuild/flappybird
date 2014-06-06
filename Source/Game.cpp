@@ -119,7 +119,8 @@ void Game::handleEvent(sf::Event event)
 
 void Game::reset()
 {
-    
+	bird.reset();
+	pipes.reset();
 }
 
 void Game::birdDies()
