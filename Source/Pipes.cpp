@@ -5,13 +5,19 @@
 Pipes::Pipes()
 	: pipes_frame_timer(PIPES_FRAME_DURATION)
 {
-	pipeTexture.loadFromFile(GetAssetPath("Assets/Pipe.png"));
+	bottomPipeTexture.loadFromFile(GetAssetPath("Assets/bPipe.png"));
+	topPipeTexture.loadFromFile(GetAssetPath("Assets/tPipe.png"));
 	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
-		pipeSprite[i].setTexture(pipeTexture);
-		pipeSprite[i].setTextureRect(sf::IntRect(140, 0, 116, 1725));
+		bottomPipeSprite[i].setTexture(bottomPipeTexture);
+		topPipeSprite[i].setTexture(topPipeTexture);
+		bottomPipeSprite[i].setTextureRect(sf::IntRect(0, 0, 130, 500));
+		topPipeSprite[i].setTextureRect(sf::IntRect(0, 0, 130, 500));
+		bottomPipeSprite[i].setOrigin(0,0);
+		topPipeSprite[i].setOrigin(0,500);
 		pipe_x_pos[i] = 900 + 500*i;
-		pipe_y_pos[i] = randomInt();
+		pipe_y_pos[i] = 100 + randomInt();
+
 	}
 	velocity = PIPES_VELOCITY;
 	score = 0;
@@ -27,7 +33,9 @@ void Pipes::update(float seconds)
 	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
 		pipe_x_pos[i] -= velocity * seconds;
-		pipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
+		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
+		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPE);
+		
 		if(pipe_x_pos[i] <= -200)
 		{
 			reset(i);
@@ -46,31 +54,43 @@ void Pipes::render(sf::RenderWindow &window)
 {
 	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
-		window.draw(pipeSprite[i]);
+		window.draw(bottomPipeSprite[i]);
+		window.draw(topPipeSprite[i]);
 	}
 }
 
 void Pipes::reset(int pipeNumber)
 {
 	pipe_x_pos[pipeNumber] = 900;
-	pipe_y_pos[pipeNumber] = randomInt();
+	pipe_y_pos[pipeNumber] = 100 + randomInt();
 	incrementScore();
 }
 
 int Pipes::randomInt()
 {
-	return rand()%(-250) - 700;
+	return rand()%(251);
 }
 
 bool Pipes::isCollision(sf::Vector2f point)
 {
-	for(int i = 0; i < 2; i++)
+	sf::Vector2f pos1(point.x - 18, point.y - 20);
+	sf::Vector2f pos2(point.x + 23, point.y - 11);
+	sf::Vector2f pos3(point.x - 7, point.y + 31);
+	sf::Vector2f pos4(point.x + 27, point.y + 27);
+
+	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
-		if( (point.x >= pipeSprite[i].getPosition().x && point.x <= pipeSprite[i].getPosition().x + 130)  
-			&& point.y >= pipeSprite[i].getPosition().y + 972 || point.y <= pipeSprite[i].getPosition().y + 755)
-		return true;
+			if(topPipeSprite[i].getGlobalBounds().contains(pos1) || bottomPipeSprite[i].getGlobalBounds().contains(pos1))
+				return true;
+			else if(topPipeSprite[i].getGlobalBounds().contains(pos2) || bottomPipeSprite[i].getGlobalBounds().contains(pos2))
+				return true;
+			else if(topPipeSprite[i].getGlobalBounds().contains(pos3) || bottomPipeSprite[i].getGlobalBounds().contains(pos3))
+				return true;
+			else if(topPipeSprite[i].getGlobalBounds().contains(pos4) || bottomPipeSprite[i].getGlobalBounds().contains(pos4))
+				return true;
 	}
 	return false;
+
 }
 
 float Pipes::getVelocity()
@@ -85,5 +105,5 @@ void Pipes::incrementScore()
 
 int Pipes::getScore()
 {
-	return score + ( pipeSprite[0].getPosition().x < BIRD_X_POS ) + ( pipeSprite[1].getPosition().x < BIRD_X_POS  );
+	return score + ( topPipeSprite[0].getPosition().x < BIRD_X_POS ) + ( topPipeSprite[1].getPosition().x < BIRD_X_POS  );
 }

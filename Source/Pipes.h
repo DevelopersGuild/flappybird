@@ -46,8 +46,10 @@ public:
     
 private:
 
-	sf::Texture pipeTexture;
-	sf::Sprite pipeSprite[NUMBER_OF_PIPES];
+	sf::Texture bottomPipeTexture;
+	sf::Sprite bottomPipeSprite[NUMBER_OF_PIPES];
+	sf::Texture topPipeTexture;
+	sf::Sprite topPipeSprite[NUMBER_OF_PIPES];
 
 	float velocity;
 	float pipes_frame_timer;

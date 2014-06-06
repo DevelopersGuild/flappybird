@@ -46,7 +46,7 @@ public:
     void reset();
     // All the checks to see if the bird is alive or dead at this point in time.
     bool isBirdAlive();
-
+	void GameOver();
 	//Initializes background sprite
 	void init_Background(sf::Sprite* bgSprite, sf::Texture bgTexture);
 private:
