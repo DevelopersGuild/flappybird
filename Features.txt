@@ -1,7 +1,3 @@
-
-SCORE
-Draw score on screen each frame (Game class)
-
 GAME OVER
 Detect a collision between a point and any pipe (Pipes class)
 Add resetToBeginningOfGame functions (Bird and Pipes classes)
