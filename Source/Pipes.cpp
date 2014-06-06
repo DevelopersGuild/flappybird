@@ -28,14 +28,7 @@ void Pipes::update(float seconds)
 	{
 		pipe_x_pos[i] -= velocity * seconds;
 		pipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
-		//Bases the score on the position of each pipe since flappy 
-		//is in the middle, score increments when the pipe passes him
-		if(pipe_x_pos[i] <= 350)
-		{	
-			if(pipe_x_pos[i] > 340)
-				incrementScore();
-		}
-		if(pipe_x_pos[i] <= -90) //Was -200. Changed it to make spacing between pipes more even
+		if(pipe_x_pos[i] <= -200)
 		{
 			reset(i);
 		}
@@ -61,8 +54,7 @@ void Pipes::reset(int pipeNumber)
 {
 	pipe_x_pos[pipeNumber] = 900;
 	pipe_y_pos[pipeNumber] = randomInt();
-	//Moved the below statement to update function
-	//incrementScore();
+	incrementScore();
 }
 
 int Pipes::randomInt()
@@ -72,8 +64,13 @@ int Pipes::randomInt()
 
 bool Pipes::isCollision(sf::Vector2f point)
 {
-	// Change this later to actually check for collisions
-    return false;
+	for(int i = 0; i < 2; i++)
+	{
+		if( (point.x >= pipeSprite[i].getPosition().x && point.x <= pipeSprite[i].getPosition().x + 130)  
+			&& point.y >= pipeSprite[i].getPosition().y + 972 || point.y <= pipeSprite[i].getPosition().y + 755)
+		return true;
+	}
+	return false;
 }
 
 float Pipes::getVelocity()
@@ -88,6 +85,5 @@ void Pipes::incrementScore()
 
 int Pipes::getScore()
 {
-	return score; // + pipeSprite[0].getPosition().x < 400 +  pipeSprite[1].getPosition().x < 400;
-	//The above part in the comment was taken out to just return the score
+	return score + ( pipeSprite[0].getPosition().x < BIRD_X_POS ) + ( pipeSprite[1].getPosition().x < BIRD_X_POS  );
 }

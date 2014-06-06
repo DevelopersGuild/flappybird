@@ -15,7 +15,7 @@ Bird::Bird()
 	birdSprite.setOrigin(BIRD_FRAME_SIZE_X/2, BIRD_FRAME_SIZE_Y/2);
 	velocity = 0;
 	rotation = 0;
-	birdSprite.setPosition(BIRD_X_POS, 0.0);
+	birdSprite.setPosition(BIRD_X_POS, 0);
 	rotationIncrement = 2;
 	jumped = 0;
 	animationRemaining = BIRD_JUMP_ANIMATION_TIMER;
@@ -29,8 +29,11 @@ void Bird::update(float seconds, float pipes_veloctity)
 		animationRemaining = 0.0;
 	velocity += GRAVITY * seconds;
 	rotation = atan2f(velocity, pipes_veloctity) * 180 / 3.14;
-	birdSprite.move(0.0, velocity * seconds);
-	birdSprite.setRotation(rotation);
+	if(velocity * seconds < 550)
+	{
+		birdSprite.move(0.0, velocity * seconds);
+		birdSprite.setRotation(rotation);
+	}
 
 	//if the jump function has been called, reset the bird animation to the first frame
 	if(animationRemaining == 0.0)

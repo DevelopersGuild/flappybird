@@ -4,6 +4,9 @@
 #include "Game.h"
 #include "Pipes.h"
 #include "Score.h"
+#include <iostream>
+
+using namespace std;
 
 Game::Game()
 	: window(sf::VideoMode(800, 600), "Flappy Bird")
@@ -115,5 +118,9 @@ void Game::reset()
 
 bool Game::isBirdAlive()
 {
-    return true;
+	static int i = 0;
+	i++;
+	if(pipes.isCollision(bird.getPosition()))
+		cout << i << ": Collision!\n";
+		return true;
 }
