@@ -5,9 +5,9 @@
 
 Score::Score()
 {
-	font.loadFromFile(GetAssetPath("Assets/BadMofo.ttf"));
+	font.loadFromFile(GetAssetPath("Assets/Karmatic.ttf"));
 	scoreText.setFont(font);
-	scoreText.setCharacterSize(74);
+	scoreText.setCharacterSize(44);
 	scoreText.setColor(sf::Color(0, 0, 0, 255));
 	scoreText.setPosition(400,50);
 }

@@ -118,9 +118,6 @@ void Game::reset()
 
 bool Game::isBirdAlive()
 {
-	static int i = 0;
-	i++;
-	if(pipes.isCollision(bird.getPosition()))
-		cout << i << ": Collision!\n";
+	//if(pipes.isCollision(bird.getPosition()))
 		return true;
 }
