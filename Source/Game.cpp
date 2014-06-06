@@ -49,7 +49,10 @@ void Game::mainLoop()
 		}
 
 		if(isBirdAlive() == false)
-            cout << "bird is dead" << endl;
+        {
+            birdDies();
+            cout << "bird is dead\n";
+        }
         
         update( deltaTime.asSeconds() );
 		render();
@@ -116,6 +119,12 @@ void Game::handleEvent(sf::Event event)
 
 void Game::reset()
 {
+    
+}
+
+void Game::birdDies()
+{
+    reset();
 }
 
 bool Game::isBirdAlive()
