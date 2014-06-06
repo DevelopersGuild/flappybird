@@ -48,8 +48,10 @@ void Game::mainLoop()
 			handleEvent( event );
 		}
 
-		if(isBirdAlive())
-			update( deltaTime.asSeconds() );
+		if(isBirdAlive() == false)
+            cout << "bird is dead" << endl;
+        
+        update( deltaTime.asSeconds() );
 		render();
 	}
 }
@@ -118,6 +120,12 @@ void Game::reset()
 
 bool Game::isBirdAlive()
 {
-	//if(pipes.isCollision(bird.getPosition()))
-		return true;
+    if(bird.getPosition().y > 600)
+        return false;
+    if(bird.getPosition().y < 0)
+        return false;
+	if(pipes.isCollision(bird.getPosition()))
+		return false;
+    else
+        return true;
 }
