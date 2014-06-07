@@ -13,6 +13,8 @@ Game::Game()
 {
     // Turning vertical-sync on causes window.display() to pause the app until
     // 1/60th of a second has passed.
+	window.setVerticalSyncEnabled(true);
+
 	bg_X_pos = 0;
 	bg_x_pos_increment = 0.8;
 	 //Loads sprite sheet as texture
@@ -32,7 +34,6 @@ Game::Game()
 	arrowOnSprite.setTexture(arrowOnTexture);
 	arrowOnSprite.setScale(1.5, 1.5);
 	arrowOnSprite.setPosition(730, 530);
-	window.setVerticalSyncEnabled(true);
 }
 
 void Game::mainLoop()
