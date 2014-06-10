@@ -35,16 +35,16 @@ void Score::render(sf::RenderWindow &window)
 	window.draw(scoreText);
 }
 	
-bool Score::isHighScore(int score)
+bool Score::isHighScore()
 {
 	ifstream highScore(GetAssetPath("Assets/HighScore.txt"));
 	string buffer;
 	getline(highScore, buffer);
 	highScore.close();
-	if(score > stoi(buffer))
+	if(tempScore > stoi(buffer))
 	{
 		ofstream newScore(GetAssetPath("Assets/HighScore.txt"));
-		newScore << to_string(static_cast<long long>(score));
+		newScore << to_string(static_cast<long long>(tempScore));
 		newScore.close();
 		return true;
 	}

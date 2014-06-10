@@ -23,7 +23,7 @@ public:
 		// Draw score on the screen.
 		void render(sf::RenderWindow &window);
 		//Checks for and records highscores.
-		bool isHighScore(int score);
+		bool isHighScore();
 		// Rests the score to 0.
 		void reset();
         void deleteHighScore();

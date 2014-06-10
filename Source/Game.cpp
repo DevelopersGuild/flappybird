@@ -18,7 +18,10 @@ Game::Game()
 {
     // Turning vertical-sync on causes window.display() to pause the app until
     // 1/60th of a second has passed.
+	window.setVerticalSyncEnabled(true);
+
 	bg_X_pos = 0;
+	
 	bg_x_pos_increment = 0.8;
 	 //Loads sprite sheet as texture
 	bgTexture.loadFromFile(GetAssetPath("Assets/bg.png"));
@@ -62,8 +65,6 @@ Game::Game()
 	window.setVerticalSyncEnabled(true);
 
 	GameState = preGame;
-
-	
 }
 
 void Game::mainLoop()
@@ -234,6 +235,8 @@ void Game::birdDies()
 
 void Game::GameOver()
 {
+	if(score.isHighScore())
+		cout << "You got a highscore!";
 	GameState = postGame;
 	text.setString("Game Over!");
 }
