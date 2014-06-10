@@ -15,10 +15,22 @@ Bird::Bird()
 	birdSprite.setOrigin(BIRD_FRAME_SIZE_X/2, BIRD_FRAME_SIZE_Y/2);
 	velocity = 0;
 	rotation = 0;
-	birdSprite.setPosition(BIRD_X_POS, 0);
+	birdSprite.setPosition(BIRD_X_POS, 300);
 	rotationIncrement = 2;
 	jumped = 0;
 	animationRemaining = BIRD_JUMP_ANIMATION_TIMER;
+}
+
+void Bird::preGameUpdate(float seconds)
+{
+	bird_frame_timer -= seconds;
+
+	if(bird_frame_timer <= 0.0)
+	{
+		advanceAnimation();
+		bird_frame_timer =  1.5 * BIRD_FRAME_DURATION;
+	}
+	setAnimationFrame(bird_x_pos, bird_y_pos);
 }
 
 void Bird::update(float seconds, float pipes_veloctity)

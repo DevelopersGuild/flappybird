@@ -2,6 +2,8 @@
 #define FLAPPYBIRD_PIPES
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio/Sound.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
 #include "Constants.h"
 
 /**
@@ -59,6 +61,8 @@ private:
 	int pipe_x_pos[NUMBER_OF_PIPES];
 	int pipe_x_pos_increment; //The 
 	int score;
+
+	
     /**
      * Add additional things.
      */

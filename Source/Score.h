@@ -25,10 +25,15 @@ public:
 		//Checks for and records highscores.
 		bool isHighScore(int score);
 		// Rests the score to 0.
-		void reset(int pipeNumber);
+		void reset();
         void deleteHighScore();
 	private:
 		sf::Font font;
 		sf::Text scoreText;
+
+		sf::SoundBuffer scoredPointSoundBuffer;
+		sf::Sound scoredPointSound;
+		
+		int tempScore;
 };
 #endif

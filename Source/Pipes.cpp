@@ -107,6 +107,7 @@ float Pipes::getVelocity()
 
 void Pipes::incrementScore()
 {
+	
 	score++;
 }
 

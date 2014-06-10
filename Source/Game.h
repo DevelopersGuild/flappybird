@@ -2,6 +2,8 @@
 #define FLAPPYBIRD_GAME
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
+#include <SFML/Audio/Music.hpp>
 #include "Bird.h"
 #include "Pipes.h"
 #include "Score.h"
@@ -27,17 +29,14 @@ public:
     // Initialize the game.
     Game();
     
-    sf::Texture bgTexture;
-	sf::Sprite bgSprite[2];
-
-	sf::Texture arrowOffTexture;
-	sf::Sprite arrowOffSprite;
-	sf::Texture arrowOnTexture;
-	sf::Sprite arrowOnSprite;
+    
+	
     // Run the main loop of the program.
     void mainLoop();
+	// Update Bird in its preGame state.
+	void preGameUpdate(float seconds);
     // Update Bird and Pipes and anything else that needs to be updated.
-    void update(float seconds);
+    void midGameUpdate(float seconds);
     // Render Bird and Pipes and anything else that needs to be rendered.  Do not update anything.
     void render();
     // Handle a single event.
@@ -62,6 +61,24 @@ private:
 	Bird bird;
 	Pipes pipes;
 	Score score; 
+	sf::Texture bgTexture;
+	sf::Sprite bgSprite[2];
+
+	sf::Texture arrowOffTexture;
+	sf::Sprite arrowOffSprite;
+	sf::Texture arrowOnTexture;
+	sf::Sprite arrowOnSprite;
+
+	sf::Texture FiftyPercentOpaqueTexture;
+	sf::Sprite FiftyPercentOpaqueSprite;
+
+	sf::Font font;
+	sf::Text text;
+	//Audio sprites
+	sf::Music midGameMusic;
+	sf::SoundBuffer birdDiesSoundBuffer;
+	sf::Sound birdDiesSound;
+	sf::Music preGameMusic;
     /**
      * Add additional things.
      */

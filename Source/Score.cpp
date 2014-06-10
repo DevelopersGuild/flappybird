@@ -10,16 +10,28 @@ Score::Score()
 	scoreText.setCharacterSize(44);
 	scoreText.setColor(sf::Color(0, 0, 0, 255));
 	scoreText.setPosition(400,50);
+
+	scoredPointSoundBuffer.loadFromFile(GetAssetPath("Assets/ScoredPoint.ogg"));
+	scoredPointSound.setBuffer(scoredPointSoundBuffer);
+	scoredPointSound.setVolume(50);
+
+	tempScore = 0;
 }
 
 void Score::update(int score)
 {
+	if(score > tempScore)
+	{
+		tempScore++;
+		scoredPointSound.play();
+	}
 	//using static_cast because to_sting doesn't take ints.
 	scoreText.setString(to_string(static_cast<long long>(score)));
 }
 
 void Score::render(sf::RenderWindow &window)
 {
+	
 	window.draw(scoreText);
 }
 	
@@ -40,9 +52,9 @@ bool Score::isHighScore(int score)
 		return false;
 }
 	
-void Score::reset(int pipeNumber)
+void Score::reset()
 {
-
+	tempScore = 0;
 }
 
 void Score::deleteHighScore()

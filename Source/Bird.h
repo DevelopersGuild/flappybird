@@ -26,6 +26,8 @@ public:
      */
     // Move the bird.
     void update(float seconds, float pipes_velocity);
+	//Simple animation of the bird flying on its own
+	void Bird::preGameUpdate(float seconds);
     // Draw the bird.  Do not move the bird.
     void render(sf::RenderWindow &window);
 	// Advance animation by one frame.
@@ -46,6 +48,7 @@ public:
 	int jumped;
 private:
 	float bird_frame_timer;
+	float preGame_bird_frame_timer;
 
 	sf::Texture birdTexture;
 	sf::Sprite birdSprite;
