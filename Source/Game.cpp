@@ -5,6 +5,7 @@
 #include "Pipes.h"
 #include "Score.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -22,6 +23,7 @@ Game::Game()
 	loadResources();
 	
 	GameState = preGame;
+	highScore = false;
 }
 
 void Game::loadResources()
@@ -45,6 +47,16 @@ void Game::loadResources()
 	arrowOnSprite.setScale(1.5, 1.5);
 	arrowOnSprite.setPosition(730, 530);
 
+	scoreBackgroundTexture.loadFromFile(GetAssetPath("Assets/scoreBackground.png"));
+	scoreBackgroundSprite.setTexture(scoreBackgroundTexture);
+	scoreBackgroundSprite.setOrigin(226, 116);
+	scoreBackgroundSprite.setPosition(400, 300);
+
+	scoreBackgroundHighTexture.loadFromFile(GetAssetPath("Assets/ScoreBackgroundHigh.png"));
+	scoreBackgroundHighSprite.setTexture(scoreBackgroundHighTexture);
+	scoreBackgroundHighSprite.setOrigin(226, 116);
+	scoreBackgroundHighSprite.setPosition(400, 300);
+
 	font.loadFromFile(GetAssetPath("Assets/Karmatic.ttf"));
 
 	gameOverText.setFont(font);
@@ -54,15 +66,26 @@ void Game::loadResources()
 	gameOverText.setString("Game Over!");
 
 	finalScoreText.setFont(font);
-	finalScoreText.setCharacterSize(34);
+	finalScoreText.setCharacterSize(30);
 	finalScoreText.setColor(sf::Color::White);
-	finalScoreText.setPosition(350,300);
+	finalScoreText.setPosition(520,250);
 
-	highScoreText.setFont(font);
-	highScoreText.setCharacterSize(34);
-	highScoreText.setColor(sf::Color::Red);
-	highScoreText.setPosition(250,300);
-	highScoreText.setString("");
+	bestScoreText.setFont(font);
+	bestScoreText.setCharacterSize(30);
+	bestScoreText.setColor(sf::Color::White);
+	bestScoreText.setPosition(520,330);
+
+	startInstructions.setFont(font);
+	startInstructions.setCharacterSize(25);
+	startInstructions.setColor(sf::Color::White);
+	startInstructions.setPosition(200,400);
+	startInstructions.setString("HIT SPACE OR UP TO PLAY!");
+
+	restartInstructions.setFont(font);
+	restartInstructions.setCharacterSize(25);
+	restartInstructions.setColor(sf::Color::White);
+	restartInstructions.setPosition(200,450);
+	restartInstructions.setString("HIT ENTER TO PLAY AGAIN!");
 
 	FiftyPercentOpaqueTexture.loadFromFile(GetAssetPath("Assets/50Opaque.png"));
 	FiftyPercentOpaqueSprite.setTexture(FiftyPercentOpaqueTexture);
@@ -157,13 +180,24 @@ void Game::render()
 	{
 		score.render( window );
 	}
-	if(GameState == postGame)
+	else if(GameState == postGame)
 	{
 		window.draw(FiftyPercentOpaqueSprite);
 		window.draw(gameOverText);
+
+		if(highScore)
+			window.draw(scoreBackgroundHighSprite);
+		else
+			window.draw(scoreBackgroundSprite);
+
 		window.draw(finalScoreText);
+		window.draw(bestScoreText);
 		window.draw(highScoreText);
+		window.draw(restartInstructions);
 	}
+	else
+		window.draw(startInstructions);
+
 	window.display();
 }
 
@@ -176,7 +210,7 @@ void Game::handleEvent(sf::Event event)
 		switch (event.type)
 		{
 		case sf::Event::KeyPressed:
-			if(event.key.code == sf::Keyboard::Space)
+			if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up)
 			{
 				bird.jump();
 				GameState = midGame;
@@ -217,10 +251,11 @@ void Game::handleEvent(sf::Event event)
 		switch (event.type)
 		{
 		case sf::Event::KeyPressed:
-			if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up)
+			if(event.key.code == sf::Keyboard::Return)
 			{
+				GameState = preGame;
 				reset();
-				midGameMusic.play();
+				preGameMusic.play();
 			}
 			break;
 		default:
@@ -231,11 +266,11 @@ void Game::handleEvent(sf::Event event)
 
 void Game::reset()
 {
-	GameState = midGame;
 	bird.reset();
 	pipes.reset();
 	score.reset();
 	highScoreText.setString("");
+	highScore = false;
 }
 
 void Game::birdDies()
@@ -245,12 +280,23 @@ void Game::birdDies()
 
 void Game::GameOver()
 {
+	string best;
 	birdDiesSound.play();
 	midGameMusic.stop();
+
 	if(score.isHighScore())
+	{
 		highScoreText.setString("New");
+		highScore = true;
+	}
+
+	ifstream bestScore(GetAssetPath("Assets/HighScore.txt"));
+	getline(bestScore, best);
+	bestScore.close();
+
+	bestScoreText.setString(best);
 	GameState = postGame;
-	finalScoreText.setString("Score " + to_string(static_cast<long long>(pipes.getScore())));
+	finalScoreText.setString(to_string(static_cast<long long>(pipes.getScore())));
 }
 
 bool Game::isBirdAlive()

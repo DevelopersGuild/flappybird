@@ -7,11 +7,11 @@
  */
 
 // Bird constants.
-const float BIRD_X_POS = 400.0;
+const float BIRD_X_POS = 200.0;
 const int BIRD_FRAMES_IN_COMPLETE_ANIMATION = 14;
 const float BIRD_FRAME_DURATION = 0.025f;
-const float GRAVITY = 1650.f;
-const float BIRD_JUMP_VELOCITY = -500.f;
+const float GRAVITY = 3000;
+const float BIRD_JUMP_VELOCITY = -700.f;
 const float BIRD_MAX_Y = 0;
 const float BIRD_FRAME_SIZE_X = 110.2f;
 const float BIRD_FRAME_SIZE_Y = 101.3f;

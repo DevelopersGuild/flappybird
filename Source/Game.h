@@ -67,18 +67,26 @@ private:
 	sf::Texture FiftyPercentOpaqueTexture;
 	sf::Sprite FiftyPercentOpaqueSprite;
 
+	sf::Texture scoreBackgroundTexture;
+	sf::Sprite scoreBackgroundSprite;
+
+	sf::Texture scoreBackgroundHighTexture;
+	sf::Sprite scoreBackgroundHighSprite;
 	sf::Font font;
 	sf::Text gameOverText;
 	sf::Text finalScoreText;
+	sf::Text bestScoreText;
 	sf::Text highScoreText;
+	sf::Text startInstructions;
+	sf::Text restartInstructions;
+	
 	//Audio sprites
 	sf::Music midGameMusic;
 	sf::SoundBuffer birdDiesSoundBuffer;
 	sf::Sound birdDiesSound;
 	sf::Music preGameMusic;
-    /**
-     * Add additional things.
-     */
+   
+	bool highScore;
 };
 
 #endif
