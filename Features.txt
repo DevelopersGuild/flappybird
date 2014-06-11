@@ -1,5 +1,5 @@
 START SCREEN
-Display "Press space to start" or something along those lines.
+Display "Press space to jump" or something along those lines.  And another one for game over.  "Press space to play again".
 
 GROUND
 Ground image that moves across screen at the same speed as the pipes (Pipes class)
@@ -7,3 +7,15 @@ Ground image that moves across screen at the same speed as the pipes (Pipes clas
 TEXTURES
 Instead of having a different png file for every single texture, we should group
 all the png files into a single big png file.
+
+BALANCE
+Decide the speed of things in the game, the strength of the jump, and more.  Modify the game as required to be fun, fair, and balanced.  Probably make the jumps more powerful, the bird fall faster, and the bird be further left on-screen so that you can see further ahead.
+
+CHANGE PIPES ON GAME OVER
+The first two pipes of a new game have the same heights as the last two from the previous game!  The pipes should get new heights.
+
+SPACEBAR JUMPS AND RESTARTS
+Spacebar both makes the bird jump as well as restarts the game when you are at the end screen.  Make enter be the button to play again instead of space.
+
+FORWARD JUMP INDICATOR SHOULD BOB UP AND DOWN
+Every ten jumps up, you can jump forward be pressing right arrow key.  In the lower-right hand corner, there is a grey arrow that turns green to represent this, but it's not very visible when playing the game.  Make it bob up and down when it's green to show that it's available.  (Use the mathematical sine function, sin().)
