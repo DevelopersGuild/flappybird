@@ -27,7 +27,7 @@ public:
     Game();
 
     // Initialize the game.
-    void Game::loadResources();
+    void loadResources();
     // Run the main loop of the program.
     void mainLoop();
 	// Update Bird in its preGame state.
