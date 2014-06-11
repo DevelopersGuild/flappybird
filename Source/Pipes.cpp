@@ -13,11 +13,12 @@ Pipes::Pipes()
 		topPipeSprite[i].setTexture(topPipeTexture);
 		bottomPipeSprite[i].setTextureRect(sf::IntRect(0, 0, 130, 500));
 		topPipeSprite[i].setTextureRect(sf::IntRect(0, 0, 130, 500));
-		bottomPipeSprite[i].setOrigin(0,0);
-		topPipeSprite[i].setOrigin(0,500);
-		pipe_x_pos[i] = 900 + 500*i;
+		bottomPipeSprite[i].setOrigin(110,0);
+		topPipeSprite[i].setOrigin(110,500);
+		pipe_x_pos[i] = PIPE_RESET_POSITION + 500*i;
 		pipe_y_pos[i] = 100 + randomInt();
-
+		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
+		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 	}
 	velocity = PIPES_VELOCITY;
 	score = 0;
@@ -34,7 +35,7 @@ void Pipes::update(float seconds)
 	{
 		pipe_x_pos[i] -= velocity * seconds;
 		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
-		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPE);
+		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 		
 		if(pipe_x_pos[i] <= -100)
 		{
@@ -61,21 +62,29 @@ void Pipes::render(sf::RenderWindow &window)
 
 void Pipes::reset()
 {
-	pipe_x_pos[0] = 900;
-	pipe_x_pos[1] = 1400;
+	pipe_x_pos[0] = PIPE_RESET_POSITION;
+	pipe_x_pos[1] = PIPE_RESET_POSITION + DISTANCE_BETWEEN_PIPES;
+
+	for(int i = 0; i < NUMBER_OF_PIPES; i++)
+	{
+		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
+		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
+	}
 	score = 0;
 }
 
 void Pipes::spawnPipe(int pipeNumber)
 {
-	pipe_x_pos[pipeNumber] = 900;
+	pipe_x_pos[pipeNumber] = PIPE_SPAWN_POSITION;
 	pipe_y_pos[pipeNumber] = 100 + randomInt();
+	topPipeSprite[pipeNumber].setPosition(pipe_x_pos[pipeNumber], pipe_y_pos[pipeNumber]);
+	bottomPipeSprite[pipeNumber].setPosition(pipe_x_pos[pipeNumber], pipe_y_pos[pipeNumber] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 	incrementScore();
 }
 
 int Pipes::randomInt()
 {
-	return rand()%(251);
+	return rand() % 250;
 }
 
 bool Pipes::isCollision(sf::Vector2f point)

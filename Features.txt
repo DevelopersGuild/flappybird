@@ -1,11 +1,9 @@
 START SCREEN
 Display "Press space to start" or something along those lines.
 
-GAME OVER SCREEN
-Display score in adition to "Game Over!".
-
-HIGH SCORE
-When bird is dead, if it's a new high score, say so (Game class)
-
 GROUND
 Ground image that moves across screen at the same speed as the pipes (Pipes class)
+
+TEXTURES
+Instead of having a different png file for every single texture, we should group
+all the png files into a single big png file.

@@ -16,22 +16,26 @@ using namespace std;
 Game::Game()
 	: window(sf::VideoMode(800, 600), "Flappy Bird")
 {
-    // Turning vertical-sync on causes window.display() to pause the app until
-    // 1/60th of a second has passed.
+    //Turning vertical-sync on causes window.display() to pause the app until 1/60th of a second has passed.
 	window.setVerticalSyncEnabled(true);
-
-	bg_X_pos = 0;
 	
-	bg_x_pos_increment = 0.8;
-	 //Loads sprite sheet as texture
-	bgTexture.loadFromFile(GetAssetPath("Assets/bg.png"));
-	bgSprite[0].setTexture(bgTexture);  // sets texture of sprite to the sprite sheet
-	bgSprite[1].setTexture(bgTexture);  // sets texture of sprite to the sprite sheet
-	bgSprite[0].setTextureRect(sf::IntRect(0, 0, 1024, 256));
-	bgSprite[1].setTextureRect(sf::IntRect(0, 0, 1024, 256));
-	bgSprite[0].setScale(1, 2.343); //To fill entire screen with sprite
-	bgSprite[1].setScale(1, 2.343); //To fill entire screen with sprite
+	loadResources();
+	
+	GameState = preGame;
+}
 
+void Game::loadResources()
+{
+	backgroundTexture.loadFromFile(GetAssetPath("Assets/background.png"));
+	background_X_pos = 0;
+	background_x_pos_increment = 0.8;
+	//Initialize background sprites.
+	for(int i = 0; i < 2; i++)
+	{
+		backgroundSprite[i].setTexture(backgroundTexture);
+		backgroundSprite[i].setTextureRect(sf::IntRect(0, 0, 1024, 256));
+		backgroundSprite[i].setScale(1, 2.343); //To fill entire window with sprite
+	}
 	arrowOffTexture.loadFromFile(GetAssetPath("Assets/ArrowOff.png"));
 	arrowOffSprite.setTexture(arrowOffTexture);
 	arrowOffSprite.setScale(1.5, 1.5);
@@ -42,29 +46,39 @@ Game::Game()
 	arrowOnSprite.setPosition(730, 530);
 
 	font.loadFromFile(GetAssetPath("Assets/Karmatic.ttf"));
-	text.setFont(font);
-	text.setCharacterSize(44);
-	text.setColor(sf::Color::White);
-	text.setPosition(250,100);
+
+	gameOverText.setFont(font);
+	gameOverText.setCharacterSize(44);
+	gameOverText.setColor(sf::Color::White);
+	gameOverText.setPosition(230,100);
+	gameOverText.setString("Game Over!");
+
+	finalScoreText.setFont(font);
+	finalScoreText.setCharacterSize(34);
+	finalScoreText.setColor(sf::Color::White);
+	finalScoreText.setPosition(350,300);
+
+	highScoreText.setFont(font);
+	highScoreText.setCharacterSize(34);
+	highScoreText.setColor(sf::Color::Red);
+	highScoreText.setPosition(250,300);
+	highScoreText.setString("");
 
 	FiftyPercentOpaqueTexture.loadFromFile(GetAssetPath("Assets/50Opaque.png"));
 	FiftyPercentOpaqueSprite.setTexture(FiftyPercentOpaqueTexture);
-
-	preGameMusic.openFromFile(GetAssetPath("Assets/PreGame.ogg"));
-	preGameMusic.play();
-	preGameMusic.setLoop(true);
-	preGameMusic.setVolume(20);
 
 	midGameMusic.openFromFile(GetAssetPath("Assets/MidGame.ogg"));
 	midGameMusic.setVolume(20);
 	midGameMusic.setLoop(true);
 	
+	preGameMusic.openFromFile(GetAssetPath("Assets/PreGame.ogg"));
+	preGameMusic.setLoop(true);
+	preGameMusic.setVolume(20);
+	preGameMusic.play();
+
 	birdDiesSoundBuffer.loadFromFile(GetAssetPath("Assets/BirdDies.ogg"));
 	birdDiesSound.setBuffer(birdDiesSoundBuffer);
-
-	window.setVerticalSyncEnabled(true);
-
-	GameState = preGame;
+	
 }
 
 void Game::mainLoop()
@@ -88,8 +102,6 @@ void Game::mainLoop()
 		if((!isBirdAlive()) && (GameState == midGame))
         {
 			GameOver();
-			birdDiesSound.play();
-			midGameMusic.stop();
         }
 		render();
 	}
@@ -97,14 +109,14 @@ void Game::mainLoop()
 
 void Game::preGameUpdate(float seconds)
 {
-	if(bg_X_pos <= -1024)
-		bg_X_pos = 0;
-	if(bg_x_pos_increment > 0.8)
-		bg_x_pos_increment -= 0.0625;
+	if(background_X_pos <= -1024)
+		background_X_pos = 0;
+	if(background_x_pos_increment > 0.8)
+		background_x_pos_increment -= 0.0625;
 
-	bgSprite[0].setPosition(bg_X_pos, 0);
-	bgSprite[1].setPosition(bg_X_pos + 1024, 0);
-	bg_X_pos -= bg_x_pos_increment;
+	backgroundSprite[0].setPosition(background_X_pos, 0);
+	backgroundSprite[1].setPosition(background_X_pos + 1024, 0);
+	background_X_pos -= background_x_pos_increment;
 
 	bird.preGameUpdate( seconds );
 }
@@ -113,15 +125,15 @@ void Game::midGameUpdate(float seconds)
 {
 	if(GameState != postGame)
 	{
-		if(bg_X_pos <= -1024)
-			bg_X_pos = 0;
-		if(bg_x_pos_increment > 0.8)
-			bg_x_pos_increment -= 0.0625;
+		if(background_X_pos <= -1024)
+			background_X_pos = 0;
+		if(background_x_pos_increment > 0.8)
+			background_x_pos_increment -= 0.0625;
+	
+	backgroundSprite[0].setPosition(background_X_pos, 0);
+	backgroundSprite[1].setPosition(background_X_pos + 1024, 0);
+	background_X_pos -= background_x_pos_increment;
 	}
-	bgSprite[0].setPosition(bg_X_pos, 0);
-	bgSprite[1].setPosition(bg_X_pos + 1024, 0);
-	bg_X_pos -= bg_x_pos_increment;
-
 	bird.update( seconds , pipes.getVelocity());
 	if(GameState == midGame)
 		pipes.update( seconds );
@@ -132,35 +144,37 @@ void Game::render()
 {
 	window.clear();
 
-	window.draw(bgSprite[0]);
-	window.draw(bgSprite[1]);
+	window.draw(backgroundSprite[0]);
+	window.draw(backgroundSprite[1]);
 	if(bird.jumped >= 10)
 		window.draw(arrowOnSprite);
 	else
 		window.draw(arrowOffSprite);
 	
 	bird.render( window );
+	pipes.render( window );
 	if(GameState == midGame)
 	{
-		pipes.render( window );
-		bird.render( window );
 		score.render( window );
 	}
 	if(GameState == postGame)
+	{
 		window.draw(FiftyPercentOpaqueSprite);
-	window.draw(text);
+		window.draw(gameOverText);
+		window.draw(finalScoreText);
+		window.draw(highScoreText);
+	}
 	window.display();
 }
 
 void Game::handleEvent(sf::Event event)
 {
+	if(event.type == sf::Event::Closed)
+		window.close();
 	if(GameState == preGame)
 	{
 		switch (event.type)
 		{
-		case sf::Event::Closed:
-			window.close();
-			break;
 		case sf::Event::KeyPressed:
 			if(event.key.code == sf::Keyboard::Space)
 			{
@@ -169,6 +183,7 @@ void Game::handleEvent(sf::Event event)
 				preGameMusic.stop();
 				midGameMusic.play();
 			}
+			break;
 		default:
 			break;
 		}
@@ -177,9 +192,6 @@ void Game::handleEvent(sf::Event event)
 	{
 		switch (event.type)
 		{
-		case sf::Event::Closed:
-			window.close();
-			break;
 		case sf::Event::KeyPressed:
 			if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up)
 			{
@@ -189,12 +201,13 @@ void Game::handleEvent(sf::Event event)
 			{
 				if(bird.jumped >= 10)
 				{
-					bg_x_pos_increment = 2;
+					background_x_pos_increment = 2;
 					pipes.moveForwards();
 					bird.setRotationIncrement(-5);
 					bird.jumped = 0;
 				}
 			}
+			break;
 		default:
 			break;
 		}
@@ -203,11 +216,8 @@ void Game::handleEvent(sf::Event event)
 	{
 		switch (event.type)
 		{
-		case sf::Event::Closed:
-			window.close();
-			break;
 		case sf::Event::KeyPressed:
-			if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Return)
+			if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up)
 			{
 				reset();
 				midGameMusic.play();
@@ -222,10 +232,10 @@ void Game::handleEvent(sf::Event event)
 void Game::reset()
 {
 	GameState = midGame;
-	text.setString("");
 	bird.reset();
 	pipes.reset();
 	score.reset();
+	highScoreText.setString("");
 }
 
 void Game::birdDies()
@@ -235,10 +245,12 @@ void Game::birdDies()
 
 void Game::GameOver()
 {
+	birdDiesSound.play();
+	midGameMusic.stop();
 	if(score.isHighScore())
-		cout << "You got a highscore!";
+		highScoreText.setString("New");
 	GameState = postGame;
-	text.setString("Game Over!");
+	finalScoreText.setString("Score " + to_string(static_cast<long long>(pipes.getScore())));
 }
 
 bool Game::isBirdAlive()

@@ -34,6 +34,6 @@ public:
 		sf::SoundBuffer scoredPointSoundBuffer;
 		sf::Sound scoredPointSound;
 		
-		int tempScore;
+		int currentScore;
 };
 #endif
