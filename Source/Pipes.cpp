@@ -62,11 +62,10 @@ void Pipes::render(sf::RenderWindow &window)
 
 void Pipes::reset()
 {
-	pipe_x_pos[0] = PIPE_RESET_POSITION;
-	pipe_x_pos[1] = PIPE_RESET_POSITION + DISTANCE_BETWEEN_PIPES;
-
 	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
+		pipe_x_pos[i] = PIPE_RESET_POSITION + DISTANCE_BETWEEN_PIPES * i;
+		pipe_y_pos[i] = 100 + randomInt();
 		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
 		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 	}

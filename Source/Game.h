@@ -87,6 +87,7 @@ private:
 	sf::Music preGameMusic;
    
 	bool highScore;
+	int moveArrow;
 };
 
 #endif

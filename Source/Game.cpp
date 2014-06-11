@@ -24,6 +24,7 @@ Game::Game()
 	
 	GameState = preGame;
 	highScore = false;
+	moveArrow = 0;
 }
 
 void Game::loadResources()
@@ -152,10 +153,18 @@ void Game::midGameUpdate(float seconds)
 			background_X_pos = 0;
 		if(background_x_pos_increment > 0.8)
 			background_x_pos_increment -= 0.0625;
-	
-	backgroundSprite[0].setPosition(background_X_pos, 0);
-	backgroundSprite[1].setPosition(background_X_pos + 1024, 0);
-	background_X_pos -= background_x_pos_increment;
+
+		backgroundSprite[0].setPosition(background_X_pos, 0);
+		backgroundSprite[1].setPosition(background_X_pos + 1024, 0);
+		background_X_pos -= background_x_pos_increment;
+		
+		if(moveArrow <= 20)
+			arrowOnSprite.move(0, 0.5);
+		else if(moveArrow <=40)
+			arrowOnSprite.move(0, -0.5);
+		else
+			moveArrow = 0;
+			moveArrow++;
 	}
 	bird.update( seconds , pipes.getVelocity());
 	if(GameState == midGame)
@@ -169,6 +178,7 @@ void Game::render()
 
 	window.draw(backgroundSprite[0]);
 	window.draw(backgroundSprite[1]);
+
 	if(bird.jumped >= 10)
 		window.draw(arrowOnSprite);
 	else
