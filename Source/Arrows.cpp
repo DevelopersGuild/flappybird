@@ -18,30 +18,20 @@ Arrows::Arrows()
 	arrowOnSprite.setPosition(730, 550);
 
 	moveArrow = 0;
+	totalTime = 0;
 }
 
 void Arrows::update(float seconds)
 {
-	static float timedif = 0;
-	timedif += seconds;
-	//if(moveArrow <= 20)
-		arrowOnSprite.move(0, sin(8*timedif));
-	//else if(moveArrow <=40)
-		//arrowOnSprite.move(0, -0.5);
-	//else
-		//moveArrow = 0;
-		//moveArrow++;
+	totalTime += seconds;
+	arrowOnSprite.move( 0, sin( 8 * totalTime) );
+	
 }
 
 void Arrows::render(sf::RenderWindow &window, bool on)
 {
 	if(on)
-		window.draw(arrowOnSprite);
+		window.draw( arrowOnSprite );
 	else
-		window.draw(arrowOffSprite);
-}
-
-void Arrows::reset()
-{
-
+		window.draw( arrowOffSprite );
 }

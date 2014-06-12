@@ -6,11 +6,11 @@
 
 class Arrows
 {
+
 public:
 	Arrows();
 	void update(float seconds);
 	void render(sf::RenderWindow &window, bool on);
-	void reset();
 
 private:
 	sf::Texture arrowOffTexture;
@@ -19,6 +19,7 @@ private:
 	sf::Sprite arrowOnSprite;
 
 	int moveArrow;
+	float totalTime;
 	Score score;
 };
 
