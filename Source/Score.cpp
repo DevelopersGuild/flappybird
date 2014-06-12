@@ -16,15 +16,22 @@ Score::Score()
 	scoredPointSound.setVolume(50);
 
 	currentScore = 0;
+	tempScore = 0;
+	arrowOn = false;
 }
 
 void Score::update(int score)
 {
 	if(score > currentScore)
 	{
+		tempScore = score;
 		currentScore = score;
 		scoredPointSound.play();
 	}
+	
+	if(tempScore > 0 && tempScore % 5 == 0)
+		arrowOn = true;
+	tempScore = 0;
 	//using static_cast because to_sting doesn't take ints.
 	scoreText.setString(to_string(static_cast<long long>(score)));
 }
@@ -55,6 +62,7 @@ bool Score::isHighScore()
 void Score::reset()
 {
 	currentScore = 0;
+	arrowOn = false;
 }
 
 void Score::deleteHighScore()
@@ -62,4 +70,14 @@ void Score::deleteHighScore()
 	ofstream highScore(GetAssetPath("Assets/HighScore.txt"));
 	highScore << to_string(static_cast<long long>(0));
 	highScore.close();
+}
+
+bool Score::getArrowOn()
+{
+	return arrowOn;
+}
+
+void Score::setArrowOn(bool b)
+{
+	arrowOn = b;
 }

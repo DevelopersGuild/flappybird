@@ -16,24 +16,29 @@ using namespace std;
 class Score
 {
 public:
-		Score();
+	Score();
 
-		// Update the score.
-		void update(int seconds);
-		// Draw score on the screen.
-		void render(sf::RenderWindow &window);
-		//Checks for and records highscores.
-		bool isHighScore();
-		// Rests the score to 0.
-		void reset();
-        void deleteHighScore();
-	private:
-		sf::Font font;
-		sf::Text scoreText;
+	// Update the score.
+	void update(int seconds);
+	// Draw score on the screen.
+	void render(sf::RenderWindow &window);
+	//Checks for and records highscores.
+	bool isHighScore();
+	// Rests the score to 0.
+	void reset();
+    void deleteHighScore();
+	bool getArrowOn();
+	void setArrowOn(bool b);
 
-		sf::SoundBuffer scoredPointSoundBuffer;
-		sf::Sound scoredPointSound;
+private:
+	sf::Font font;
+	sf::Text scoreText;
+
+	sf::SoundBuffer scoredPointSoundBuffer;
+	sf::Sound scoredPointSound;
 		
-		int currentScore;
+	int currentScore;
+	int tempScore;
+	bool arrowOn;
 };
 #endif

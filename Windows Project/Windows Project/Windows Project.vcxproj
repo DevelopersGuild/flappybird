@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Arrows.h" />
     <ClInclude Include="..\..\Source\Assets.h" />
     <ClInclude Include="..\..\Source\Bird.h" />
     <ClInclude Include="..\..\Source\Constants.h" />
@@ -19,6 +20,7 @@
     <ClInclude Include="..\..\Source\Score.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Arrows.cpp" />
     <ClCompile Include="..\..\Source\Bird.cpp" />
     <ClCompile Include="..\..\Source\Game.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />

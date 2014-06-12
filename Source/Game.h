@@ -7,6 +7,7 @@
 #include "Bird.h"
 #include "Pipes.h"
 #include "Score.h"
+#include "Arrows.h"
 
 /**
  * Game class responsibilities:
@@ -45,6 +46,7 @@ public:
     // All the checks to see if the bird is alive or dead at this point in time.
     bool isBirdAlive();
 	void GameOver();
+
 private:
 	sf::RenderWindow window;
 
@@ -55,14 +57,11 @@ private:
 	float background_x_pos_increment;
 	Bird bird;
 	Pipes pipes;
-	Score score; 
+	Score score;
+	Arrows arrows;
+
 	sf::Texture backgroundTexture;
 	sf::Sprite backgroundSprite[2];
-
-	sf::Texture arrowOffTexture;
-	sf::Sprite arrowOffSprite;
-	sf::Texture arrowOnTexture;
-	sf::Sprite arrowOnSprite;
 
 	sf::Texture FiftyPercentOpaqueTexture;
 	sf::Sprite FiftyPercentOpaqueSprite;
@@ -87,7 +86,6 @@ private:
 	sf::Music preGameMusic;
    
 	bool highScore;
-	int moveArrow;
 };
 
 #endif

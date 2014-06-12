@@ -6,6 +6,8 @@
  * names and moved into here.
  */
 
+#define PI 3.1415926535897932; //Overkill? I think not!
+
 // Bird constants.
 const float BIRD_X_POS = 200.0;
 const int BIRD_FRAMES_IN_COMPLETE_ANIMATION = 14;

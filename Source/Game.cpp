@@ -24,7 +24,6 @@ Game::Game()
 	
 	GameState = preGame;
 	highScore = false;
-	moveArrow = 0;
 }
 
 void Game::loadResources()
@@ -39,14 +38,6 @@ void Game::loadResources()
 		backgroundSprite[i].setTextureRect(sf::IntRect(0, 0, 1024, 256));
 		backgroundSprite[i].setScale(1, 2.343); //To fill entire window with sprite
 	}
-	arrowOffTexture.loadFromFile(GetAssetPath("Assets/ArrowOff.png"));
-	arrowOffSprite.setTexture(arrowOffTexture);
-	arrowOffSprite.setScale(1.5, 1.5);
-	arrowOffSprite.setPosition(730, 530);
-	arrowOnTexture.loadFromFile(GetAssetPath("Assets/ArrowOn.png"));
-	arrowOnSprite.setTexture(arrowOnTexture);
-	arrowOnSprite.setScale(1.5, 1.5);
-	arrowOnSprite.setPosition(730, 530);
 
 	scoreBackgroundTexture.loadFromFile(GetAssetPath("Assets/scoreBackground.png"));
 	scoreBackgroundSprite.setTexture(scoreBackgroundTexture);
@@ -141,7 +132,8 @@ void Game::preGameUpdate(float seconds)
 	backgroundSprite[0].setPosition(background_X_pos, 0);
 	backgroundSprite[1].setPosition(background_X_pos + 1024, 0);
 	background_X_pos -= background_x_pos_increment;
-
+	
+	arrows.update(seconds);
 	bird.preGameUpdate( seconds );
 }
 
@@ -158,13 +150,7 @@ void Game::midGameUpdate(float seconds)
 		backgroundSprite[1].setPosition(background_X_pos + 1024, 0);
 		background_X_pos -= background_x_pos_increment;
 		
-		if(moveArrow <= 20)
-			arrowOnSprite.move(0, 0.5);
-		else if(moveArrow <=40)
-			arrowOnSprite.move(0, -0.5);
-		else
-			moveArrow = 0;
-			moveArrow++;
+		arrows.update(seconds);
 	}
 	bird.update( seconds , pipes.getVelocity());
 	if(GameState == midGame)
@@ -179,13 +165,10 @@ void Game::render()
 	window.draw(backgroundSprite[0]);
 	window.draw(backgroundSprite[1]);
 
-	if(bird.jumped >= 10)
-		window.draw(arrowOnSprite);
-	else
-		window.draw(arrowOffSprite);
-	
+	arrows.render( window, score.getArrowOn() );
 	bird.render( window );
 	pipes.render( window );
+
 	if(GameState == midGame)
 	{
 		score.render( window );
@@ -243,12 +226,13 @@ void Game::handleEvent(sf::Event event)
 			}
 			else if(event.key.code == sf::Keyboard::Right)
 			{
-				if(bird.jumped >= 10)
+				if(score.getArrowOn())
 				{
 					background_x_pos_increment = 2;
 					pipes.moveForwards();
 					bird.setRotationIncrement(-5);
 					bird.jumped = 0;
+					score.setArrowOn(false);
 				}
 			}
 			break;
