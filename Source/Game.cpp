@@ -39,7 +39,7 @@ void Game::loadResources()
 		backgroundSprite[i].setScale(1, 2.343); //To fill entire window with sprite
 	}
 
-	scoreBackgroundTexture.loadFromFile(GetAssetPath("Assets/scoreBackground.png"));
+	scoreBackgroundTexture.loadFromFile(GetAssetPath("Assets/ScoreBackground.png"));
 	scoreBackgroundSprite.setTexture(scoreBackgroundTexture);
 	scoreBackgroundSprite.setOrigin(226, 116);
 	scoreBackgroundSprite.setPosition(400, 300);
