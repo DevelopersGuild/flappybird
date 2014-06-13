@@ -51,6 +51,12 @@ void Game::loadResources()
 
 	font.loadFromFile(GetAssetPath("Assets/Karmatic.ttf"));
 
+	gameTitle.setFont(font);
+	gameTitle.setCharacterSize(50);
+	gameTitle.setColor(sf::Color::Black);
+	gameTitle.setPosition(200,100);
+	gameTitle.setString("Flappy Bird");
+
 	gameOverText.setFont(font);
 	gameOverText.setCharacterSize(44);
 	gameOverText.setColor(sf::Color::White);
@@ -186,10 +192,14 @@ void Game::render()
 		window.draw(finalScoreText);
 		window.draw(bestScoreText);
 		window.draw(highScoreText);
+		window.draw(gameTitle);
 		window.draw(restartInstructions);
 	}
 	else
+	{
+		window.draw(gameTitle);
 		window.draw(startInstructions);
+	}
 
 	window.display();
 }
