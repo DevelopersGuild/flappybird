@@ -1,11 +1,22 @@
+TITLE ON START SCREEN
+Write the text "FLAPPY BIRD" in big letters across the top of the start screen.
+
 GROUND
-Ground image that moves across screen at the same speed as the pipes (Pipes class)
+Ground image that moves across screen at the same speed as the pipes. (Pipes class)
 
-BALANCE
-Decide the speed of things in the game, the strength of the jump, and more.  Modify the game as required to be fun, fair, and balanced.  
-Probably make the jumps more powerful, the bird fall faster, and the bird be further left on-screen so that you can see further ahead.
+MODIFY FORWARD JUMP
+Right now, every ten jumps, you can jump foward by pressing RIGHT ARROW KEY.
+This is hard to use in the current incarnation of the game because the game is
+so fast.  Modify forward jump to do something more useful.
+Example: Slow time to half speed for a few seconds.
 
-FORWARD JUMP INDICATOR SHOULD BOB UP AND DOWN
-Every ten jumps up, you can jump forward be pressing right arrow key.  
-In the lower-right hand corner, there is a grey arrow that turns green to represent this, but it's not very visible when playing the game.  
-Make it bob up and down when it's green to show that it's available.  (Use the mathematical sine function, sin().)
+POWERUPS
+Invent and then add a powerup.  You will need a graphic: draw one or find one
+on the web.  Talk to an officer and make a plan on what code will need to be
+written.
+Example: Shrink pipes for a few seconds.
+Example: Make the bird invincible for a few seconds.
+
+FORK THE PROJECT
+If you want to continue to develop or play with Flappy Bird on your own, you
+can fork it on Github and have your own version!
