@@ -47,6 +47,10 @@ void Bird::update(float seconds, float pipes_veloctity)
 		birdSprite.setRotation(rotation);
 	}
 
+	if(pipes_veloctity != PIPES_VELOCITY){
+		velocity = 0;
+	}
+
 	//if the jump function has been called, reset the bird animation to the first frame
 	if(animationRemaining == 0.0)
 	{

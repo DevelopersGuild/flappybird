@@ -295,12 +295,12 @@ void Game::GameOver()
 
 bool Game::isBirdAlive()
 {
-    if(bird.getPosition().y > 563)
-        return false;
-    if(bird.getPosition().y < 0)
-        return false;
-	if(pipes.isCollision(bird.getPosition()))
-		return false;
-    else
+   // if(bird.getPosition().y > 563)
+   //     return false;
+   // if(bird.getPosition().y < 0)
+   //     return false;
+	//if(pipes.isCollision(bird.getPosition()))
+	//	return false;
+   // else
         return true;
 }
