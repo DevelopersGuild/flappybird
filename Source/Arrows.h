@@ -10,6 +10,7 @@ class Arrows
 public:
 	Arrows();
 	void update(float seconds);
+	void preGameRender(sf::RenderWindow &window);
 	void render(sf::RenderWindow &window, bool on);
 
 private:

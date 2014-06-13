@@ -4,7 +4,6 @@
 #include "Score.h"
 #include <cmath>
 #include <iostream>
-
 using namespace std;
 Arrows::Arrows()
 {
@@ -28,6 +27,10 @@ void Arrows::update(float seconds)
 	
 }
 
+void Arrows::preGameRender(sf::RenderWindow &window)
+{
+	static float time = clock() / CLOCKS_PER_SEC;
+}
 void Arrows::render(sf::RenderWindow &window, bool on)
 {
 	if(on)

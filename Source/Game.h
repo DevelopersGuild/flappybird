@@ -78,7 +78,7 @@ private:
 	sf::Text highScoreText;
 	sf::Text startInstructions;
 	sf::Text restartInstructions;
-	
+	sf::Text resetHighScoreText;
 	//Audio sprites
 	sf::Music midGameMusic;
 	sf::SoundBuffer birdDiesSoundBuffer;

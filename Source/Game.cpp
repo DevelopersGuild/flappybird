@@ -57,6 +57,7 @@ void Game::loadResources()
 	gameOverText.setPosition(230,100);
 	gameOverText.setString("Game Over!");
 
+
 	finalScoreText.setFont(font);
 	finalScoreText.setCharacterSize(30);
 	finalScoreText.setColor(sf::Color::White);
@@ -79,6 +80,12 @@ void Game::loadResources()
 	restartInstructions.setPosition(200,450);
 	restartInstructions.setString("HIT ENTER TO PLAY AGAIN!");
 
+	resetHighScoreText.setFont(font);
+	resetHighScoreText.setCharacterSize(15);
+	resetHighScoreText.setColor(sf::Color::White);
+	resetHighScoreText.setPosition(0,550);
+	resetHighScoreText.setString("HIT 'R' TO RESET HIGHSCORE");
+	
 	FiftyPercentOpaqueTexture.loadFromFile(GetAssetPath("Assets/50Opaque.png"));
 	FiftyPercentOpaqueSprite.setTexture(FiftyPercentOpaqueTexture);
 
@@ -169,7 +176,13 @@ void Game::render()
 	bird.render( window );
 	pipes.render( window );
 
-	if(GameState == midGame)
+	if(GameState == preGame)
+	{
+		window.draw( resetHighScoreText );
+		arrows.preGameRender( window );
+		window.draw( startInstructions );
+	}
+	else if(GameState == midGame)
 	{
 		score.render( window );
 	}
@@ -188,8 +201,6 @@ void Game::render()
 		window.draw(highScoreText);
 		window.draw(restartInstructions);
 	}
-	else
-		window.draw(startInstructions);
 
 	window.display();
 }
@@ -210,6 +221,8 @@ void Game::handleEvent(sf::Event event)
 				preGameMusic.stop();
 				midGameMusic.play();
 			}
+			else if (event.key.code == sf::Keyboard::R)
+				score.deleteHighScore();
 			break;
 		default:
 			break;
@@ -296,11 +309,11 @@ void Game::GameOver()
 bool Game::isBirdAlive()
 {
     if(bird.getPosition().y > 563)
-        return false;
+       return false;
     if(bird.getPosition().y < 0)
-        return false;
+       return false;
 	if(pipes.isCollision(bird.getPosition()))
 		return false;
-    else
+	else
         return true;
 }
