@@ -192,7 +192,6 @@ void Game::render()
 		window.draw(finalScoreText);
 		window.draw(bestScoreText);
 		window.draw(highScoreText);
-		window.draw(gameTitle);
 		window.draw(restartInstructions);
 	}
 	else
