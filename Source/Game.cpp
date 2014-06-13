@@ -39,7 +39,7 @@ void Game::loadResources()
 		backgroundSprite[i].setScale(1, 2.343); //To fill entire window with sprite
 	}
 
-	scoreBackgroundTexture.loadFromFile(GetAssetPath("Assets/scoreBackground.png"));
+	scoreBackgroundTexture.loadFromFile(GetAssetPath("Assets/ScoreBackground.png"));
 	scoreBackgroundSprite.setTexture(scoreBackgroundTexture);
 	scoreBackgroundSprite.setOrigin(226, 116);
 	scoreBackgroundSprite.setPosition(400, 300);
@@ -49,13 +49,18 @@ void Game::loadResources()
 	scoreBackgroundHighSprite.setOrigin(226, 116);
 	scoreBackgroundHighSprite.setPosition(400, 300);
 
-	font.loadFromFile(GetAssetPath("Assets/Karmatic.ttf"));
+	gameTitleTexture.loadFromFile(GetAssetPath("Assets/gameTitle.png"));
+	gameTitleSprite.setTexture(gameTitleTexture);
+	gameTitleSprite.setOrigin(285,33);
+	gameTitleSprite.setPosition(400,100);
 
-	gameOverText.setFont(font);
-	gameOverText.setCharacterSize(44);
-	gameOverText.setColor(sf::Color::White);
-	gameOverText.setPosition(230,100);
-	gameOverText.setString("Game Over!");
+	gameoverTexture.loadFromFile(GetAssetPath("Assets/gameoverText.png"));
+	gameoverSprite.setTexture(gameoverTexture);
+	gameoverSprite.setOrigin(231,5);
+	gameoverSprite.setPosition(400,100);
+
+
+	font.loadFromFile(GetAssetPath("Assets/Karmatic.ttf"));
 
 
 	finalScoreText.setFont(font);
@@ -77,7 +82,7 @@ void Game::loadResources()
 	restartInstructions.setFont(font);
 	restartInstructions.setCharacterSize(25);
 	restartInstructions.setColor(sf::Color::White);
-	restartInstructions.setPosition(200,450);
+	restartInstructions.setPosition(190,450);
 	restartInstructions.setString("HIT ENTER TO PLAY AGAIN!");
 
 	resetHighScoreText.setFont(font);
@@ -178,6 +183,8 @@ void Game::render()
 
 	if(GameState == preGame)
 	{
+		window.draw(gameTitleSprite);
+		window.draw(startInstructions);
 		window.draw( resetHighScoreText );
 		arrows.preGameRender( window );
 		window.draw( startInstructions );
@@ -189,7 +196,7 @@ void Game::render()
 	else if(GameState == postGame)
 	{
 		window.draw(FiftyPercentOpaqueSprite);
-		window.draw(gameOverText);
+		window.draw(gameoverSprite);
 
 		if(highScore)
 			window.draw(scoreBackgroundHighSprite);
@@ -201,7 +208,7 @@ void Game::render()
 		window.draw(highScoreText);
 		window.draw(restartInstructions);
 	}
-
+	
 	window.display();
 }
 
@@ -308,12 +315,12 @@ void Game::GameOver()
 
 bool Game::isBirdAlive()
 {
-    if(bird.getPosition().y > 563)
+	if(bird.getPosition().y > 563)
        return false;
-    if(bird.getPosition().y < 0)
+	if(bird.getPosition().y < 0)
        return false;
 	if(pipes.isCollision(bird.getPosition()))
 		return false;
-	else
+    else
         return true;
 }

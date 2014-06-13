@@ -71,8 +71,14 @@ private:
 
 	sf::Texture scoreBackgroundHighTexture;
 	sf::Sprite scoreBackgroundHighSprite;
+
+	sf::Texture gameoverTexture;
+	sf::Sprite gameoverSprite;
+
+	sf::Texture gameTitleTexture;
+	sf::Sprite gameTitleSprite;
+
 	sf::Font font;
-	sf::Text gameOverText;
 	sf::Text finalScoreText;
 	sf::Text bestScoreText;
 	sf::Text highScoreText;
