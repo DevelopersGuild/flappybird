@@ -49,19 +49,18 @@ void Game::loadResources()
 	scoreBackgroundHighSprite.setOrigin(226, 116);
 	scoreBackgroundHighSprite.setPosition(400, 300);
 
+	gameTitleTexture.loadFromFile(GetAssetPath("Assets/gameTitle.png"));
+	gameTitleSprite.setTexture(gameTitleTexture);
+	gameTitleSprite.setOrigin(285,33);
+	gameTitleSprite.setPosition(400,100);
+
+	gameoverTexture.loadFromFile(GetAssetPath("Assets/gameoverText.png"));
+	gameoverSprite.setTexture(gameoverTexture);
+	gameoverSprite.setOrigin(231,5);
+	gameoverSprite.setPosition(400,100);
+
+
 	font.loadFromFile(GetAssetPath("Assets/Karmatic.ttf"));
-
-	gameTitle.setFont(font);
-	gameTitle.setCharacterSize(50);
-	gameTitle.setColor(sf::Color::Black);
-	gameTitle.setPosition(200,100);
-	gameTitle.setString("Flappy Bird");
-
-	gameOverText.setFont(font);
-	gameOverText.setCharacterSize(44);
-	gameOverText.setColor(sf::Color::White);
-	gameOverText.setPosition(230,100);
-	gameOverText.setString("Game Over!");
 
 	finalScoreText.setFont(font);
 	finalScoreText.setCharacterSize(30);
@@ -82,7 +81,7 @@ void Game::loadResources()
 	restartInstructions.setFont(font);
 	restartInstructions.setCharacterSize(25);
 	restartInstructions.setColor(sf::Color::White);
-	restartInstructions.setPosition(200,450);
+	restartInstructions.setPosition(190,450);
 	restartInstructions.setString("HIT ENTER TO PLAY AGAIN!");
 
 	FiftyPercentOpaqueTexture.loadFromFile(GetAssetPath("Assets/50Opaque.png"));
@@ -182,7 +181,7 @@ void Game::render()
 	else if(GameState == postGame)
 	{
 		window.draw(FiftyPercentOpaqueSprite);
-		window.draw(gameOverText);
+		window.draw(gameoverSprite);
 
 		if(highScore)
 			window.draw(scoreBackgroundHighSprite);
@@ -196,7 +195,7 @@ void Game::render()
 	}
 	else
 	{
-		window.draw(gameTitle);
+		window.draw(gameTitleSprite);
 		window.draw(startInstructions);
 	}
 
