@@ -62,7 +62,8 @@ private:
 	int pipe_x_pos_increment; //The 
 	int score;
 
-	
+	sf::SoundBuffer BoostBuffer;
+	sf::Sound Boost;
     /**
      * Add additional things.
      */
