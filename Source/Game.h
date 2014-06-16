@@ -78,6 +78,9 @@ private:
 	sf::Texture gameTitleTexture;
 	sf::Sprite gameTitleSprite;
 
+	sf::Texture resetScorePlaqueTexture;
+	sf::Sprite resetScorePlaqueSprite;
+
 	sf::Font font;
 	sf::Text finalScoreText;
 	sf::Text bestScoreText;
@@ -92,6 +95,7 @@ private:
 	sf::Music preGameMusic;
    
 	bool highScore;
+	bool resetPopUp;
 };
 
 #endif

@@ -24,6 +24,7 @@ Game::Game()
 	
 	GameState = preGame;
 	highScore = false;
+	resetPopUp = false;
 }
 
 void Game::loadResources()
@@ -59,9 +60,13 @@ void Game::loadResources()
 	gameoverSprite.setOrigin(231,5);
 	gameoverSprite.setPosition(400,100);
 
+	resetScorePlaqueTexture.loadFromFile(GetAssetPath("Assets/resetScorePlaque.png"));
+	resetScorePlaqueSprite.setTexture(resetScorePlaqueTexture);
+	resetScorePlaqueSprite.setOrigin(400, 300);
+	resetScorePlaqueSprite.setPosition(400, 300);
 
 	font.loadFromFile(GetAssetPath("Assets/Karmatic.ttf"));
-
+	
 
 	finalScoreText.setFont(font);
 	finalScoreText.setCharacterSize(30);
@@ -188,6 +193,11 @@ void Game::render()
 		window.draw( resetHighScoreText );
 		arrows.preGameRender( window );
 		window.draw( startInstructions );
+		if(resetPopUp == true)
+		{
+			window.draw(FiftyPercentOpaqueSprite);
+			window.draw(resetScorePlaqueSprite);
+		}
 	}
 	else if(GameState == midGame)
 	{
@@ -228,8 +238,18 @@ void Game::handleEvent(sf::Event event)
 				preGameMusic.stop();
 				midGameMusic.play();
 			}
-			else if (event.key.code == sf::Keyboard::R)
+			else if (event.key.code == sf::Keyboard::R && resetPopUp != true)
+			{
+				resetPopUp = true;
+			}
+			if(resetPopUp == true && event.key.code == sf::Keyboard::Y)
+			{
 				score.deleteHighScore();
+				resetPopUp = false;
+			}
+			else if(resetPopUp == true && event.key.code == sf::Keyboard::N)
+				resetPopUp = false;
+
 			break;
 		default:
 			break;
