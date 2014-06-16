@@ -22,6 +22,8 @@ Pipes::Pipes()
 	}
 	velocity = PIPES_VELOCITY;
 	score = 0;
+	BoostBuffer.loadFromFile(GetAssetPath("Assets/Boost.ogg"));
+	Boost.setBuffer(BoostBuffer);
 }
 
 void Pipes::update(float seconds)
@@ -49,6 +51,7 @@ void Pipes::moveForwards()
 {
 	velocity = PIPES_VELOCITY;
 	velocity *= 1.0 + PIPES_SPEED_BONUS;
+	Boost.play();
 }
 
 void Pipes::render(sf::RenderWindow &window)
