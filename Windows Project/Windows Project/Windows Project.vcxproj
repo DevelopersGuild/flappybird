@@ -16,6 +16,7 @@
     <ClInclude Include="..\..\Source\Bird.h" />
     <ClInclude Include="..\..\Source\Constants.h" />
     <ClInclude Include="..\..\Source\Game.h" />
+    <ClInclude Include="..\..\Source\Ground.h" />
     <ClInclude Include="..\..\Source\Pipes.h" />
     <ClInclude Include="..\..\Source\Score.h" />
   </ItemGroup>
@@ -23,6 +24,7 @@
     <ClCompile Include="..\..\Source\Arrows.cpp" />
     <ClCompile Include="..\..\Source\Bird.cpp" />
     <ClCompile Include="..\..\Source\Game.cpp" />
+    <ClCompile Include="..\..\Source\Ground.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />
     <ClCompile Include="..\..\Source\Pipes.cpp" />
     <ClCompile Include="..\..\Source\Score.cpp" />

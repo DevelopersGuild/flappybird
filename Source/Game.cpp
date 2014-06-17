@@ -25,19 +25,23 @@ Game::Game()
 	GameState = preGame;
 	highScore = false;
 	resetPopUp = false;
-}
+	aboutPopUp = false;
+	popUps[0] = &highScore;
+	popUps[1] = &resetPopUp;
+	popUps[2] = &aboutPopUp;
+} 
 
 void Game::loadResources()
 {
 	backgroundTexture.loadFromFile(GetAssetPath("Assets/background.png"));
 	background_X_pos = 0;
-	background_x_pos_increment = 0.8;
+	background_x_pos_increment = 0.8f;
 	//Initialize background sprites.
 	for(int i = 0; i < 2; i++)
 	{
 		backgroundSprite[i].setTexture(backgroundTexture);
-		backgroundSprite[i].setTextureRect(sf::IntRect(0, 0, 1024, 256));
-		backgroundSprite[i].setScale(1, 2.343); //To fill entire window with sprite
+		backgroundSprite[i].setScale(1, 2.343f); //To fill entire window with sprite
+		backgroundSprite[i].setOrigin(0, 23);
 	}
 
 	scoreBackgroundTexture.loadFromFile(GetAssetPath("Assets/ScoreBackground.png"));
@@ -65,8 +69,12 @@ void Game::loadResources()
 	resetScorePlaqueSprite.setOrigin(400, 300);
 	resetScorePlaqueSprite.setPosition(400, 300);
 
+	aboutSectionTexture.loadFromFile(GetAssetPath("Assets/About.png"));
+	aboutSectionSprite.setTexture(aboutSectionTexture);
+	aboutSectionSprite.setOrigin(400, 300);
+	aboutSectionSprite.setPosition(400, 300);
+
 	font.loadFromFile(GetAssetPath("Assets/Karmatic.ttf"));
-	
 
 	finalScoreText.setFont(font);
 	finalScoreText.setCharacterSize(30);
@@ -90,12 +98,18 @@ void Game::loadResources()
 	restartInstructions.setPosition(190,450);
 	restartInstructions.setString("HIT ENTER TO PLAY AGAIN!");
 
-	resetHighScoreText.setFont(font);
-	resetHighScoreText.setCharacterSize(15);
-	resetHighScoreText.setColor(sf::Color::White);
-	resetHighScoreText.setPosition(0,550);
-	resetHighScoreText.setString("HIT 'R' TO RESET HIGHSCORE");
+	keyInstructions.setFont(font);
+	keyInstructions.setCharacterSize(15);
+	keyInstructions.setColor(sf::Color::White);
+	keyInstructions.setPosition(0,0);
+	keyInstructions.setString("HIT 'r' TO RESET HIGHSCORE \nHIT 'a' TO VIEW THE ABOUT SECTION");
 	
+	credits.setFont(font);
+	credits.setCharacterSize(25);
+	credits.setColor(sf::Color(207, 173, 89, 255));
+	credits.setString("Ahmed Baki \nADD YOUR NAMES HERE ");
+	credits.setPosition(310, 180);
+
 	FiftyPercentOpaqueTexture.loadFromFile(GetAssetPath("Assets/50Opaque.png"));
 	FiftyPercentOpaqueSprite.setTexture(FiftyPercentOpaqueTexture);
 
@@ -149,7 +163,7 @@ void Game::preGameUpdate(float seconds)
 	backgroundSprite[0].setPosition(background_X_pos, 0);
 	backgroundSprite[1].setPosition(background_X_pos + 1024, 0);
 	background_X_pos -= background_x_pos_increment;
-	
+	ground.update( seconds );
 	arrows.update(seconds);
 	bird.preGameUpdate( seconds );
 }
@@ -166,7 +180,7 @@ void Game::midGameUpdate(float seconds)
 		backgroundSprite[0].setPosition(background_X_pos, 0);
 		backgroundSprite[1].setPosition(background_X_pos + 1024, 0);
 		background_X_pos -= background_x_pos_increment;
-		
+		ground.update ( seconds );
 		arrows.update(seconds);
 	}
 	bird.update( seconds , pipes.getVelocity());
@@ -181,22 +195,27 @@ void Game::render()
 
 	window.draw(backgroundSprite[0]);
 	window.draw(backgroundSprite[1]);
-
 	arrows.render( window, score.getArrowOn() );
 	bird.render( window );
 	pipes.render( window );
-
+	ground.render( window );
 	if(GameState == preGame)
 	{
 		window.draw(gameTitleSprite);
 		window.draw(startInstructions);
-		window.draw( resetHighScoreText );
+		window.draw( keyInstructions );
 		arrows.preGameRender( window );
 		window.draw( startInstructions );
 		if(resetPopUp == true)
 		{
 			window.draw(FiftyPercentOpaqueSprite);
 			window.draw(resetScorePlaqueSprite);
+		}
+		if(aboutPopUp == true)
+		{
+			window.draw(FiftyPercentOpaqueSprite);
+			window.draw(aboutSectionSprite);
+			window.draw(credits);
 		}
 	}
 	else if(GameState == midGame)
@@ -231,25 +250,30 @@ void Game::handleEvent(sf::Event event)
 		switch (event.type)
 		{
 		case sf::Event::KeyPressed:
-			if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up)
+			if((event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up) && noPopUpsAreOpen())
 			{
 				bird.jump();
 				GameState = midGame;
 				preGameMusic.stop();
 				midGameMusic.play();
 			}
-			else if (event.key.code == sf::Keyboard::R && resetPopUp != true)
-			{
+			if (event.key.code == sf::Keyboard::R  && noPopUpsAreOpen())
 				resetPopUp = true;
-			}
-			if(resetPopUp == true && event.key.code == sf::Keyboard::Y)
+
+			if(event.key.code == sf::Keyboard::Y && resetPopUp == true)
 			{
 				score.deleteHighScore();
 				resetPopUp = false;
 			}
-			else if(resetPopUp == true && event.key.code == sf::Keyboard::N)
+			if(event.key.code == sf::Keyboard::N && resetPopUp == true)
+				resetPopUp = false;
+			if(event.key.code == sf::Keyboard::Escape)
 				resetPopUp = false;
 
+			if(event.key.code == sf::Keyboard::A && noPopUpsAreOpen())
+				aboutPopUp = true;
+			if(event.key.code == sf::Keyboard::Escape && aboutPopUp == true)
+				aboutPopUp = false;
 			break;
 		default:
 			break;
@@ -270,6 +294,7 @@ void Game::handleEvent(sf::Event event)
 				{
 					background_x_pos_increment = 2;
 					pipes.moveForwards();
+					ground.moveForwards();
 					bird.setRotationIncrement(-5);
 					bird.jumped = 0;
 					score.setArrowOn(false);
@@ -300,6 +325,7 @@ void Game::handleEvent(sf::Event event)
 
 void Game::reset()
 {
+	ground.reset();
 	bird.reset();
 	pipes.reset();
 	score.reset();
@@ -343,4 +369,12 @@ bool Game::isBirdAlive()
 		return false;
     else
         return true;
+}
+
+bool Game::noPopUpsAreOpen()
+{
+	for(int i = 0; i < NUMBER_OF_POPUPS; i++)
+		if(*popUps[i])
+			return false;
+	return true;
 }

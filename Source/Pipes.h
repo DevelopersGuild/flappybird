@@ -55,11 +55,14 @@ private:
 	sf::Texture topPipeTexture;
 	sf::Sprite topPipeSprite[NUMBER_OF_PIPES];
 
+	sf::Texture groundTexture;
+	sf::Sprite groundSprite[2];
+
 	float velocity;
 	float pipes_frame_timer;
-	int pipe_y_pos[NUMBER_OF_PIPES];
-	int pipe_x_pos[NUMBER_OF_PIPES];
-	int pipe_x_pos_increment; //The 
+	float pipe_y_pos[NUMBER_OF_PIPES];
+	float pipe_x_pos[NUMBER_OF_PIPES];
+	float pipe_x_pos_increment; //The 
 	int score;
 
 	sf::SoundBuffer BoostBuffer;

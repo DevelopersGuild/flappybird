@@ -7,6 +7,11 @@ Pipes::Pipes()
 {
 	bottomPipeTexture.loadFromFile(GetAssetPath("Assets/bPipe.png"));
 	topPipeTexture.loadFromFile(GetAssetPath("Assets/tPipe.png"));
+	groundTexture.loadFromFile(GetAssetPath("Assets/Ground.png"));
+	
+//	groundSprite[0].setTexture(groundTexture);
+//	groundSprite[1].setTexture(groundTexture);
+
 	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
 		bottomPipeSprite[i].setTexture(bottomPipeTexture);
@@ -19,7 +24,10 @@ Pipes::Pipes()
 		pipe_y_pos[i] = 100 + randomInt();
 		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
 		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
+
 	}
+	
+	
 	velocity = PIPES_VELOCITY;
 	score = 0;
 	BoostBuffer.loadFromFile(GetAssetPath("Assets/Boost.ogg"));
@@ -73,6 +81,7 @@ void Pipes::reset()
 		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 	}
 	score = 0;
+	velocity = PIPES_VELOCITY;
 }
 
 void Pipes::spawnPipe(int pipeNumber)
@@ -81,12 +90,13 @@ void Pipes::spawnPipe(int pipeNumber)
 	pipe_y_pos[pipeNumber] = 100 + randomInt();
 	topPipeSprite[pipeNumber].setPosition(pipe_x_pos[pipeNumber], pipe_y_pos[pipeNumber]);
 	bottomPipeSprite[pipeNumber].setPosition(pipe_x_pos[pipeNumber], pipe_y_pos[pipeNumber] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
+	groundSprite[pipeNumber].setPosition(pipe_x_pos[pipeNumber], 800);
 	incrementScore();
 }
 
 int Pipes::randomInt()
 {
-	return rand() % 250;
+	return rand() % 200;
 }
 
 bool Pipes::isCollision(sf::Vector2f point)

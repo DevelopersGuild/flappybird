@@ -10,11 +10,11 @@ Arrows::Arrows()
 	arrowOffTexture.loadFromFile(GetAssetPath("Assets/ArrowOff.png"));
 	arrowOffSprite.setTexture(arrowOffTexture);
 	arrowOffSprite.setScale(1.5, 1.5);
-	arrowOffSprite.setPosition(730, 550);
+	arrowOffSprite.setPosition(730, 450);
 	arrowOnTexture.loadFromFile(GetAssetPath("Assets/ArrowOn.png"));
 	arrowOnSprite.setTexture(arrowOnTexture);
 	arrowOnSprite.setScale(1.5, 1.5);
-	arrowOnSprite.setPosition(730, 550);
+	arrowOnSprite.setPosition(730, 450);
 
 	moveArrow = 0;
 	totalTime = 0;
@@ -29,7 +29,7 @@ void Arrows::update(float seconds)
 
 void Arrows::preGameRender(sf::RenderWindow &window)
 {
-	static float time = clock() / CLOCKS_PER_SEC;
+	static float time = float(clock() / CLOCKS_PER_SEC);
 }
 void Arrows::render(sf::RenderWindow &window, bool on)
 {
