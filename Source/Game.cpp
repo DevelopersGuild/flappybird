@@ -195,7 +195,7 @@ void Game::render()
 
 	window.draw(backgroundSprite[0]);
 	window.draw(backgroundSprite[1]);
-	arrows.render( window, score.getArrowOn() );
+	arrows.render( window, pipes.getArrowOn() );
 	bird.render( window );
 	pipes.render( window );
 	ground.render( window );
@@ -290,14 +290,13 @@ void Game::handleEvent(sf::Event event)
 			}
 			else if(event.key.code == sf::Keyboard::Right)
 			{
-				if(score.getArrowOn())
+				if(pipes.getArrowOn())
 				{
 					background_x_pos_increment = 2;
 					pipes.moveForwards();
 					ground.moveForwards();
 					bird.setRotationIncrement(-5);
 					bird.jumped = 0;
-					score.setArrowOn(false);
 				}
 			}
 			break;

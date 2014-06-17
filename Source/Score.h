@@ -27,8 +27,6 @@ public:
 	// Rests the score to 0.
 	void reset();
     void deleteHighScore();
-	bool getArrowOn();
-	void setArrowOn(bool b);
 
 private:
 	sf::Font font;
@@ -38,7 +36,5 @@ private:
 	sf::Sound scoredPointSound;
 		
 	int currentScore;
-	int tempScore;
-	bool arrowOn;
 };
 #endif

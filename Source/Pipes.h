@@ -47,6 +47,7 @@ public:
 	void incrementScore();
 	// Returns a random integer, used for random y position of pipe.
 	int randomInt();
+	bool getArrowOn();
     
 private:
 
@@ -64,6 +65,9 @@ private:
 	float pipe_x_pos[NUMBER_OF_PIPES];
 	float pipe_x_pos_increment; //The 
 	int score;
+	int boostMeter;
+	int tempBoost;
+	bool arrowOn;
 
 	sf::SoundBuffer BoostBuffer;
 	sf::Sound Boost;

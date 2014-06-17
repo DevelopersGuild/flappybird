@@ -24,12 +24,13 @@ Pipes::Pipes()
 		pipe_y_pos[i] = 100 + randomInt();
 		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
 		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
-
 	}
-	
 	
 	velocity = PIPES_VELOCITY;
 	score = 0;
+	tempBoost = 0;
+	boostMeter = 0;
+	arrowOn = false;
 	BoostBuffer.loadFromFile(GetAssetPath("Assets/Boost.ogg"));
 	Boost.setBuffer(BoostBuffer);
 }
@@ -52,13 +53,18 @@ void Pipes::update(float seconds)
 			spawnPipe(i);
 		}
 	}
-		
+	
+	tempBoost = ( topPipeSprite[0].getPosition().x < BIRD_X_POS ) + ( topPipeSprite[1].getPosition().x < BIRD_X_POS );
+	if (boostMeter + tempBoost >= 5)
+		arrowOn = true;
 }
 
 void Pipes::moveForwards()
 {
 	velocity = PIPES_VELOCITY;
 	velocity *= 1.0 + PIPES_SPEED_BONUS;
+	arrowOn = false;
+	boostMeter = 0;
 	Boost.play();
 }
 
@@ -81,6 +87,8 @@ void Pipes::reset()
 		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 	}
 	score = 0;
+	boostMeter = 0;
+	arrowOn = false;
 	velocity = PIPES_VELOCITY;
 }
 
@@ -92,6 +100,8 @@ void Pipes::spawnPipe(int pipeNumber)
 	bottomPipeSprite[pipeNumber].setPosition(pipe_x_pos[pipeNumber], pipe_y_pos[pipeNumber] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 	groundSprite[pipeNumber].setPosition(pipe_x_pos[pipeNumber], 800);
 	incrementScore();
+	if (boostMeter < 5)
+		boostMeter++ ;
 }
 
 int Pipes::randomInt()
@@ -128,11 +138,15 @@ float Pipes::getVelocity()
 
 void Pipes::incrementScore()
 {
-	
 	score++;
 }
 
 int Pipes::getScore()
 {
-	return score + ( topPipeSprite[0].getPosition().x < BIRD_X_POS ) + ( topPipeSprite[1].getPosition().x < BIRD_X_POS  );
+	return score + ( topPipeSprite[0].getPosition().x < BIRD_X_POS ) + ( topPipeSprite[1].getPosition().x < BIRD_X_POS );
+}
+
+bool Pipes::getArrowOn()
+{
+	return arrowOn;
 }
