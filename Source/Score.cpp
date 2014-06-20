@@ -64,3 +64,4 @@ void Score::deleteHighScore()
 	highScore << to_string(static_cast<long long>(0));
 	highScore.close();
 }
+

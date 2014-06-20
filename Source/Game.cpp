@@ -5,6 +5,7 @@
 #include "Pipes.h"
 #include "Score.h"
 #include "Background.h"
+#include "PowerUp.h"
 #include <iostream>
 #include <fstream>
 
@@ -54,7 +55,7 @@ void Game::loadResources()
 	gameoverSprite.setOrigin(231,5);
 	gameoverSprite.setPosition(400,100);
 
-	resetScorePlaqueTexture.loadFromFile(GetAssetPath("Assets/resetScorePlaque.png"));
+	resetScorePlaqueTexture.loadFromFile(GetAssetPath("Assets/ResetScorePlaque.png"));
 	resetScorePlaqueSprite.setTexture(resetScorePlaqueTexture);
 	resetScorePlaqueSprite.setOrigin(400, 300);
 	resetScorePlaqueSprite.setPosition(400, 300);
@@ -97,7 +98,7 @@ void Game::loadResources()
 	credits.setFont(font);
 	credits.setCharacterSize(25);
 	credits.setColor(sf::Color(207, 173, 89, 255));
-	credits.setString("Ahmed Baki \nADD YOUR NAMES HERE ");
+	credits.setString(CREDITS_TEXT);
 	credits.setPosition(310, 180);
 
 	FiftyPercentOpaqueTexture.loadFromFile(GetAssetPath("Assets/50Opaque.png"));
@@ -161,8 +162,9 @@ void Game::midGameUpdate(float seconds)
 	}
 	bird.update( seconds , pipes.getVelocity());
 	if(GameState == midGame)
-		pipes.update( seconds );
+		pipes.update( seconds, powerUp.getPowerUpType() );
 	score.update( pipes.getScore() );
+	powerUp.update ( seconds, bird.getPosition());
 }
 
 void Game::render()
@@ -197,6 +199,7 @@ void Game::render()
 	else if(GameState == midGame)
 	{
 		score.render( window );
+		powerUp.render( window );
 	}
 	else if(GameState == postGame)
 	{
@@ -271,6 +274,7 @@ void Game::handleEvent(sf::Event event)
 					background.moveForwards();
 					pipes.moveForwards();
 					ground.moveForwards();
+					powerUp.moveForwards( pipes.getVelocity() );
 					bird.jumped = 0;
 				}
 			}
@@ -304,6 +308,7 @@ void Game::reset()
 	bird.reset();
 	pipes.reset();
 	score.reset();
+	powerUp.reset();
 	highScoreText.setString("");
 	highScore = false;
 }

@@ -10,6 +10,7 @@
 #include "Arrows.h"
 #include "Ground.h"
 #include "Background.h"
+#include "PowerUp.h"
 /**
  * Game class responsibilities:
  *
@@ -69,10 +70,7 @@ private:
 	Bird bird;
 	Score score;
 	Arrows arrows;
-	
-
-
-	
+	PowerUp powerUp;
 
 	sf::Texture FiftyPercentOpaqueTexture;
 	sf::Sprite FiftyPercentOpaqueSprite;
