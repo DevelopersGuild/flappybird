@@ -80,8 +80,8 @@
     <ClCompile Include="..\..\Source\PowerUp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\GameSound.cpp">
+      <ClCompile Include="..\..\Source\GameSound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
+    </ItemGroup>
 </Project>

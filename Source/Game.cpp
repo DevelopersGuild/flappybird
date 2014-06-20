@@ -17,7 +17,7 @@ using namespace std;
 }GameState;
 
 Game::Game()
-	: window(sf::VideoMode(800, 600), "Flappy Bird")
+	: window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Flappy Bird")
 {
     //Turning vertical-sync on causes window.display() to pause the app until 1/60th of a second has passed.
 	window.setVerticalSyncEnabled(true);
@@ -101,7 +101,7 @@ void Game::loadResources()
 	credits.setCharacterSize(25);
 	credits.setColor(sf::Color(207, 173, 89, 255));
 	credits.setString(CREDITS_TEXT);
-	credits.setPosition(270, 180);
+	credits.setPosition(230, 150);
 
 	FiftyPercentOpaqueTexture.loadFromFile(GetAssetPath("Assets/50Opaque.png"));
 	FiftyPercentOpaqueSprite.setTexture(FiftyPercentOpaqueTexture);
