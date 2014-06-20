@@ -58,7 +58,7 @@ void Pipes::moveForwards()
 	velocity *= 1.0 + PIPES_SPEED_BONUS;
 	arrowOn = false;
 	boostMeter = 0;
-	gameSound.boost();
+	GameSound::boost();
 }
 
 void Pipes::render(sf::RenderWindow &window)

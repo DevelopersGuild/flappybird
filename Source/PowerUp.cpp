@@ -24,7 +24,7 @@ void PowerUp::update(float seconds, sf::Vector2f point)
 	if (isCollision(point))
 	{
 		effect = rand()%NUMBER_OF_PU_TYPES;
-		gameSound.powerUpCollect();
+		GameSound::powerUpCollect();
 		setSpawnPowerUp();
 	}
 	if (velocity > PU_VELOCITY)

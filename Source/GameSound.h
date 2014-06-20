@@ -9,19 +9,19 @@ class GameSound
 public:
 	GameSound();
 
-	void preGameMusicOn();
-	void preGameMusicOff();
+	static void preGameMusicOn();
+	static void preGameMusicOff();
 
-	void midGameMusicOn();
-	void midGameMusicOff();
+	static void midGameMusicOn();
+	static void midGameMusicOff();
 
-	void scoredPoint();
+	static void scoredPoint();
 
-	void birdCollision();
+	static void birdCollision();
 
-	void powerUpCollect();
+	static void powerUpCollect();
 
-	void boost();
+	static void boost();
 private:
 	sf::Music preGameMusic;
 	sf::Music midGameMusic;

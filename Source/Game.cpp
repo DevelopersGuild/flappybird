@@ -32,7 +32,7 @@ Game::Game()
 	popUps[1] = &resetPopUp;
 	popUps[2] = &aboutPopUp;
 
-	gameSound.preGameMusicOn();
+	GameSound::preGameMusicOn();
 } 
 
 void Game::loadResources()
@@ -222,8 +222,8 @@ void Game::handleEvent(sf::Event event)
 			{
 				bird.jump();
 				GameState = midGame;
-				gameSound.preGameMusicOff();
-				gameSound.midGameMusicOn();
+				GameSound::preGameMusicOff();
+				GameSound::midGameMusicOn();
 			}
 			if (event.key.code == sf::Keyboard::R  && noPopUpsAreOpen())
 				resetPopUp = true;
@@ -281,7 +281,7 @@ void Game::handleEvent(sf::Event event)
 			{
 				GameState = preGame;
 				reset();
-				gameSound.preGameMusicOn();
+				GameSound::preGameMusicOn();
 			}
 			break;
 		default:
@@ -306,8 +306,8 @@ void Game::GameOver()
 {
 	string best;
 	
-	gameSound.birdCollision();
-	gameSound.midGameMusicOff();
+	GameSound::birdCollision();
+	GameSound::midGameMusicOff();
 
 	if(score.isHighScore())
 	{

@@ -63,7 +63,6 @@ private:
 	sf::Clock clock;	// Starts the clock
 	sf::Time deltaTime;	// Stores the time difference between the current and previous frames
 	
-	GameSound gameSound;
 	Background background;
 	Ground ground;
 	Pipes pipes;

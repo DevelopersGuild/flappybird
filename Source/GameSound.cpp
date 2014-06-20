@@ -1,6 +1,8 @@
 #include "Assets.h"
 #include "GameSound.h"
 
+static GameSound instance;
+
 GameSound::GameSound()
 {
 	midGameMusic.openFromFile(GetAssetPath("Assets/MidGame.ogg"));
@@ -27,40 +29,40 @@ GameSound::GameSound()
 
 void GameSound::preGameMusicOn()
 {
-	preGameMusic.play();
+	instance.preGameMusic.play();
 }
 
 void GameSound::preGameMusicOff()
 {
-	preGameMusic.stop();
+	instance.preGameMusic.stop();
 }
 
 void GameSound::midGameMusicOn()
 {
-	midGameMusic.play();
+	instance.midGameMusic.play();
 }
 
 void GameSound::midGameMusicOff()
 {
-	midGameMusic.stop();
+	instance.midGameMusic.stop();
 }
 
 void GameSound::scoredPoint()
 {
-	scoredPointSound.play();
+	instance.scoredPointSound.play();
 }
 
 void GameSound::birdCollision()
 {
-	birdCollisionSound.play();
+	instance.birdCollisionSound.play();
 }
 
 void GameSound::powerUpCollect()
 {
-	powerUpCollectSound.play();
+	instance.powerUpCollectSound.play();
 }
 
 void GameSound::boost()
 {
-	boostSound.play();
+	instance.boostSound.play();
 }

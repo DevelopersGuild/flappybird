@@ -19,7 +19,7 @@ void Score::update(int score)
 	if(score > currentScore)
 	{
 		currentScore = score;
-		gameSound.scoredPoint();
+		GameSound::scoredPoint();
 	}
 	
 	//using static_cast because to_sting doesn't take ints.

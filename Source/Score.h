@@ -34,7 +34,5 @@ private:
 	sf::Text scoreText;
 		
 	int currentScore;
-
-	GameSound gameSound;
 };
 #endif

@@ -33,8 +33,6 @@ public:
     
 private:
 
-	GameSound gameSound;
-
 	sf::Texture powerUpTexture;
 	sf::Sprite powerUpSprite;
 

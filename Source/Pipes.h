@@ -62,8 +62,6 @@ private:
 	int tempBoost;
 	bool arrowOn;
 
-	GameSound gameSound;
-
     /**
      * Add additional things.
      */
