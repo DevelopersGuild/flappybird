@@ -14,9 +14,6 @@ PowerUp::PowerUp()
 	effect = -1;
 	powDuration = 0;
 
-	PUCollectBuffer.loadFromFile(GetAssetPath("Assets/PUCollect.ogg"));
-	PUCollect.setBuffer(PUCollectBuffer);
-
 	powerUpSprite.setTexture(powerUpTexture);
 	powerUpSprite.setOrigin(37.5,37.5);
 	powerUpSprite.setPosition(PU_RESET_POSITION, y_pos);
@@ -27,7 +24,7 @@ void PowerUp::update(float seconds, sf::Vector2f point)
 	if (isCollision(point))
 	{
 		effect = rand()%NUMBER_OF_PU_TYPES;
-		PUCollect.play();
+		gameSound.powerUpCollect();
 		setSpawnPowerUp();
 	}
 	if (velocity > PU_VELOCITY)

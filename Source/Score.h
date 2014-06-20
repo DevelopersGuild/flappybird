@@ -2,6 +2,7 @@
 #define FLAPPYBIRD_SCORE
 
 #include <SFML/Graphics.hpp>
+#include "GameSound.h"
 #include "Pipes.h"
 #include <string>
 using namespace std;
@@ -31,10 +32,9 @@ public:
 private:
 	sf::Font font;
 	sf::Text scoreText;
-
-	sf::SoundBuffer scoredPointSoundBuffer;
-	sf::Sound scoredPointSound;
 		
 	int currentScore;
+
+	GameSound gameSound;
 };
 #endif

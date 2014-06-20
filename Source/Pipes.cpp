@@ -12,9 +12,7 @@ Pipes::Pipes()
 	tempBoost = 0;
 	boostMeter = 0;
 	arrowOn = false;
-	BoostBuffer.loadFromFile(GetAssetPath("Assets/Boost.ogg"));
-	Boost.setBuffer(BoostBuffer);
-
+	
 	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
 		y_pos = randomInt();
@@ -60,7 +58,7 @@ void Pipes::moveForwards()
 	velocity *= 1.0 + PIPES_SPEED_BONUS;
 	arrowOn = false;
 	boostMeter = 0;
-	Boost.play();
+	gameSound.boost();
 }
 
 void Pipes::render(sf::RenderWindow &window)

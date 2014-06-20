@@ -4,7 +4,9 @@
 #include "Score.h"
 #include <cmath>
 #include <iostream>
+
 using namespace std;
+
 Arrows::Arrows()
 {
 	arrowOffTexture.loadFromFile(GetAssetPath("Assets/ArrowOff.png"));

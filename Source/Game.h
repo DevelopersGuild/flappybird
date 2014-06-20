@@ -2,8 +2,7 @@
 #define FLAPPYBIRD_GAME
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio/SoundBuffer.hpp>
-#include <SFML/Audio/Music.hpp>
+#include "GameSound.h"
 #include "Bird.h"
 #include "Pipes.h"
 #include "Score.h"
@@ -63,7 +62,8 @@ private:
 
 	sf::Clock clock;	// Starts the clock
 	sf::Time deltaTime;	// Stores the time difference between the current and previous frames
-
+	
+	GameSound gameSound;
 	Background background;
 	Ground ground;
 	Pipes pipes;
@@ -102,12 +102,6 @@ private:
 	sf::Text keyInstructions;
 	sf::Text credits;
 
-	//Audio sprites
-	sf::Music midGameMusic;
-	sf::SoundBuffer birdDiesSoundBuffer;
-	sf::Sound birdDiesSound;
-	sf::Music preGameMusic;
-   
 	//PopUps
 	bool highScore;
 	bool resetPopUp;

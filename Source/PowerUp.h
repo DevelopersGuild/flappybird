@@ -2,9 +2,7 @@
 #define FLAPPYBIRD_POWERUP
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio/Sound.hpp>
-#include <SFML/Audio/SoundBuffer.hpp>
-
+#include "GameSound.h"
 /*Note: Power up effects (int)
 		0 = Double score for 5 seconds
 		1 = ...
@@ -35,6 +33,8 @@ public:
     
 private:
 
+	GameSound gameSound;
+
 	sf::Texture powerUpTexture;
 	sf::Sprite powerUpSprite;
 
@@ -43,11 +43,7 @@ private:
 	int y_pos;
 	float totalTime;
 	int effect;
-	float powDuration;
-
-	sf::SoundBuffer PUCollectBuffer;
-	sf::Sound PUCollect;
-	
+	float powDuration;	
 };
 
 #endif

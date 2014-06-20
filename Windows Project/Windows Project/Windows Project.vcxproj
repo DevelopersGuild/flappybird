@@ -19,7 +19,9 @@
     <ClInclude Include="..\..\Source\Game.h" />
     <ClInclude Include="..\..\Source\Ground.h" />
     <ClInclude Include="..\..\Source\Pipes.h" />
+    <ClInclude Include="..\..\Source\PowerUp.h" />
     <ClInclude Include="..\..\Source\Score.h" />
+    <ClInclude Include="..\..\Source\GameSound.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Arrows.cpp" />
@@ -29,7 +31,9 @@
     <ClCompile Include="..\..\Source\Ground.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />
     <ClCompile Include="..\..\Source\Pipes.cpp" />
+    <ClCompile Include="..\..\Source\PowerUp.cpp" />
     <ClCompile Include="..\..\Source\Score.cpp" />
+    <ClCompile Include="..\..\Source\GameSound.cpp" />
     <ClCompile Include="..\..\Source\Windows-Assets.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

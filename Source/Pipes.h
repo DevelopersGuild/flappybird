@@ -2,8 +2,7 @@
 #define FLAPPYBIRD_PIPES
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio/Sound.hpp>
-#include <SFML/Audio/SoundBuffer.hpp>
+#include "GameSound.h"
 #include "Constants.h"
 
 /**
@@ -63,8 +62,8 @@ private:
 	int tempBoost;
 	bool arrowOn;
 
-	sf::SoundBuffer BoostBuffer;
-	sf::Sound Boost;
+	GameSound gameSound;
+
     /**
      * Add additional things.
      */

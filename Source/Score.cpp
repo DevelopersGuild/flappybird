@@ -11,10 +11,6 @@ Score::Score()
 	scoreText.setColor(sf::Color(0, 0, 0, 255));
 	scoreText.setPosition(400,50);
 
-	scoredPointSoundBuffer.loadFromFile(GetAssetPath("Assets/ScoredPoint.ogg"));
-	scoredPointSound.setBuffer(scoredPointSoundBuffer);
-	scoredPointSound.setVolume(50);
-
 	currentScore = 0;
 }
 
@@ -23,7 +19,7 @@ void Score::update(int score)
 	if(score > currentScore)
 	{
 		currentScore = score;
-		scoredPointSound.play();
+		gameSound.scoredPoint();
 	}
 	
 	//using static_cast because to_sting doesn't take ints.

@@ -31,6 +31,8 @@ Game::Game()
 	popUps[0] = &highScore;
 	popUps[1] = &resetPopUp;
 	popUps[2] = &aboutPopUp;
+
+	gameSound.preGameMusicOn();
 } 
 
 void Game::loadResources()
@@ -99,23 +101,10 @@ void Game::loadResources()
 	credits.setCharacterSize(25);
 	credits.setColor(sf::Color(207, 173, 89, 255));
 	credits.setString(CREDITS_TEXT);
-	credits.setPosition(310, 180);
+	credits.setPosition(270, 180);
 
 	FiftyPercentOpaqueTexture.loadFromFile(GetAssetPath("Assets/50Opaque.png"));
 	FiftyPercentOpaqueSprite.setTexture(FiftyPercentOpaqueTexture);
-
-	midGameMusic.openFromFile(GetAssetPath("Assets/MidGame.ogg"));
-	midGameMusic.setVolume(20);
-	midGameMusic.setLoop(true);
-	
-	preGameMusic.openFromFile(GetAssetPath("Assets/PreGame.ogg"));
-	preGameMusic.setLoop(true);
-	preGameMusic.setVolume(20);
-	preGameMusic.play();
-
-	birdDiesSoundBuffer.loadFromFile(GetAssetPath("Assets/BirdDies.ogg"));
-	birdDiesSound.setBuffer(birdDiesSoundBuffer);
-	
 }
 
 void Game::mainLoop()
@@ -233,8 +222,8 @@ void Game::handleEvent(sf::Event event)
 			{
 				bird.jump();
 				GameState = midGame;
-				preGameMusic.stop();
-				midGameMusic.play();
+				gameSound.preGameMusicOff();
+				gameSound.midGameMusicOn();
 			}
 			if (event.key.code == sf::Keyboard::R  && noPopUpsAreOpen())
 				resetPopUp = true;
@@ -292,7 +281,7 @@ void Game::handleEvent(sf::Event event)
 			{
 				GameState = preGame;
 				reset();
-				preGameMusic.play();
+				gameSound.preGameMusicOn();
 			}
 			break;
 		default:
@@ -316,8 +305,9 @@ void Game::reset()
 void Game::GameOver()
 {
 	string best;
-	birdDiesSound.play();
-	midGameMusic.stop();
+	
+	gameSound.birdCollision();
+	gameSound.midGameMusicOff();
 
 	if(score.isHighScore())
 	{
