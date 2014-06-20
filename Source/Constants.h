@@ -15,7 +15,6 @@ const float DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES = 200.0f;
 const float PIPE_LENGTH = 500.0f;
 const float PIPE_SPAWN_POSITION = 900.0f;
 const float PIPE_RESET_POSITION = 1400.0f;
-const float PIPES_FRAME_DURATION = 0.01f;
 const float PIPES_VELOCITY = 600.0f;
 const float PIPES_SPEED_BONUS = 0.85f;
 const float PIPES_DECELERATION = (float)(PIPES_VELOCITY * PIPES_SPEED_BONUS * 2.0);
@@ -45,5 +44,13 @@ const float BIRD_MAX_Y = 0.0f;
 const float BIRD_FRAME_SIZE_X = 110.2f;
 const float BIRD_FRAME_SIZE_Y = 101.3f;
 const float BIRD_JUMP_ANIMATION_TIMER = (float)(BIRD_FRAME_DURATION * BIRD_FRAMES_IN_COMPLETE_ANIMATION * 1.0);
+
+// Powerup constants
+const float PU_RESET_POSITION = 2500.0f;
+const float PU_FRAME_DURATION = 0.01f;
+const float PU_VELOCITY = PIPES_VELOCITY/2;
+const float PU_SPEED_BONUS = PIPES_SPEED_BONUS;
+const float PU_DECELERATION = float(PU_VELOCITY * PU_SPEED_BONUS * 2.0);
+const int NUMBER_OF_PU_TYPES = 1; //Add this as PU increases
 
 #endif

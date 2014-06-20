@@ -28,7 +28,7 @@ public:
      * Try not to change the public methods' names and parameters, if possible.
      */
     // Spawn new pipes if necessary.  Move pipes.
-    void update(float seconds);
+    void update(float seconds, int powType);
 	//Speeds up the pipes animation to give the illusion that the bird moved forwards
 	void moveForwards();
     // Draw pipes on screen.  Do not move them.
@@ -36,7 +36,7 @@ public:
     // Delete all pipes as the game is beginning anew.
 	void reset();
 
-    void spawnPipe(int pipeNumber);
+    void spawnPipe(int pipeNumber, int powType);
     // Is the following point within one of the pipes?
     bool isCollision(sf::Vector2f point);
 
@@ -48,6 +48,7 @@ public:
 	// Returns a random integer, used for random y position of pipe.
 	int randomInt();
 	bool getArrowOn();
+	void PU_DoubleScore();
     
 private:
 
@@ -56,7 +57,6 @@ private:
 	sf::Sprite topPipeSprite[NUMBER_OF_PIPES];
 
 	float velocity;
-	float pipes_frame_timer;
 	int y_pos;
 	int score;
 	int boostMeter;

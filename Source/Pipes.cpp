@@ -3,7 +3,6 @@
 #include "Pipes.h"
 
 Pipes::Pipes()
-	: pipes_frame_timer(PIPES_FRAME_DURATION)
 {
 	pipeTexture.loadFromFile(GetAssetPath("Assets/Pipe.png"));
 
@@ -30,12 +29,11 @@ Pipes::Pipes()
 		bottomPipeSprite[i].setPosition(PIPE_RESET_POSITION + 500*i, 100 + y_pos + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 	}
 	
-	
 }
 
-void Pipes::update(float seconds)
+void Pipes::update(float seconds, int powType)
 {
-	if(velocity > PIPES_VELOCITY)
+	if (velocity > PIPES_VELOCITY)
 		velocity -= PIPES_DECELERATION * seconds;
 	if (velocity < PIPES_VELOCITY)
 		velocity = PIPES_VELOCITY;
@@ -47,7 +45,7 @@ void Pipes::update(float seconds)
 		
 		if(topPipeSprite[i].getPosition().x <= -100)
 		{
-			spawnPipe(i);
+			spawnPipe(i, powType);
 		}
 	}
 	
@@ -89,12 +87,16 @@ void Pipes::reset()
 	velocity = PIPES_VELOCITY;
 }
 
-void Pipes::spawnPipe(int pipeNumber)
+void Pipes::spawnPipe(int pipeNumber, int powType)
 {
 	y_pos = 100 + randomInt();
 	topPipeSprite[pipeNumber].setPosition(PIPE_SPAWN_POSITION, y_pos);
 	bottomPipeSprite[pipeNumber].setPosition(PIPE_SPAWN_POSITION, y_pos + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
-	incrementScore();
+	
+	if (powType == 0)
+		PU_DoubleScore();
+	else incrementScore();
+
 	if (boostMeter < 5)
 		boostMeter++ ;
 }
@@ -144,4 +146,9 @@ int Pipes::getScore()
 bool Pipes::getArrowOn()
 {
 	return arrowOn;
+}
+
+void Pipes::PU_DoubleScore()
+{
+	score+= 2;
 }
