@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "Pipes.h"
 #include "Score.h"
+#include "Background.h"
 #include <iostream>
 #include <fstream>
 
@@ -33,17 +34,6 @@ Game::Game()
 
 void Game::loadResources()
 {
-	backgroundTexture.loadFromFile(GetAssetPath("Assets/background.png"));
-	background_X_pos = 0;
-	background_x_pos_increment = 0.8f;
-	//Initialize background sprites.
-	for(int i = 0; i < 2; i++)
-	{
-		backgroundSprite[i].setTexture(backgroundTexture);
-		backgroundSprite[i].setScale(1, 2.343f); //To fill entire window with sprite
-		backgroundSprite[i].setOrigin(0, 23);
-	}
-
 	scoreBackgroundTexture.loadFromFile(GetAssetPath("Assets/ScoreBackground.png"));
 	scoreBackgroundSprite.setTexture(scoreBackgroundTexture);
 	scoreBackgroundSprite.setOrigin(226, 116);
@@ -89,7 +79,7 @@ void Game::loadResources()
 	startInstructions.setFont(font);
 	startInstructions.setCharacterSize(25);
 	startInstructions.setColor(sf::Color::White);
-	startInstructions.setPosition(200,400);
+	startInstructions.setPosition(200,200);
 	startInstructions.setString("HIT SPACE OR UP TO PLAY!");
 
 	restartInstructions.setFont(font);
@@ -155,16 +145,9 @@ void Game::mainLoop()
 
 void Game::preGameUpdate(float seconds)
 {
-	if(background_X_pos <= -1024)
-		background_X_pos = 0;
-	if(background_x_pos_increment > 0.8)
-		background_x_pos_increment -= 0.0625;
-
-	backgroundSprite[0].setPosition(background_X_pos, 0);
-	backgroundSprite[1].setPosition(background_X_pos + 1024, 0);
-	background_X_pos -= background_x_pos_increment;
+	background.update( seconds );
 	ground.update( seconds );
-	arrows.update(seconds);
+	arrows.update( seconds );
 	bird.preGameUpdate( seconds );
 }
 
@@ -172,14 +155,7 @@ void Game::midGameUpdate(float seconds)
 {
 	if(GameState != postGame)
 	{
-		if(background_X_pos <= -1024)
-			background_X_pos = 0;
-		if(background_x_pos_increment > 0.8)
-			background_x_pos_increment -= 0.0625;
-
-		backgroundSprite[0].setPosition(background_X_pos, 0);
-		backgroundSprite[1].setPosition(background_X_pos + 1024, 0);
-		background_X_pos -= background_x_pos_increment;
+		background.update( seconds );
 		ground.update ( seconds );
 		arrows.update(seconds);
 	}
@@ -193,12 +169,12 @@ void Game::render()
 {
 	window.clear();
 
-	window.draw(backgroundSprite[0]);
-	window.draw(backgroundSprite[1]);
+	background.render( window );
 	arrows.render( window, pipes.getArrowOn() );
 	bird.render( window );
 	pipes.render( window );
 	ground.render( window );
+
 	if(GameState == preGame)
 	{
 		window.draw(gameTitleSprite);
@@ -292,10 +268,9 @@ void Game::handleEvent(sf::Event event)
 			{
 				if(pipes.getArrowOn())
 				{
-					background_x_pos_increment = 2;
+					background.moveForwards();
 					pipes.moveForwards();
 					ground.moveForwards();
-					bird.setRotationIncrement(-5);
 					bird.jumped = 0;
 				}
 			}
@@ -324,17 +299,13 @@ void Game::handleEvent(sf::Event event)
 
 void Game::reset()
 {
+	background.reset();
 	ground.reset();
 	bird.reset();
 	pipes.reset();
 	score.reset();
 	highScoreText.setString("");
 	highScore = false;
-}
-
-void Game::birdDies()
-{
-    reset();
 }
 
 void Game::GameOver()
@@ -360,7 +331,7 @@ void Game::GameOver()
 
 bool Game::isBirdAlive()
 {
-	if(bird.getPosition().y > 563)
+	if(bird.getPosition().y > 550)
        return false;
 	if(bird.getPosition().y < 0)
        return false;

@@ -38,8 +38,6 @@ public:
     void reset();
     // The player has the bird jump.
     void jump();
-	
-	void setRotationIncrement(int number);
 
 	int getRotation();
     // The center of the bird.  To be used by Game.
@@ -58,7 +56,6 @@ private:
 	float velocity; // The birds velocity.
 	float rotation; // To make bird rotate downwards when it's falling.
 	float animationRemaining; //To make the bird flap its wings when it jumps.
-    int rotationIncrement;
 
     /**
      * Add additional things.

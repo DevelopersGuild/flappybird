@@ -5,34 +5,32 @@
 Pipes::Pipes()
 	: pipes_frame_timer(PIPES_FRAME_DURATION)
 {
-	bottomPipeTexture.loadFromFile(GetAssetPath("Assets/bPipe.png"));
-	topPipeTexture.loadFromFile(GetAssetPath("Assets/tPipe.png"));
-	groundTexture.loadFromFile(GetAssetPath("Assets/Ground.png"));
-	
-//	groundSprite[0].setTexture(groundTexture);
-//	groundSprite[1].setTexture(groundTexture);
+	pipeTexture.loadFromFile(GetAssetPath("Assets/Pipe.png"));
 
-	for(int i = 0; i < NUMBER_OF_PIPES; i++)
-	{
-		bottomPipeSprite[i].setTexture(bottomPipeTexture);
-		topPipeSprite[i].setTexture(topPipeTexture);
-		bottomPipeSprite[i].setTextureRect(sf::IntRect(0, 0, 130, 500));
-		topPipeSprite[i].setTextureRect(sf::IntRect(0, 0, 130, 500));
-		bottomPipeSprite[i].setOrigin(110,0);
-		topPipeSprite[i].setOrigin(110,500);
-		pipe_x_pos[i] = PIPE_RESET_POSITION + 500*i;
-		pipe_y_pos[i] = 100 + randomInt();
-		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
-		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
-	}
-	
 	velocity = PIPES_VELOCITY;
 	score = 0;
+	y_pos = 0;
 	tempBoost = 0;
 	boostMeter = 0;
 	arrowOn = false;
 	BoostBuffer.loadFromFile(GetAssetPath("Assets/Boost.ogg"));
 	Boost.setBuffer(BoostBuffer);
+
+	for(int i = 0; i < NUMBER_OF_PIPES; i++)
+	{
+		y_pos = randomInt();
+
+		topPipeSprite[i].setTexture(pipeTexture);
+		topPipeSprite[i].setScale(1, -1); //To invert sprite.
+		topPipeSprite[i].setOrigin(110,0);
+		topPipeSprite[i].setPosition(PIPE_RESET_POSITION + 500*i, 100 + y_pos);
+		
+		bottomPipeSprite[i].setTexture(pipeTexture);
+		bottomPipeSprite[i].setOrigin(110,0);
+		bottomPipeSprite[i].setPosition(PIPE_RESET_POSITION + 500*i, 100 + y_pos + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
+	}
+	
+	
 }
 
 void Pipes::update(float seconds)
@@ -44,11 +42,10 @@ void Pipes::update(float seconds)
 	
 	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
-		pipe_x_pos[i] -= velocity * seconds;
-		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
-		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
+		topPipeSprite[i].move(-velocity * seconds, 0);
+		bottomPipeSprite[i].move(-velocity * seconds, 0);
 		
-		if(pipe_x_pos[i] <= -100)
+		if(topPipeSprite[i].getPosition().x <= -100)
 		{
 			spawnPipe(i);
 		}
@@ -81,11 +78,11 @@ void Pipes::reset()
 {
 	for(int i = 0; i < NUMBER_OF_PIPES; i++)
 	{
-		pipe_x_pos[i] = PIPE_RESET_POSITION + DISTANCE_BETWEEN_PIPES * i;
-		pipe_y_pos[i] = 100 + randomInt();
-		topPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i]);
-		bottomPipeSprite[i].setPosition(pipe_x_pos[i], pipe_y_pos[i] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
+		y_pos = 100 + randomInt();
+		topPipeSprite[i].setPosition(PIPE_RESET_POSITION + DISTANCE_BETWEEN_PIPES * i, y_pos);
+		bottomPipeSprite[i].setPosition(PIPE_RESET_POSITION + DISTANCE_BETWEEN_PIPES * i, y_pos + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 	}
+	
 	score = 0;
 	boostMeter = 0;
 	arrowOn = false;
@@ -94,11 +91,9 @@ void Pipes::reset()
 
 void Pipes::spawnPipe(int pipeNumber)
 {
-	pipe_x_pos[pipeNumber] = PIPE_SPAWN_POSITION;
-	pipe_y_pos[pipeNumber] = 100 + randomInt();
-	topPipeSprite[pipeNumber].setPosition(pipe_x_pos[pipeNumber], pipe_y_pos[pipeNumber]);
-	bottomPipeSprite[pipeNumber].setPosition(pipe_x_pos[pipeNumber], pipe_y_pos[pipeNumber] + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
-	groundSprite[pipeNumber].setPosition(pipe_x_pos[pipeNumber], 800);
+	y_pos = 100 + randomInt();
+	topPipeSprite[pipeNumber].setPosition(PIPE_SPAWN_POSITION, y_pos);
+	bottomPipeSprite[pipeNumber].setPosition(PIPE_SPAWN_POSITION, y_pos + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 	incrementScore();
 	if (boostMeter < 5)
 		boostMeter++ ;

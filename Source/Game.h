@@ -9,6 +9,7 @@
 #include "Score.h"
 #include "Arrows.h"
 #include "Ground.h"
+#include "Background.h"
 /**
  * Game class responsibilities:
  *
@@ -32,9 +33,6 @@ public:
 
     // Handle a single event.
     void handleEvent(sf::Event event);
-
-    // Calls reset() and anything else that happens when the bird dies.
-    void birdDies();
 
     // All the checks to see if the bird is alive or dead at this point in time.
     bool isBirdAlive();
@@ -65,16 +63,16 @@ private:
 	sf::Clock clock;	// Starts the clock
 	sf::Time deltaTime;	// Stores the time difference between the current and previous frames
 
-	float background_X_pos;
-	float background_x_pos_increment;
-	Bird bird;
+	Background background;
+	Ground ground;
 	Pipes pipes;
+	Bird bird;
 	Score score;
 	Arrows arrows;
-	Ground ground;
+	
 
-	sf::Texture backgroundTexture;
-	sf::Sprite backgroundSprite[2];
+
+	
 
 	sf::Texture FiftyPercentOpaqueTexture;
 	sf::Sprite FiftyPercentOpaqueSprite;

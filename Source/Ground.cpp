@@ -9,10 +9,8 @@ Ground::Ground()
 	for(int i = 0; i < NUMBER_OF_GROUND_SPRITES; i++)
 	{
 		groundSprite[i].setTexture(groundTexture);
-		groundSprite[i].setOrigin(0, 113);
-		ground_x_pos[i] = 800 * i;
-		ground_y_pos = 650;
-		groundSprite[i].setPosition(ground_x_pos[i], ground_y_pos);
+		groundSprite[i].setOrigin(0, 110);
+		groundSprite[i].setPosition(GROUND_SPRITE_LENGTH * i, GROUND_Y_POSITION);
 	}
 
 	velocity = GROUND_VELOCITY;
@@ -30,12 +28,11 @@ void Ground::update(float seconds)
 	}
 	for(int i = 0; i < NUMBER_OF_GROUND_SPRITES; i++)
 	{
-		ground_x_pos[i] -= velocity * seconds;
-		groundSprite[i].setPosition(ground_x_pos[i], ground_y_pos);
+		groundSprite[i].move(-velocity * seconds, 0);
 		
-		if(ground_x_pos[i] <= -800)
+		if(groundSprite[i].getPosition().x <= -GROUND_SPRITE_LENGTH)
 		{
-			ground_x_pos[i] = 800;
+			groundSprite[i].move(4*GROUND_SPRITE_LENGTH, 0);
 		}
 	}
 }
@@ -51,10 +48,7 @@ void Ground::render(sf::RenderWindow &window)
 void Ground::reset()
 {
 	for(int i = 0; i < NUMBER_OF_GROUND_SPRITES; i++)
-	{
-		ground_x_pos[i] = 800 * i;
-		groundSprite[i].setPosition(ground_x_pos[i], ground_y_pos);
-	}
+		groundSprite[i].setPosition(GROUND_SPRITE_LENGTH * i, GROUND_Y_POSITION);
 	velocity = GROUND_VELOCITY;
 }
 

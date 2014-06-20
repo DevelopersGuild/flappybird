@@ -16,7 +16,6 @@ Bird::Bird()
 	velocity = 0;
 	rotation = 0;
 	birdSprite.setPosition(BIRD_X_POS, 300);
-	rotationIncrement = 2;
 	jumped = 0;
 	animationRemaining = BIRD_JUMP_ANIMATION_TIMER;
 }
@@ -114,11 +113,6 @@ void Bird::jump()
     bird_y_pos = 0;
     bird_frame_timer = BIRD_FRAME_DURATION;
     jumped++;
-}
-
-void Bird::setRotationIncrement(int number) 
-{
-	rotationIncrement = number;
 }
 
 int Bird::getRotation()

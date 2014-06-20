@@ -51,19 +51,13 @@ public:
     
 private:
 
-	sf::Texture bottomPipeTexture;
+	sf::Texture pipeTexture;
 	sf::Sprite bottomPipeSprite[NUMBER_OF_PIPES];
-	sf::Texture topPipeTexture;
 	sf::Sprite topPipeSprite[NUMBER_OF_PIPES];
-
-	sf::Texture groundTexture;
-	sf::Sprite groundSprite[2];
 
 	float velocity;
 	float pipes_frame_timer;
-	float pipe_y_pos[NUMBER_OF_PIPES];
-	float pipe_x_pos[NUMBER_OF_PIPES];
-	float pipe_x_pos_increment; //The 
+	int y_pos;
 	int score;
 	int boostMeter;
 	int tempBoost;

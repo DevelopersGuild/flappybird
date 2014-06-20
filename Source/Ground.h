@@ -10,10 +10,13 @@ public:
     //Constructor
     Ground();
 
+	//Draw all the ground sprites. Does not change any values.
     void render(sf::RenderWindow &window);
 
+	//Updates the position of the ground sprites due to time.
     void update(float seconds);
 
+	//
     void reset();
 
 	void moveForwards();
@@ -22,10 +25,6 @@ private:
 		sf::Sprite groundSprite[NUMBER_OF_GROUND_SPRITES];
 
 		float velocity;
-		float ground_frame_timer;
-		float ground_y_pos;
-		float ground_x_pos[NUMBER_OF_GROUND_SPRITES];
-		float ground_x_pos_increment; //The 
 };
 
 #endif
