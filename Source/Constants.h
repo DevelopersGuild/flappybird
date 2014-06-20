@@ -11,7 +11,7 @@ const int NUMBER_OF_POPUPS = 3;
 // Pipes constants.
 const int NUMBER_OF_PIPES = 2;
 const float DISTANCE_BETWEEN_PIPES = 500.0f;
-const float DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES = 200.0f;
+const float DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES = 175.0f;
 const float PIPE_LENGTH = 500.0f;
 const float PIPE_SPAWN_POSITION = 900.0f;
 const float PIPE_RESET_POSITION = 1400.0f;
