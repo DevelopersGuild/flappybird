@@ -11,6 +11,7 @@ const char CREDITS_TEXT[] =
     "Vihan Chaudhry\n"
     "Alex Khouderchah\n"
     "Edwin Li\n"
+    "Victor Lon\n"
     "Paul Merrill\n"
     "Akshay Shetty\n"
     "Brian Sonnenberg\n"
@@ -19,6 +20,8 @@ const char CREDITS_TEXT[] =
 
 //Game constants.
 const int NUMBER_OF_POPUPS = 3;
+const int WINDOW_WIDTH = 800;
+const int WINDOW_HEIGHT = 600;
 
 // Pipes constants.
 const int NUMBER_OF_PIPES = 2;
