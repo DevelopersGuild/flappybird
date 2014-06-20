@@ -4,6 +4,18 @@
 
 #define PI 3.1415926535897932; //Overkill? I think not!
 const float GRAVITY = 4000;
+const char CREDITS_TEXT[] =
+    "Edwin Angkasa\n"
+    "Ahmed Baki\n"
+    "Anthony Bilic\n"
+    "Vihan Chaudhry\n"
+    "Alex Khouderchah\n"
+    "Edwin Li\n"
+    "Paul Merrill\n"
+    "Akshay Shetty\n"
+    "Brian Sonnenberg\n"
+    "Alea \"Sabrina\" Suhair\n"
+    "Ethan Wong"; // Last line has no \n
 
 //Game constants.
 const int NUMBER_OF_POPUPS = 3;
