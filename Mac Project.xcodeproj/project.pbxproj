@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1088951C19425F0E002DF360 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1088951B19425F0E002DF360 /* Score.cpp */; };
 		8E010AF81940BBA20038B015 /* Mac-Assets.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E010AF71940BBA20038B015 /* Mac-Assets.mm */; };
+		8E77CCE819543F7E00564099 /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E77CCE419543F7E00564099 /* Background.cpp */; };
+		8E77CCE919543F7E00564099 /* PowerUp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E77CCE619543F7E00564099 /* PowerUp.cpp */; };
+		8E77CCEC19543FB100564099 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E77CCEA19543FB100564099 /* Ground.cpp */; };
 		8E82F3A3194AF06700CB31C4 /* Arrows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E82F3A1194AF06700CB31C4 /* Arrows.cpp */; };
 		8EE36D9A1925B9AB00E033F5 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36D991925B9AB00E033F5 /* Assets */; };
 		8EE36DA41925C17D00E033F5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DA31925C17D00E033F5 /* main.cpp */; };
@@ -22,6 +25,12 @@
 		1088951B19425F0E002DF360 /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Score.cpp; path = Source/Score.cpp; sourceTree = "<group>"; };
 		1088951D19425F1D002DF360 /* Score.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Score.h; path = Source/Score.h; sourceTree = "<group>"; };
 		8E010AF71940BBA20038B015 /* Mac-Assets.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "Mac-Assets.mm"; path = "Source/Mac-Assets.mm"; sourceTree = "<group>"; };
+		8E77CCE419543F7E00564099 /* Background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Background.cpp; path = Source/Background.cpp; sourceTree = "<group>"; };
+		8E77CCE519543F7E00564099 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = Source/Background.h; sourceTree = "<group>"; };
+		8E77CCE619543F7E00564099 /* PowerUp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PowerUp.cpp; path = Source/PowerUp.cpp; sourceTree = "<group>"; };
+		8E77CCE719543F7E00564099 /* PowerUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerUp.h; path = Source/PowerUp.h; sourceTree = "<group>"; };
+		8E77CCEA19543FB100564099 /* Ground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ground.cpp; path = Source/Ground.cpp; sourceTree = "<group>"; };
+		8E77CCEB19543FB100564099 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ground.h; path = Source/Ground.h; sourceTree = "<group>"; };
 		8E82F3A1194AF06700CB31C4 /* Arrows.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Arrows.cpp; path = Source/Arrows.cpp; sourceTree = "<group>"; };
 		8E82F3A2194AF06700CB31C4 /* Arrows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Arrows.h; path = Source/Arrows.h; sourceTree = "<group>"; };
 		8EE36D991925B9AB00E033F5 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
@@ -57,15 +66,21 @@
 				8E82F3A1194AF06700CB31C4 /* Arrows.cpp */,
 				8E82F3A2194AF06700CB31C4 /* Arrows.h */,
 				8EE36DA21925C17D00E033F5 /* Assets.h */,
+				8E77CCE419543F7E00564099 /* Background.cpp */,
+				8E77CCE519543F7E00564099 /* Background.h */,
 				8EFFFA821925ECA90088D87F /* Bird.cpp */,
 				8EFFFA831925ECA90088D87F /* Bird.h */,
 				8EFFFA851925ECFF0088D87F /* Constants.h */,
 				8EFFFA7C1925EC990088D87F /* Game.cpp */,
 				8EFFFA7D1925EC990088D87F /* Game.h */,
+				8E77CCEA19543FB100564099 /* Ground.cpp */,
+				8E77CCEB19543FB100564099 /* Ground.h */,
 				8E010AF71940BBA20038B015 /* Mac-Assets.mm */,
 				8EE36DA31925C17D00E033F5 /* main.cpp */,
 				8EFFFA7F1925ECA10088D87F /* Pipes.cpp */,
 				8EFFFA801925ECA10088D87F /* Pipes.h */,
+				8E77CCE619543F7E00564099 /* PowerUp.cpp */,
+				8E77CCE719543F7E00564099 /* PowerUp.h */,
 				1088951B19425F0E002DF360 /* Score.cpp */,
 				1088951D19425F1D002DF360 /* Score.h */,
 				8EE36D991925B9AB00E033F5 /* Assets */,
@@ -170,12 +185,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1088951C19425F0E002DF360 /* Score.cpp in Sources */,
+				8E77CCE919543F7E00564099 /* PowerUp.cpp in Sources */,
 				8E010AF81940BBA20038B015 /* Mac-Assets.mm in Sources */,
 				8EFFFA7E1925EC990088D87F /* Game.cpp in Sources */,
 				8EE36DA41925C17D00E033F5 /* main.cpp in Sources */,
 				8E82F3A3194AF06700CB31C4 /* Arrows.cpp in Sources */,
 				8EFFFA811925ECA10088D87F /* Pipes.cpp in Sources */,
 				8EFFFA841925ECA90088D87F /* Bird.cpp in Sources */,
+				8E77CCEC19543FB100564099 /* Ground.cpp in Sources */,
+				8E77CCE819543F7E00564099 /* Background.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

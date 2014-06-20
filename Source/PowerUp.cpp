@@ -1,6 +1,7 @@
 #include "Assets.h"
 #include "Constants.h"
 #include "PowerUp.h"
+#include <math.h>
 
 PowerUp::PowerUp()
 	: pu_frame_timer(PU_FRAME_DURATION)

@@ -55,7 +55,7 @@ void Game::loadResources()
 	gameoverSprite.setOrigin(231,5);
 	gameoverSprite.setPosition(400,100);
 
-	resetScorePlaqueTexture.loadFromFile(GetAssetPath("Assets/resetScorePlaque.png"));
+	resetScorePlaqueTexture.loadFromFile(GetAssetPath("Assets/ResetScorePlaque.png"));
 	resetScorePlaqueSprite.setTexture(resetScorePlaqueTexture);
 	resetScorePlaqueSprite.setOrigin(400, 300);
 	resetScorePlaqueSprite.setPosition(400, 300);
