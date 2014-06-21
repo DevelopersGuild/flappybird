@@ -330,7 +330,7 @@ bool Game::isBirdAlive()
        return false;
 	if(bird.getPosition().y < 0)
        return false;
-	if(pipes.isCollision(bird.getPosition()))
+	if(pipes.isCollision(bird.getPosition(), powerUp.getPowerUpType()))
 		return false;
     else
         return true;

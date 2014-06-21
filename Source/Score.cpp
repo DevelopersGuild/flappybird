@@ -28,7 +28,6 @@ void Score::update(int score)
 
 void Score::render(sf::RenderWindow &window)
 {
-	
 	window.draw(scoreText);
 }
 	

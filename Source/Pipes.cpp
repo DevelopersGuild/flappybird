@@ -21,12 +21,11 @@ Pipes::Pipes()
 		topPipeSprite[i].setScale(1, -1); //To invert sprite.
 		topPipeSprite[i].setOrigin(110,0);
 		topPipeSprite[i].setPosition(PIPE_RESET_POSITION + 500*i, 100 + y_pos);
-		
+
 		bottomPipeSprite[i].setTexture(pipeTexture);
 		bottomPipeSprite[i].setOrigin(110,0);
 		bottomPipeSprite[i].setPosition(PIPE_RESET_POSITION + 500*i, 100 + y_pos + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
 	}
-	
 }
 
 void Pipes::update(float seconds, int powType)
@@ -46,10 +45,15 @@ void Pipes::update(float seconds, int powType)
 			spawnPipe(i, powType);
 		}
 	}
-	
-	tempBoost = ( topPipeSprite[0].getPosition().x < BIRD_X_POS ) + ( topPipeSprite[1].getPosition().x < BIRD_X_POS );
-	if (boostMeter + tempBoost >= 5)
-		arrowOn = true;
+
+	if (powType == 2)
+		PU_InfiniteBoost();
+	else
+	{
+		tempBoost = ( topPipeSprite[0].getPosition().x < BIRD_X_POS ) + ( topPipeSprite[1].getPosition().x < BIRD_X_POS );
+		if (boostMeter + tempBoost >= 5)
+			arrowOn = true;
+	}
 }
 
 void Pipes::moveForwards()
@@ -87,9 +91,13 @@ void Pipes::reset()
 
 void Pipes::spawnPipe(int pipeNumber, int powType)
 {
-	y_pos = 100 + randomInt();
-	topPipeSprite[pipeNumber].setPosition(PIPE_SPAWN_POSITION, y_pos);
-	bottomPipeSprite[pipeNumber].setPosition(PIPE_SPAWN_POSITION, y_pos + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
+	if (powType == 1)
+		PU_ShrinkPipes(pipeNumber);
+	else 
+	{
+		y_pos = 100 + randomInt();
+		pipesOriginalPosition(pipeNumber);
+	}
 	
 	if (powType == 0)
 		PU_DoubleScore();
@@ -104,8 +112,11 @@ int Pipes::randomInt()
 	return rand() % 200;
 }
 
-bool Pipes::isCollision(sf::Vector2f point)
+bool Pipes::isCollision(sf::Vector2f point, int powType)
 {
+	if (powType == 3) //and
+		return false;
+
 	sf::Vector2f pos1(point.x - 18, point.y - 20);
 	sf::Vector2f pos2(point.x + 23, point.y - 11);
 	sf::Vector2f pos3(point.x - 7, point.y + 31);
@@ -146,7 +157,30 @@ bool Pipes::getArrowOn()
 	return arrowOn;
 }
 
+void Pipes::pipesOriginalPosition(int pipeNumber)
+{
+	topPipeSprite[pipeNumber].setPosition(PIPE_SPAWN_POSITION, y_pos);
+	bottomPipeSprite[pipeNumber].setPosition(PIPE_SPAWN_POSITION, y_pos + DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
+}
+
 void Pipes::PU_DoubleScore()
+{
+	score+= 2;
+}
+
+void Pipes::PU_ShrinkPipes(int pipeNumber)
+{
+	topPipeSprite[pipeNumber].setPosition(PIPE_SPAWN_POSITION, 100);
+	bottomPipeSprite[pipeNumber].setPosition(PIPE_SPAWN_POSITION, 100+ PU_DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES);
+}
+
+void Pipes::PU_InfiniteBoost()
+{
+	boostMeter = 5;
+	arrowOn = true;
+}
+
+void Pipes::PU_InvinciBird()
 {
 	score+= 2;
 }

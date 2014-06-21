@@ -37,7 +37,7 @@ public:
 
     void spawnPipe(int pipeNumber, int powType);
     // Is the following point within one of the pipes?
-    bool isCollision(sf::Vector2f point);
+    bool isCollision(sf::Vector2f point, int powType);
 
 	float getVelocity();
     // How many pipes have passed by on-screen?
@@ -47,7 +47,12 @@ public:
 	// Returns a random integer, used for random y position of pipe.
 	int randomInt();
 	bool getArrowOn();
+	void pipesOriginalPosition(int i);
+	// Powerups
 	void PU_DoubleScore();
+	void PU_ShrinkPipes(int i);
+	void PU_InfiniteBoost();
+	void PU_InvinciBird();
     
 private:
 

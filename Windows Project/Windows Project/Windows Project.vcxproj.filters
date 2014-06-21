@@ -45,9 +45,12 @@
     <ClInclude Include="..\..\Source\PowerUp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="..\..\Source\GameSound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+=======
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Windows-Assets.cpp">
@@ -80,8 +83,12 @@
     <ClCompile Include="..\..\Source\PowerUp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
       <ClCompile Include="..\..\Source\GameSound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     </ItemGroup>
+=======
+  </ItemGroup>
+>>>>>>> Stashed changes
 </Project>

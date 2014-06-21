@@ -66,6 +66,7 @@ const float PU_FRAME_DURATION = 0.01f;
 const float PU_VELOCITY = PIPES_VELOCITY/2;
 const float PU_SPEED_BONUS = PIPES_SPEED_BONUS;
 const float PU_DECELERATION = float(PU_VELOCITY * PU_SPEED_BONUS * 2.0);
-const int NUMBER_OF_PU_TYPES = 1; //Add this as PU increases
+const int NUMBER_OF_PU_TYPES = 4; //Add this as PU increases
+const int PU_DISTANCE_BETWEEN_TOP_AND_BOTTOM_PIPES = 400.0f;
 
 #endif
