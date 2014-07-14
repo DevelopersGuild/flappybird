@@ -11,7 +11,7 @@ const char CREDITS_TEXT[] =
     "Vihan Chaudhry\n"
     "Alex Khouderchah\n"
     "Edwin Li\n"
-    "Victor Lon\n"
+    "Victor La\n"
     "Paul Merrill\n"
     "Akshay Shetty\n"
     "Brian Sonnenberg\n"
