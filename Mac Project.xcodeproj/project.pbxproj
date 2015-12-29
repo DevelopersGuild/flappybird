@@ -8,6 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		1088951C19425F0E002DF360 /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1088951B19425F0E002DF360 /* Score.cpp */; };
+		5F2A3D001BBB86D000D642C7 /* FLAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF31BBB86D000D642C7 /* FLAC.framework */; };
+		5F2A3D011BBB86D000D642C7 /* freetype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF41BBB86D000D642C7 /* freetype.framework */; };
+		5F2A3D021BBB86D000D642C7 /* ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF51BBB86D000D642C7 /* ogg.framework */; };
+		5F2A3D031BBB86D000D642C7 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF61BBB86D000D642C7 /* OpenAL.framework */; };
+		5F2A3D041BBB86D000D642C7 /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF71BBB86D000D642C7 /* sfml-audio.framework */; };
+		5F2A3D061BBB86D000D642C7 /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF91BBB86D000D642C7 /* sfml-network.framework */; };
+		5F2A3D071BBB86D000D642C7 /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFA1BBB86D000D642C7 /* sfml-system.framework */; };
+		5F2A3D0E1BBB86D800D642C7 /* FLAC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF31BBB86D000D642C7 /* FLAC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D101BBB86D800D642C7 /* freetype.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF41BBB86D000D642C7 /* freetype.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D121BBB86D800D642C7 /* ogg.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF51BBB86D000D642C7 /* ogg.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D141BBB86D800D642C7 /* OpenAL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF61BBB86D000D642C7 /* OpenAL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D161BBB86D800D642C7 /* sfml-audio.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF71BBB86D000D642C7 /* sfml-audio.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D171BBB86D800D642C7 /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF81BBB86D000D642C7 /* sfml-graphics.framework */; };
+		5F2A3D181BBB86D800D642C7 /* sfml-graphics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF81BBB86D000D642C7 /* sfml-graphics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D1A1BBB86D800D642C7 /* sfml-network.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CF91BBB86D000D642C7 /* sfml-network.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D1C1BBB86D800D642C7 /* sfml-system.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFA1BBB86D000D642C7 /* sfml-system.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D1D1BBB86D800D642C7 /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFB1BBB86D000D642C7 /* sfml-window.framework */; };
+		5F2A3D1E1BBB86D800D642C7 /* sfml-window.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFB1BBB86D000D642C7 /* sfml-window.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D1F1BBB86D800D642C7 /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFC1BBB86D000D642C7 /* SFML.framework */; };
+		5F2A3D201BBB86D800D642C7 /* SFML.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFC1BBB86D000D642C7 /* SFML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D211BBB86D800D642C7 /* vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFD1BBB86D000D642C7 /* vorbis.framework */; };
+		5F2A3D221BBB86D800D642C7 /* vorbis.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFD1BBB86D000D642C7 /* vorbis.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D231BBB86D800D642C7 /* vorbisenc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFE1BBB86D000D642C7 /* vorbisenc.framework */; };
+		5F2A3D241BBB86D800D642C7 /* vorbisenc.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFE1BBB86D000D642C7 /* vorbisenc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D251BBB86D800D642C7 /* vorbisfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFF1BBB86D000D642C7 /* vorbisfile.framework */; };
+		5F2A3D261BBB86D800D642C7 /* vorbisfile.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2A3CFF1BBB86D000D642C7 /* vorbisfile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F2A3D2A1BBB86FD00D642C7 /* GameSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F2A3D281BBB86FD00D642C7 /* GameSound.cpp */; settings = {ASSET_TAGS = (); }; };
 		8E010AF81940BBA20038B015 /* Mac-Assets.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E010AF71940BBA20038B015 /* Mac-Assets.mm */; };
 		8E77CCE819543F7E00564099 /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E77CCE419543F7E00564099 /* Background.cpp */; };
 		8E77CCE919543F7E00564099 /* PowerUp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E77CCE619543F7E00564099 /* PowerUp.cpp */; };
@@ -21,9 +48,50 @@
 		8EFFFA841925ECA90088D87F /* Bird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFFA821925ECA90088D87F /* Bird.cpp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5F2A3D271BBB86D800D642C7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5F2A3D101BBB86D800D642C7 /* freetype.framework in Embed Frameworks */,
+				5F2A3D261BBB86D800D642C7 /* vorbisfile.framework in Embed Frameworks */,
+				5F2A3D221BBB86D800D642C7 /* vorbis.framework in Embed Frameworks */,
+				5F2A3D241BBB86D800D642C7 /* vorbisenc.framework in Embed Frameworks */,
+				5F2A3D161BBB86D800D642C7 /* sfml-audio.framework in Embed Frameworks */,
+				5F2A3D0E1BBB86D800D642C7 /* FLAC.framework in Embed Frameworks */,
+				5F2A3D121BBB86D800D642C7 /* ogg.framework in Embed Frameworks */,
+				5F2A3D141BBB86D800D642C7 /* OpenAL.framework in Embed Frameworks */,
+				5F2A3D1E1BBB86D800D642C7 /* sfml-window.framework in Embed Frameworks */,
+				5F2A3D1C1BBB86D800D642C7 /* sfml-system.framework in Embed Frameworks */,
+				5F2A3D181BBB86D800D642C7 /* sfml-graphics.framework in Embed Frameworks */,
+				5F2A3D201BBB86D800D642C7 /* SFML.framework in Embed Frameworks */,
+				5F2A3D1A1BBB86D800D642C7 /* sfml-network.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1088951B19425F0E002DF360 /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Score.cpp; path = Source/Score.cpp; sourceTree = "<group>"; };
 		1088951D19425F1D002DF360 /* Score.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Score.h; path = Source/Score.h; sourceTree = "<group>"; };
+		5F2A3CF31BBB86D000D642C7 /* FLAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAC.framework; path = MacFrameworks/FLAC.framework; sourceTree = "<group>"; };
+		5F2A3CF41BBB86D000D642C7 /* freetype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = freetype.framework; path = MacFrameworks/freetype.framework; sourceTree = "<group>"; };
+		5F2A3CF51BBB86D000D642C7 /* ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ogg.framework; path = MacFrameworks/ogg.framework; sourceTree = "<group>"; };
+		5F2A3CF61BBB86D000D642C7 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = MacFrameworks/OpenAL.framework; sourceTree = "<group>"; };
+		5F2A3CF71BBB86D000D642C7 /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "MacFrameworks/sfml-audio.framework"; sourceTree = "<group>"; };
+		5F2A3CF81BBB86D000D642C7 /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "MacFrameworks/sfml-graphics.framework"; sourceTree = "<group>"; };
+		5F2A3CF91BBB86D000D642C7 /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-network.framework"; path = "MacFrameworks/sfml-network.framework"; sourceTree = "<group>"; };
+		5F2A3CFA1BBB86D000D642C7 /* sfml-system.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-system.framework"; path = "MacFrameworks/sfml-system.framework"; sourceTree = "<group>"; };
+		5F2A3CFB1BBB86D000D642C7 /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "MacFrameworks/sfml-window.framework"; sourceTree = "<group>"; };
+		5F2A3CFC1BBB86D000D642C7 /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = MacFrameworks/SFML.framework; sourceTree = "<group>"; };
+		5F2A3CFD1BBB86D000D642C7 /* vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vorbis.framework; path = MacFrameworks/vorbis.framework; sourceTree = "<group>"; };
+		5F2A3CFE1BBB86D000D642C7 /* vorbisenc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vorbisenc.framework; path = MacFrameworks/vorbisenc.framework; sourceTree = "<group>"; };
+		5F2A3CFF1BBB86D000D642C7 /* vorbisfile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vorbisfile.framework; path = MacFrameworks/vorbisfile.framework; sourceTree = "<group>"; };
+		5F2A3D281BBB86FD00D642C7 /* GameSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameSound.cpp; path = Source/GameSound.cpp; sourceTree = "<group>"; };
+		5F2A3D291BBB86FD00D642C7 /* GameSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameSound.h; path = Source/GameSound.h; sourceTree = "<group>"; };
 		8E010AF71940BBA20038B015 /* Mac-Assets.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "Mac-Assets.mm"; path = "Source/Mac-Assets.mm"; sourceTree = "<group>"; };
 		8E77CCE419543F7E00564099 /* Background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Background.cpp; path = Source/Background.cpp; sourceTree = "<group>"; };
 		8E77CCE519543F7E00564099 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = Source/Background.h; sourceTree = "<group>"; };
@@ -52,6 +120,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F2A3D1D1BBB86D800D642C7 /* sfml-window.framework in Frameworks */,
+				5F2A3D001BBB86D000D642C7 /* FLAC.framework in Frameworks */,
+				5F2A3D011BBB86D000D642C7 /* freetype.framework in Frameworks */,
+				5F2A3D171BBB86D800D642C7 /* sfml-graphics.framework in Frameworks */,
+				5F2A3D021BBB86D000D642C7 /* ogg.framework in Frameworks */,
+				5F2A3D031BBB86D000D642C7 /* OpenAL.framework in Frameworks */,
+				5F2A3D211BBB86D800D642C7 /* vorbis.framework in Frameworks */,
+				5F2A3D041BBB86D000D642C7 /* sfml-audio.framework in Frameworks */,
+				5F2A3D061BBB86D000D642C7 /* sfml-network.framework in Frameworks */,
+				5F2A3D071BBB86D000D642C7 /* sfml-system.framework in Frameworks */,
+				5F2A3D1F1BBB86D800D642C7 /* SFML.framework in Frameworks */,
+				5F2A3D231BBB86D800D642C7 /* vorbisenc.framework in Frameworks */,
+				5F2A3D251BBB86D800D642C7 /* vorbisfile.framework in Frameworks */,
 				8EE36DA61925C57500E033F5 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,6 +143,19 @@
 		D275946619105B1A003FF1E9 = {
 			isa = PBXGroup;
 			children = (
+				5F2A3CF31BBB86D000D642C7 /* FLAC.framework */,
+				5F2A3CF41BBB86D000D642C7 /* freetype.framework */,
+				5F2A3CF51BBB86D000D642C7 /* ogg.framework */,
+				5F2A3CF61BBB86D000D642C7 /* OpenAL.framework */,
+				5F2A3CF71BBB86D000D642C7 /* sfml-audio.framework */,
+				5F2A3CF81BBB86D000D642C7 /* sfml-graphics.framework */,
+				5F2A3CF91BBB86D000D642C7 /* sfml-network.framework */,
+				5F2A3CFA1BBB86D000D642C7 /* sfml-system.framework */,
+				5F2A3CFB1BBB86D000D642C7 /* sfml-window.framework */,
+				5F2A3CFC1BBB86D000D642C7 /* SFML.framework */,
+				5F2A3CFD1BBB86D000D642C7 /* vorbis.framework */,
+				5F2A3CFE1BBB86D000D642C7 /* vorbisenc.framework */,
+				5F2A3CFF1BBB86D000D642C7 /* vorbisfile.framework */,
 				8EE36DA51925C57500E033F5 /* CoreFoundation.framework */,
 				8E82F3A1194AF06700CB31C4 /* Arrows.cpp */,
 				8E82F3A2194AF06700CB31C4 /* Arrows.h */,
@@ -73,6 +167,8 @@
 				8EFFFA851925ECFF0088D87F /* Constants.h */,
 				8EFFFA7C1925EC990088D87F /* Game.cpp */,
 				8EFFFA7D1925EC990088D87F /* Game.h */,
+				5F2A3D281BBB86FD00D642C7 /* GameSound.cpp */,
+				5F2A3D291BBB86FD00D642C7 /* GameSound.h */,
 				8E77CCEA19543FB100564099 /* Ground.cpp */,
 				8E77CCEB19543FB100564099 /* Ground.h */,
 				8E010AF71940BBA20038B015 /* Mac-Assets.mm */,
@@ -107,6 +203,7 @@
 				D275946C19105B1A003FF1E9 /* Frameworks */,
 				D275946D19105B1A003FF1E9 /* Resources */,
 				D275946E19105B1A003FF1E9 /* ShellScript */,
+				5F2A3D271BBB86D800D642C7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,7 +220,7 @@
 		D275946719105B1A003FF1E9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Developers' Guild";
 				TargetAttributes = {
 					D275946F19105B1A003FF1E9 = {
@@ -175,7 +272,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This shell script simply copies required sfml dylibs/frameworks into the application bundle frameworks folder.\n# If you're using static libraries (which is not recommended) you should remove this script from your project.\n\n# Are we building a project that uses framework or dylibs ?\ncase \"$SFML_BINARY_TYPE\" in\n    DYLIBS)\n        frameworks=\"false\"\n        ;;\n    *)\n        frameworks=\"true\"\n        ;;\nesac\n\n# Echoes to stderr\nerror () # $* message to display\n{\n    echo $* 1>&2\n    exit 2\n}\n\nassert () # $1 is a boolean, $2...N is an error message\n{\n    if [ $# -lt 2 ]\n    then\n        error \"Internal error in assert : not enough args\"\n    fi\n\n    if [ $1 -ne 0 ]\n    then\n        shift\n        error \"$*\"\n    fi\n}\n\nforce_remove () # $1 is a path\n{\n    test $# -eq 1\n    assert $? \"force_remove() requires one parameter\"\n    rm -fr \"$1\"\n    assert $? \"couldn't remove $1\"\n}\n\ncopy () # $1 is a source, $2 is a destination\n{\n    test $# -eq 2\n    assert $? \"copy() requires two parameters\"\n    ditto \"$1\" \"$2\"\n    assert $? \"couldn't copy $1 to $2\"\n}\n\nrequire () # $1 is a SFML module like 'system' or 'audio'\n{\n    dest=\"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app/Contents/Frameworks\"\n    \n    if [ -z \"$1\" ]\n    then\n        error \"require() requires one parameter!\"\n    else\n        # clean potentially old stuff\n        force_remove \"$dest/libsfml-$1.2.dylib\"\n        force_remove \"$dest/libsfml-$1-d.2.dylib\"\n        force_remove \"$dest/sfml-$1.framework\"\n    \n        # copy SFML libraries\n        if [ \"$frameworks\" = \"true\" ]\n        then\n            copy \"/Library/Frameworks/sfml-$1.framework\" \"$dest/sfml-$1.framework\"\n        elif [ $CONFIGURATION = \"Debug\" ] && [ $SFML_LINK_DYLIBS_SUFFIX_DEBUG != \"\" ]\n        then\n            copy \"/usr/local/lib/libsfml-$1-d.2.dylib\" \"$dest/libsfml-$1-d.2.dylib\"\n        else\n            copy \"/usr/local/lib/libsfml-$1.2.dylib\" \"$dest/libsfml-$1.2.dylib\"\n        fi\n        \n        if [ \"$1\" = \"audio\" ]\n        then\n            # copy sndfile framework too\n            copy \"/Library/Frameworks/sndfile.framework\" \"$dest/sndfile.framework\"\n        fi\n\n        if [ \"$1\" = \"graphics\" ]\n        then\n            # copy freetype framework too\n            copy \"/Library/Frameworks/freetype.framework\" \"$dest/freetype.framework\"\n        fi\n    fi\n}\n\nif [ -n \"$SFML_SYSTEM\" ]\nthen\n    require \"system\"\nfi\n\nif [ -n \"$SFML_AUDIO\" ]\nthen\n    require \"audio\"\nfi\n\nif [ -n \"$SFML_NETWORK\" ]\nthen\n    require \"network\"\nfi\n\nif [ -n \"$SFML_WINDOW\" ]\nthen\n    require \"window\"\nfi\n\nif [ -n \"$SFML_GRAPHICS\" ]\nthen\n    require \"graphics\"\nfi\n\n                ";
+			shellScript = "# This shell script simply copies required sfml dylibs/frameworks into the application bundle frameworks folder.\n# If you're using static libraries (which is not recommended) you should remove this script from your project.\n\n# Are we building a project that uses framework or dylibs ?\ncase \"$SFML_BINARY_TYPE\" in\n    DYLIBS)\n        frameworks=\"false\"\n        ;;\n    *)\n        frameworks=\"true\"\n        ;;\nesac\n\n# Echoes to stderr\nerror () # $* message to display\n{\n    echo $* 1>&2\n    exit 2\n}\n\nassert () # $1 is a boolean, $2...N is an error message\n{\n    if [ $# -lt 2 ]\n    then\n        error \"Internal error in assert : not enough args\"\n    fi\n\n    if [ $1 -ne 0 ]\n    then\n        shift\n        error \"$*\"\n    fi\n}\n\nforce_remove () # $1 is a path\n{\n    test $# -eq 1\n    assert $? \"force_remove() requires one parameter\"\n    rm -fr \"$1\"\n    assert $? \"couldn't remove $1\"\n}\n\ncopy () # $1 is a source, $2 is a destination\n{\n    test $# -eq 2\n    assert $? \"copy() requires two parameters\"\n    ditto \"$1\" \"$2\"\n    assert $? \"couldn't copy $1 to $2\"\n}\n\nrequire () # $1 is a SFML module like 'system' or 'audio'\n{\n    dest=\"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app/Contents/Frameworks\"\n    \n    if [ -z \"$1\" ]\n    then\n        error \"require() requires one parameter!\"\n    else\n        # clean potentially old stuff\n        force_remove \"$dest/libsfml-$1.2.dylib\"\n        force_remove \"$dest/libsfml-$1-d.2.dylib\"\n        force_remove \"$dest/sfml-$1.framework\"\n    \n        # copy SFML libraries\n        if [ \"$frameworks\" = \"true\" ]\n        then\n            copy \"$SOURCE_ROOT/MacFrameworks/sfml-$1.framework\" \"$dest/sfml-$1.framework\"\n        elif [ $CONFIGURATION = \"Debug\" ] && [ $SFML_LINK_DYLIBS_SUFFIX_DEBUG != \"\" ]\n        then\n            copy \"/usr/local/lib/libsfml-$1-d.2.dylib\" \"$dest/libsfml-$1-d.2.dylib\"\n        else\n            copy \"/usr/local/lib/libsfml-$1.2.dylib\" \"$dest/libsfml-$1.2.dylib\"\n        fi\n        \n        if [ \"$1\" = \"audio\" ]\n        then\n            # copy sndfile framework too\n            copy \"$SOURCE_ROOT/MacFrameworks/ogg.framework\" \"$dest/ogg.framework\"\n            copy \"$SOURCE_ROOT/MacFrameworks/vorbis.framework\" \"$dest/vorbis.framework\"\n            copy \"$SOURCE_ROOT/MacFrameworks/vorbisfile.framework\" \"$dest/vorbisfile.framework\"\n        fi\n\n        if [ \"$1\" = \"graphics\" ]\n        then\n            # copy freetype framework too\n            copy \"$SOURCE_ROOT/MacFrameworks/freetype.framework\" \"$dest/freetype.framework\"\n        fi\n    fi\n}\n\nif [ -n \"$SFML_SYSTEM\" ]\nthen\n    require \"system\"\nfi\n\nif [ -n \"$SFML_AUDIO\" ]\nthen\n    require \"audio\"\nfi\n\nif [ -n \"$SFML_NETWORK\" ]\nthen\n    require \"network\"\nfi\n\nif [ -n \"$SFML_WINDOW\" ]\nthen\n    require \"window\"\nfi\n\nif [ -n \"$SFML_GRAPHICS\" ]\nthen\n    require \"graphics\"\nfi\n\n                ";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -192,6 +289,7 @@
 				8E82F3A3194AF06700CB31C4 /* Arrows.cpp in Sources */,
 				8EFFFA811925ECA10088D87F /* Pipes.cpp in Sources */,
 				8EFFFA841925ECA90088D87F /* Bird.cpp in Sources */,
+				5F2A3D2A1BBB86FD00D642C7 /* GameSound.cpp in Sources */,
 				8E77CCEC19543FB100564099 /* Ground.cpp in Sources */,
 				8E77CCE819543F7E00564099 /* Background.cpp in Sources */,
 			);
@@ -213,10 +311,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					/Library/Frameworks/,
 					"$(inherited)",
 				);
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -280,6 +380,7 @@
 					/Library/Frameworks/,
 					"$(inherited)",
 				);
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -324,8 +425,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MacFrameworks",
+				);
 				INFOPLIST_FILE = "Mac Project.xcodeproj/Flappy Bird-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.developersguild.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
 				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
 				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
 				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
@@ -337,8 +446,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MacFrameworks",
+				);
 				INFOPLIST_FILE = "Mac Project.xcodeproj/Flappy Bird-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.developersguild.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
 				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
 				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
 				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
